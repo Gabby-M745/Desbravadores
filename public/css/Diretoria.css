@@ -18,18 +18,18 @@ html {
 	padding: 20px 0px 0px 20px;/*o espaço interno com relação ao texto e a borda */
 	height: 400px;/*espaço entre imagem e o texto seguinte*/
 }
-/*.topo img.background-image  {
+.topo img.background-image  {
 	 position: absolute;
     top: 20px;/*espaçamente de cima*/
-   /* left: 0;
+    left: 0;
     right: 0;
     height: 410px;/*aproximação da imagem*/
-   /* width: 100%; /* reduzido para dar espaço lateral */
-   /* margin-left: auto;
-    margin-right: auto;*/
-   /* object-fit: cover;
+   width: 100%; /* reduzido para dar espaço lateral */
+   margin-left: auto;
+    margin-right: auto;
+   object-fit: cover;
     z-index: -1; /*imagem para traz do menu*/
-/*}*/
+}
   
 .topo .header {
 	display: flex;
@@ -50,6 +50,9 @@ html {
 	/*border-bottom-left-radius: 25;*/
 }
 .topo .header .menu ul {
+position: -webkit-sticky; 	/*https://www.w3schools.com/css/css_navbar_horizontal.asp*/
+	position: sticky;
+  top: 0;
 	list-style-type: none;  /* remove os pontos etc, tava em tópico*/
 	margin: 0;
 	padding: 0;
