@@ -44,7 +44,8 @@ html {
 .topo .header .menu {
 	background-color: #243238 ;                  /*VOLTAR*/
 	padding: 15px;
-    width: 100vw;           /* Faz ocupar toda a largura da tela */
+    width: 100vw;   
+	 margin-bottom: 20px;        /* Faz ocupar toda a largura da tela */
     /*box-sizing: border-box;*/
 	/*border-top-left-radius: 25px;/*arrendonda*/
 	/*border-bottom-left-radius: 25;*/
