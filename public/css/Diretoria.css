@@ -150,14 +150,14 @@ position: -webkit-sticky; 	/*https://www.w3schools.com/css/css_navbar_horizontal
 	align-items: center;
 	text-align: justify;
 	width: 94%; /*tamanho do texto, comprido*/
-	height: 200px; /*espaçamente entre o container e o seguinte*/
-	
+	height: 200px; /*espaçamente entre o container e o seguinte*/	
 }
-.desbravadores .text_desbravadores{
-     text-align: center;
-	flex: 1;
-    margin: 20px
- 
+
+.desbravadores .text_desbravadores {
+    text-align: center;
+    flex: 1;
+    margin: 20px; /* Margem ao redor do texto */
+
 }
 .desbravadores .text_desbravadores h3 {
 	padding: 25px;
