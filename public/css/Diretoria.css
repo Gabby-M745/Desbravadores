@@ -15,15 +15,16 @@ html {
 */
 .topo {
     
-	padding: 20px 0px 0px 20px;/*o espaço interno com relação ao texto e a borda */
-	height: 400px;/*espaço entre imagem e o texto seguinte*/
+	padding: 20px 05px 30px 05px;/*o espaço interno com relação ao texto e a IMAGEM */ 
+	/*20PX= POSÇÃO DO MENU , MAIS EM BAIXO OU CIMA /05= SOBRE*1030px= ESPAÇO ENTRE IMAGEM E TEXTO/ 05= O DESENHO DO MENU  */
+	height: 300px;/*espaço entre imagem e o texto seguinte*/
 }
 .topo img.background-image  {
 	 position: absolute;
-    top: 20px;/*espaçamente de cima*/
+    top: 30px;/*espaçamente de cima*/
     left: 0;
     right: 0;
-    height: 410px;/*aproximação da imagem*/
+    height: 300px;/*aproximação da imagem, MAIS AMPLA, MENOS*/
    width: 100%; /* reduzido para dar espaço lateral */
    margin-left: auto;
     margin-right: auto;
