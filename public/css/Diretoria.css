@@ -21,7 +21,7 @@ html {
 }
 .topo img.background-image  {
 	 position: absolute;
-    top: 30px;/*espaçamente de cima*/
+    top: 50px;/*espaçamente de cima*/
     left: 0;
     right: 0;
     height: 300px;/*aproximação da imagem, MAIS AMPLA, MENOS*/
@@ -106,7 +106,7 @@ position: -webkit-sticky; 	/*https://www.w3schools.com/css/css_navbar_horizontal
 	padding-top: 0px;
 	color: rgb(0, 0, 0);
 	font-size: 18px;
-	font-family: Verdana, sans-serif;
+	font-family: Roboto, sans-serif;
 	box-sizing: border-box;
 }
 /*--------------------*/
@@ -139,7 +139,7 @@ position: -webkit-sticky; 	/*https://www.w3schools.com/css/css_navbar_horizontal
 	padding-top: 0px;
 	color: rgb(0, 0, 0);
 	font-size: 18px;
-	font-family: Verdana, sans-serif;
+	font-family: Roboto, sans-serif;
 	box-sizing: border-box;
 }
 /*-+---------------------------------*/
@@ -172,7 +172,7 @@ position: -webkit-sticky; 	/*https://www.w3schools.com/css/css_navbar_horizontal
 	padding-top: 0px;
 	color: rgb(0, 0, 0);
 	font-size: 18px;
-	font-family: Verdana, sans-serif;
+	font-family: Roboto, sans-serif; /*Verdana*/
 	box-sizing: border-box;
 }
 /*----------------------*/
@@ -205,7 +205,7 @@ position: -webkit-sticky; 	/*https://www.w3schools.com/css/css_navbar_horizontal
 	padding-top: 0px;
 	color: rgb(0, 0, 0);
 	font-size: 18px;
-	font-family: Verdana, sans-serif;
+	font-family: Roboto, sans-serif;
 	box-sizing: border-box;
 }
 /*--------------------------*/
