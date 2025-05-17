@@ -6,31 +6,34 @@
 }
 
 body {
-    display: grid;
-    place-items: center;
+/*    display: grid;*/
+/*align-items: center; -- centralização vertical dentro da class ou body no caso*/
+/*justify-items: center; --centralização horizontalmente os itens */
+    place-items: center; /*centralização de maneira vertical e horizontal*/
     min-height: 100vh;
-    background: #fff;
+    background: #fff;/*cor de fundo*/
 }
 
 a {
     position: relative;
-    cursor: pointer;
-    background: #eee;
-    padding: 1rem 2rem;
-    margin: 0 20px;
-    font-size: 1.7rem;
-    display: inline-block;
-    color: #eee;
-    text-decoration: none;
-    overflow: hidden;
-    border: 2px solid #000;
-    border-radius: 5px;
+/*    cursor: pointer;/*altera o cursor*/
+    background: #eee;/*cor de fundo do link     */
+    padding: 3rem 3rem;/*espaçamento interno do link*/
+    margin: 0 20px;/*margem entre os links/  0(zero) é o expaçamento entre a margem superior e inferior do elemento tratado/ 20px margem relacionada á esuqesta e direita, uma medida proporcional*/
+    font-size: 2rem;/*tamanho da fonte do texto do link */
+    display: inline-block; /*a atribuição do link com o bloco formado e  em linha */
+    color: #eeeeee;/*cor de fundo do texto QUANDO PASSADO O CURSO EM CIMA   */
+    text-decoration: none;/*Remove o sublinhado padrão do link*/
+    overflow: hidden;/*EVITA QUE APARECE QUALQUER COISA QUE ULTRAPASSE O QUE ATÉ ENTÃO ESTÁ NOS LIMITES DO ESPAÇO DO LINK*/
+    border: 2px solid #000;/*borda preta sólida ao redor do link*/
+    border-radius: 5px;/*ARRENDENDAMENTO*/
+     /*display: flex;*/
 	 /*flex-box:flex;*/
 }
 
 a span {
-    position: relative;
-    mix-blend-mode: difference;
+    position: relative; /*sobre a posição, dos elementos, ajuda ao efeito de mudança visual, complementando com as seguintes instruções */
+   /* mix-blend-mode: difference; /*é o que faz destacar as imagens  ou textos, COM BASE NA COR DOO FUNDO= Contraste dinamico*/
 }
 
 a::before {
