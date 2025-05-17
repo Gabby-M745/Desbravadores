@@ -19,7 +19,7 @@ a {
 /*    cursor: pointer;/*altera o cursor*/
     background: #eee;/*cor de fundo do link     */
     padding: 3rem 3rem;/*espaçamento interno do link*/
-    margin: 0 20px;/*margem entre os links/  0(zero) é o expaçamento entre a margem superior e inferior do elemento tratado/ 20px margem relacionada á esuqesta e direita, uma medida proporcional*/
+    margin: 130px 20px;/*margem entre os links/  0(zero) é o expaçamento entre a margem superior e inferior do elemento tratado/ 20px margem relacionada á esuqesta e direita, uma medida proporcional*/
     font-size: 2rem;/*tamanho da fonte do texto do link */
     display: inline-block; /*a atribuição do link com o bloco formado e  em linha */
     color: #eeeeee;/*cor de fundo do texto QUANDO PASSADO O CURSO EM CIMA   */
@@ -33,23 +33,23 @@ a {
 
 a span {
     position: relative; /*sobre a posição, dos elementos, ajuda ao efeito de mudança visual, complementando com as seguintes instruções */
-   /* mix-blend-mode: difference; /*é o que faz destacar as imagens  ou textos, COM BASE NA COR DOO FUNDO= Contraste dinamico*/
+    mix-blend-mode: difference; /*é o que faz destacar as imagens  ou textos, COM BASE NA COR DOO FUNDO= Contraste dinamico*/
 }
 
 a::before {
-    content: "";
-    position: absolute;
+    content: "";/* Cria um elemento pseudo antes do conteúdo do link*/
+    position: absolute;/**/
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100%;/*Define largura para cobrir todo o link */
+    height: 100%;/*Define altura para cobrir todo o link */
     background: #000;
-    transition: transform 0.3s;
-    transform: scaleX(0);
-    transform-origin: right;
+    transition: transform 0.7s;/*Transição suave para a propriedade transform */
+    transform: scaleX(01);/*Define a cor de fundo do elemento pseudo como preto */
+    transform-origin: right;/*o que determina de quando passar o mouse a cor fecha pra qual lado*/
 }
 
 a:hover::before {
-    transform: scaleX(1);
-    transform-origin: left;
+    transform: scaleX(0);
+    transform-origin: left;/*Muda a origem da escala para o lado esquerdo para o efeito*/
 }
