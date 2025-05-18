@@ -19,14 +19,17 @@
                     <form>
                         <input type="email" placeholder="E-mail">
                         <input type="password" placeholder="Senha">
-                        <button type="submit">Entrar</button>
+                       <!-- <button type="submit">Entrar</button>--> 
+                      <button onclick="entrar()">Entrar</button>
 
                     </form>
                 </div>
                 <div class="facaLogin">
                     <h2>Já tem <br>uma conta?</h2>
                     <p>Lo lo lo lala lala</p>
-                    <button>Faça o login</button>
+<!--                     <button>Faça o login</button>-->
+                     <button onclick="logar()">Faça o Login</button>
+
                 </div>
             </div>
             <!--javascript do botão vai acionar juntamente com css-->
@@ -34,11 +37,13 @@
                 <div class="formCadastro">
                     <h2>Cadastro</h2>
                     <form>
-                        <input type="text" placeholder="Nome">
-                        <input type="email" placeholder="E-mail">
-                        <input type="password" placeholder="Senha">
-                        <input type="password" placeholder="Confirma a sua senha">
-                        <button type="submit">Cadastrar</button>
+                        <input type="text" id="nome" placeholder="Nome">
+                        <input type="email" id="email" placeholder="E-mail">
+                        <input type="password" id="senha" placeholder="Senha">
+                        <input type="password" id="confirmaS" placeholder="Confirma a sua senha">
+                        <!-- <button type="submit">Cadastrar</button>-->
+                         <button onclick="cadastrar()">Cadastrar</button>
+
                     </form>
                 </div>
                 <div class="facaCadastro">
@@ -52,6 +57,15 @@
 </body>
 
 </html>
+<script>
+
+function cadastrar(){
+    if(nome.value =="" && email.value =="" && senha.value =="" && confirmaS.value==""){
+        alert("Preencha todos os campos!");
+    }
+}
+
+</script>
 <!-- <i><h2>Cadastro </h2></i>-->
 <!-- <h4>Nome completo:</h4><input id="ipt_nome" placeholder="Gabrielly Marquez Sarzuri"><br>-->
 <!-- <h4>Nick:</h4><input id="ipt_nick" placeholder="Gabby #TDM"><br>-->
