@@ -65,7 +65,7 @@ a::before {
     /*Define largura para cobrir todo o link */
     height: 100%;
     /*Define altura para cobrir todo o link */
-    background: #cdcdcd;
+    background: #cdcdcd; /*#cdcdcd*/
     transition: transform 0.7s;
     /*Transição suave para a propriedade transform */
     transform: scaleX(01);
