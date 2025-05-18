@@ -1,57 +1,81 @@
 * {
-	margin: 0px;
-	padding: 0px;
-/*}html {
+    margin: 0px;
+    padding: 0px;
+    /*}html {
 	scroll-behavior: smooth; /*scroll suave*/
 }
 
 body {
-/*    display: grid;*/
-/*align-items: center; -- centralização vertical dentro da class ou body no caso*/
-/*justify-items: center; --centralização horizontalmente os itens */
-padding-top: 40px;   
-place-items: center; /*centralização de maneira vertical e horizontal*/
+    /*    display: grid;*/
+    /*align-items: center; -- centralização vertical dentro da class ou body no caso*/
+    /*justify-items: center; --centralização horizontalmente os itens */
+    /*background-image: url('../img/fundo01.png');*/
+    padding-top: 0px;
+    place-items: center;
+    /*centralização de maneira vertical e horizontal*/
     min-height: 100vh;
-    background: #fff;/*cor de fundo*/
-    font-family:  sans-serif;
+    background: #1a2f38;
+    /*cor de fundo*/
+    font-family: sans-serif;
 }
+
 a {
     font-family: Rockwell, sans-serif;
     position: relative;
-/*    cursor: pointer;/*altera o cursor*/
-    background: #d0c064;/*cor de fundo do link     */
-    padding: 3rem 3rem;/*espaçamento interno do link*/
-    margin: 100px 20px;/*margem entre os links/  0(zero) é o expaçamento entre a margem superior e inferior do elemento tratado/ 20px margem relacionada á esuqesta e direita, uma medida proporcional*/
-    font-size: 2rem;/*tamanho da fonte do texto do link */
-    display: inline-block; /*a atribuição do link com o bloco formado e  em linha */
-    color: #ffffff;/*cor de fundo do texto QUANDO PASSADO O CURSO EM CIMA   */
-    text-decoration: none;/*Remove o sublinhado padrão do link*/
-    overflow: hidden;/*EVITA QUE APARECE QUALQUER COISA QUE ULTRAPASSE O QUE ATÉ ENTÃO ESTÁ NOS LIMITES DO ESPAÇO DO LINK*/
-    border: 2px solid #000;/*borda preta sólida ao redor do link*/
-    border-radius: 5px;/*ARRENDENDAMENTO*/
-     /*display: flex;*/
-	 /*flex-box:flex;*/
+    /*    cursor: pointer;/*altera o cursor*/
+    background: #ffffff;
+    /*cor de fundo do link     */
+    padding: 3rem 3rem;
+    /*espaçamento interno do link*/
+    margin: 100px 20px;
+    /*margem entre os links/  0(zero) é o expaçamento entre a margem superior e inferior do elemento tratado/ 20px margem relacionada á esuqesta e direita, uma medida proporcional*/
+    font-size: 2rem;
+    /*tamanho da fonte do texto do link */
+    display: inline-block;
+    /*a atribuição do link com o bloco formado e  em linha */
+    color: #ffffff;
+    /*cor de fundo do texto QUANDO PASSADO O CURSO EM CIMA   */
+    text-decoration: none;
+    /*Remove o sublinhado padrão do link*/
+    overflow: hidden;
+    /*EVITA QUE APARECE QUALQUER COISA QUE ULTRAPASSE O QUE ATÉ ENTÃO ESTÁ NOS LIMITES DO ESPAÇO DO LINK*/
+    border: 2px solid #000;
+    /*borda preta sólida ao redor do link*/
+    border-radius: 5px;
+    /*ARRENDENDAMENTO*/
+    /*display: flex;*/
+    /*flex-box:flex;*/
 }
 
 a span {
-    position: relative; /*sobre a posição, dos elementos, ajuda ao efeito de mudança visual, complementando com as seguintes instruções */
-    mix-blend-mode: difference; /*é o que faz destacar as imagens  ou textos, COM BASE NA COR DOO FUNDO= Contraste dinamico*/
+    position: relative;
+    /*sobre a posição, dos elementos, ajuda ao efeito de mudança visual, complementando com as seguintes instruções */
+    mix-blend-mode: difference;
+    /*é o que faz destacar as imagens  ou textos, COM BASE NA COR DOO FUNDO= Contraste dinamico*/
 }
 
 a::before {
-    content: "";/* Cria um elemento pseudo antes do conteúdo do link*/
-    position: absolute;/**/
+    content: "";
+    /* Cria um elemento pseudo antes do conteúdo do link*/
+    position: absolute;
+    /**/
     top: 0;
     left: 0;
-    width: 100%;/*Define largura para cobrir todo o link */
-    height: 100%;/*Define altura para cobrir todo o link */
-    background: #1a2f38;
-    transition: transform 0.7s;/*Transição suave para a propriedade transform */
-    transform: scaleX(01);/*Define a cor de fundo do elemento pseudo como preto */
-    transform-origin: right;/*o que determina de quando passar o mouse a cor fecha pra qual lado*/
+    width: 100%;
+    /*Define largura para cobrir todo o link */
+    height: 100%;
+    /*Define altura para cobrir todo o link */
+    background: #cdcdcd;
+    transition: transform 0.7s;
+    /*Transição suave para a propriedade transform */
+    transform: scaleX(01);
+    /*Define a cor de fundo do elemento pseudo como preto */
+    transform-origin: right;
+    /*o que determina de quando passar o mouse a cor fecha pra qual lado*/
 }
 
 a:hover::before {
     transform: scaleX(0);
-    transform-origin: left;/*Muda a origem da escala para o lado esquerdo para o efeito*/
+    transform-origin: left;
+    /*Muda a origem da escala para o lado esquerdo para o efeito*/
 }
