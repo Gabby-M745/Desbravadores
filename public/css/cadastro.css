@@ -2,24 +2,31 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Nexa";
+    font-weight: 400;
     /*zera as margens */
 }
 
 body {
     color: white; 
-    font-family: "Nexa";
+    
 }
 
 h2 {
 
     font-size: 36px; /*tamanho da letra*/
    margin-bottom:32px;
+   font-weight: 700;
 
 }
 form {
 display:flex;
 flex-direction:column;
 gap:20px;
+ button{/*a chamada de uma tag ao form, especificando que esse do botton que tem-se presente no form tenha alteração, enquanto outros botton presente no html, mantenha seu estado normal , apenas este terá alteração*/
+background:linear-gradient(90deg, #968FF8 0%, #F1D3F9 100%)
+    ;
+}
 
 }
 input, button{
@@ -28,8 +35,28 @@ input, button{
     border:none;
     outline:none;
     font-size:16px;
+    width:400px ;/*largura*/
+} 
+
+input{
+    background-color: rgba(255 255 255 / .2);/*é o que deixa o campo da label/input preta opaca, igual ao fundo*/
+color:rgba(255 255 255 / .8);/*cor do texto que vamos digitando no input*/
 }
 
+input::placeholder{ /*do placeholder, to texto sob a input que fica visível para o usuário antes de digitar algo*/
+color: rgba(255 255 255/.5);/* rgba(255 255 255/.3);*-> sempre mantenha junto,senão não tem leitura */
+}
+button {
+    margin-top:8px;
+    font-weight: 700;
+    color: rgba(0 0 0 /.8);/*uma pequena sumblinhada de  filtro claro*/
+    padding: 16px; /*grossura dos botões*/
+}
+p{/**seletor geral a própria tag pq tem apenas a P sento utilizada especificamente como paragrafo de texto, assim não afeta nada */
+    margin-bottom:32px; /*margem com relação ao borão*/
+    width:200px; /* ou 400pz; largura do texto de parágrafo*/
+    text-align:center;
+}
 .containerPai {
     width: 100%;
     height: 100vh;
