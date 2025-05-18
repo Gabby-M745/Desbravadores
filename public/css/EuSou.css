@@ -9,20 +9,22 @@ body {
 /*    display: grid;*/
 /*align-items: center; -- centralização vertical dentro da class ou body no caso*/
 /*justify-items: center; --centralização horizontalmente os itens */
-    place-items: center; /*centralização de maneira vertical e horizontal*/
+padding-top: 40px;   
+place-items: center; /*centralização de maneira vertical e horizontal*/
     min-height: 100vh;
     background: #fff;/*cor de fundo*/
+    font-family:  sans-serif;
 }
-
 a {
+    font-family: Rockwell, sans-serif;
     position: relative;
 /*    cursor: pointer;/*altera o cursor*/
-    background: #eee;/*cor de fundo do link     */
+    background: #d0c064;/*cor de fundo do link     */
     padding: 3rem 3rem;/*espaçamento interno do link*/
-    margin: 130px 20px;/*margem entre os links/  0(zero) é o expaçamento entre a margem superior e inferior do elemento tratado/ 20px margem relacionada á esuqesta e direita, uma medida proporcional*/
+    margin: 100px 20px;/*margem entre os links/  0(zero) é o expaçamento entre a margem superior e inferior do elemento tratado/ 20px margem relacionada á esuqesta e direita, uma medida proporcional*/
     font-size: 2rem;/*tamanho da fonte do texto do link */
     display: inline-block; /*a atribuição do link com o bloco formado e  em linha */
-    color: #eeeeee;/*cor de fundo do texto QUANDO PASSADO O CURSO EM CIMA   */
+    color: #ffffff;/*cor de fundo do texto QUANDO PASSADO O CURSO EM CIMA   */
     text-decoration: none;/*Remove o sublinhado padrão do link*/
     overflow: hidden;/*EVITA QUE APARECE QUALQUER COISA QUE ULTRAPASSE O QUE ATÉ ENTÃO ESTÁ NOS LIMITES DO ESPAÇO DO LINK*/
     border: 2px solid #000;/*borda preta sólida ao redor do link*/
@@ -43,7 +45,7 @@ a::before {
     left: 0;
     width: 100%;/*Define largura para cobrir todo o link */
     height: 100%;/*Define altura para cobrir todo o link */
-    background: #000;
+    background: #1a2f38;
     transition: transform 0.7s;/*Transição suave para a propriedade transform */
     transform: scaleX(01);/*Define a cor de fundo do elemento pseudo como preto */
     transform-origin: right;/*o que determina de quando passar o mouse a cor fecha pra qual lado*/
