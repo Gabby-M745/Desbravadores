@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Nexa";
+    font-weight: 400;
+    /*zera as margens */
+}
+
+body {
+    color: white; 
+    
+}
+
+h2 {
+
+    font-size: 36px; /*tamanho da letra*/
+   margin-bottom:32px;
+   font-weight: 700;
+
+}
+form {
+display:flex;
+flex-direction:column;
+gap:20px;
+ button{/*a chamada de uma tag ao form, especificando que esse do botton que tem-se presente no form tenha alteração, enquanto outros botton presente no html, mantenha seu estado normal , apenas este terá alteração*/
+background:linear-gradient(90deg, #968FF8 0%, #F1D3F9 100%)
+    ;
+}
+
+}
+input, button{
+    padding:12px 20px;
+    border-radius:12px;
+    border:none;
+    outline:none;
+    font-size:16px;
+    width:400px ;/*largura*/
+} 
+
+input{
+    background-color: rgba(255 255 255 / .2);/*é o que deixa o campo da label/input preta opaca, igual ao fundo*/
+color:rgba(255 255 255 / .8);/*cor do texto que vamos digitando no input*/
+}
+
+input::placeholder{ /*do placeholder, to texto sob a input que fica visível para o usuário antes de digitar algo*/
+color: rgba(255 255 255/.5);/* rgba(255 255 255/.3);*-> sempre mantenha junto,senão não tem leitura */
+}
+button {
+    margin-top:8px;
+    font-weight: 700;
+    color: rgba(0 0 0 /.8);/*uma pequena sumblinhada de  filtro claro*/
+    padding: 16px; /*grossura dos botões*/
+    cursor:pointer;
+}
+p{/**seletor geral a própria tag pq tem apenas a P sento utilizada especificamente como paragrafo de texto, assim não afeta nada */
+    margin-bottom:32px; /*margem com relação ao borão*/
+    width:200px; /* ou 400pz; largura do texto de parágrafo*/
+    text-align:center;
+}
+.containerPai {
+    width: 100%;
+    height: 100vh;
+    /*altura*/
+    background-color: #14151A;
+    /*cor do fundo*/
+    display:flex;/*tinha esquecido*/
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    width: 80%;
+    height: 90vh;
+    background-color: rgba(255 255 255 / .10);
+    /*co r de opacidade: / .100*/
+    border-radius: 32px;
+    padding: 32px 20px;  
+    display: flex;/**/
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.esquerda, .direita {
+width:50%;
+height: 100%;
+display:flex;
+flex-direction:column;/*centralizar*/
+justify-content:center;
+align-items:center;
+}
+.formLogin, .facaLogin, .formCadastro, .facaCadastro{
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+/*
+.facaLogin, .facaCadastro{
+    position:absolute;
+}*/
+.card.LoginActive .facaLogin{ 
+ position:0;
+    pointer-events: none;
+
+}
+.card.LoginActive .formCadastro{ 
+ position:0;
+    pointer-events: none;
+
+}

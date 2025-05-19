@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="PT">
+<head>
+    <meta charset="UTF-8">
+    <!--   <link rel="icon" href="../public/img/icon01.png"> -->
+   <link rel="icon" href="img/icon01.png"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClubeD7- Login DBV</title>
+</head>
+<body>
+ <i> <H2>Login</H2> </i>  
+ <h4>Nome:</h4><input id="ipt_nome" placeholder="Gabby TDM"  ><br> <!--CLUBE FORNECE oninput="digitando_login()"-->
+ <!--<h4> Clube:</h4><input id="ipt_clube" placeholder="Tigre da Montanha" ><br> oninput="digitando_login()"-->
+ <!--<h4>Unidade:</h4><input id="ipt_unid" placeholder="Tigresas" ><br>  oninput="digitando_login()"-->
+<h4>Senha:</h4> <input type="password" id="ipt_senha" placeholder="Senha"   ><br> <!--oninput="digitando_login()"-->
+<button onclick="validar()">Entrar</button><br>
+<div id="validando"></div>
+<!--<div>
+    <button onclick="validar()">Entrar</button><br>
+    <span id="valide_campo">Preencha todos os campos!</span>
+</div>-->
+
+</body>
+</html>
+
+<script> 
+       /* function digitando_login() {
+        ipt_usuario.value != '' ? (texto_nome.style.color = "#DEA976", ipt_nome.style = "    border-bottom: 1px solid #DEA976;") : null
+        ipt_senha.value != '' ? (texto_senha.style = "color:#DEA976", ipt_senha.style = "    border-bottom: 1px solid #DEA976;") : null
+    }*/
+    
+        /*function digitando_login() {
+            // Limpar mensagens de erro ao digitar
+            nome_erro.innerHTML = '';
+            clube_erro.innerHTML = '';
+            unidade_erro.innerHTML = '';
+            senha_erro.innerHTML = '';
+        }*/
+        function validar() {
+            var nome = ipt_nome.value; 
+           // var clube = ipt_clube.value; 
+          //  var unidade = ipt_unid.value; 
+            var senha = ipt_senha.value; 
+           // var clubeUser  = 'Tigre da Montanha';
+            var senhaUser  = 'Urubu100$';
+        
+            // Validação 
+            if (nome.length === 0) {
+                validando.innerHTML = '<span style="color:red;">Preencha o campo nome</span>';
+    }
+    /*if (clube.length === 0) {
+        validando.innerHTML = '<span style="color:red;">Preencha o campo clube</span>';
+    } else if (clube !== clubeUser ) {
+        validando.innerHTML = '<span style="color:red;">Erro... Conta ainda não cadastrada</span>';
+            }
+            if (unidade.length === 0) {
+                validando.innerHTML = '<span style="color:red;">Preencha o campo unidade</span>';
+            }*/
+            if (senha.length === 0) {
+                validando.innerHTML = '<span style="color:red;">Preencha o campo senha</span>';
+            } else if (senha !== senhaUser ) {
+                validando.innerHTML = '<span style="color:red;">Erro... Senha incorreta!</span>';
+            }
+            // Se algum campo estiver com erro, não prosseguir
+          /*  if (
+                !nome || !clube ||
+                clube !== clubeUser  ||
+                !unidade ||
+                !senha ||
+                senha !== senhaUser 
+            ) {
+               ;
+            }*/
+             //Se todos os campos estão corretos, redireciona
+            window.location.href = 'Desbravador.html';
+        }
+    </script>
+<style>
+ 
+</style>
