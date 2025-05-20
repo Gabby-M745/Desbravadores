@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClubeD7- Login Conselheiro</title>
+</head>
+<body>
+ <i> <H2>Login</H2> </i>  
+ <h4>Nome:</h4><input id="ipt_nome" placeholder="Gabby TDM"  ><br> <!--CLUBE FORNECE oninput="digitando_login()"-->
+ <!--<h4> Clube:</h4><input id="ipt_clube" placeholder="Tigre da Montanha" ><br> oninput="digitando_login()"-->
+ <!--<h4>Unidade:</h4><input id="ipt_unid" placeholder="Tigresas" ><br>  oninput="digitando_login()"-->
+<h4>Senha:</h4> <input type="password" id="ipt_senha" placeholder="Senha"   ><br> <!--oninput="digitando_login()"-->
+<button onclick="entrar()">Entrar</button><br>
+<div id="validando"></div>
+<!--<div>
+    <button onclick="validar()">Entrar</button><br>
+    <span id="valide_campo">Preencha todos os campos!</span>
+</div>-->
+
+</body>
+</html>
+
+<script> 
+        function entrar() {
+        var nomeVar = ipt_nome.value;
+        var senhaVar = ipt_senha.value;
+
+        if (nomeVar == "" || senhaVar == "") {
+            alert( "Mensagem de erro para todos os campos em branco" );
+        }
+        console.log("FORM LOGIN: ", nomeVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nomeServer: nomeVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.NOME_USUARIO = json.Nome; 
+                    sessionStorage.ID_USUARIO = json.idUsuario;
+alert("login realizado com sucesso!")
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+    
+        }
+    </script>
+<style>
+ 
+</style>

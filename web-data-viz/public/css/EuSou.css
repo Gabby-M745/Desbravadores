@@ -18,16 +18,49 @@ body {
     /*cor de fundo*/
     font-family: sans-serif;
 }
-
+.containerPai {
+    margin-top: 40px;
+    width: 50%;
+    height: 70vh;
+    background-color: rgba(255 255 255 / .10);
+    /*co r de opacidade: / .100*/
+    border-radius: 32px;
+    padding: 10px 40px; 
+    /*flex-direction: column; 
+    *//*display: flex;*/
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+  .ordernarText h1 {
+    margin: 0 0 30px 0;/*espaço da margem de baixo com relação ao texto de baixo*/
+    font-weight: 700;
+    font-size: 2.2rem;
+    color: rgb(231, 231, 231);
+  }
+    .ordernarText h3 {
+    margin: 0 0 30px 0;
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: rgb(200, 200, 200);
+  }
+/*.ordernarText{
+     width:50%;
+height: 100%;
+display:flex;
+flex-direction:column;/*centralizar*/
+/*justify-content:center;
+align-items:center;*//*
+}*/
 a {
     font-family: Rockwell, sans-serif;
     position: relative;
     /*    cursor: pointer;/*altera o cursor*/
     background: #ffffff;
     /*cor de fundo do link     */
-    padding: 3rem 3rem;
+    padding: 2rem 2rem;
     /*espaçamento interno do link*/
-    margin: 100px 20px;
+    margin: 100px 30px;
     /*margem entre os links/  0(zero) é o expaçamento entre a margem superior e inferior do elemento tratado/ 20px margem relacionada á esuqesta e direita, uma medida proporcional*/
     font-size: 2rem;
     /*tamanho da fonte do texto do link */
@@ -39,9 +72,9 @@ a {
     /*Remove o sublinhado padrão do link*/
     overflow: hidden;
     /*EVITA QUE APARECE QUALQUER COISA QUE ULTRAPASSE O QUE ATÉ ENTÃO ESTÁ NOS LIMITES DO ESPAÇO DO LINK*/
-    border: 2px solid #000;
+    border: 1px solid #000;
     /*borda preta sólida ao redor do link*/
-    border-radius: 5px;
+    border-radius: 8px;
     /*ARRENDENDAMENTO*/
     /*display: flex;*/
     /*flex-box:flex;*/

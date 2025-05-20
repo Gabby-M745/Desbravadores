@@ -1,30 +1,36 @@
 * {
 	margin: 0px;
 	padding: 0px;
-}html {
+	
+}
+
+
+html {
 	scroll-behavior: smooth; /*scroll suave*/
 }
+
 /*body {
 	overflow-x: hidden; // UTILIZADOPARA OCULTAR CONTEÚDOQ UE ULTRAPASSA A JANELA, evitar que apareça uma barra horizontal
 }
 */
 .topo {
     
-	padding: 20px 0px 0px 20px;/*o espaço interno com relação ao texto e a borda */
-	height: 400px;/*espaço entre imagem e o texto seguinte*/
+	padding: 20px 05px 30px 05px;/*o espaço interno com relação ao texto e a IMAGEM */ 
+	/*20PX= POSÇÃO DO MENU , MAIS EM BAIXO OU CIMA /05= SOBRE*1030px= ESPAÇO ENTRE IMAGEM E TEXTO/ 05= O DESENHO DO MENU  */
+	height: 300px;/*espaço entre imagem e o texto seguinte*/
 }
-/*.topo img.background-image  {
+.topo img.background-image  {
 	 position: absolute;
-    top: 20px;/*espaçamente de cima*/
-   /* left: 0;
+    top: 50px;/*espaçamente de cima*/
+    left: 0;
     right: 0;
-    height: 410px;/*aproximação da imagem*/
-   /* width: 100%; /* reduzido para dar espaço lateral */
-   /* margin-left: auto;
-    margin-right: auto;*/
-   /* object-fit: cover;
+    height: 300px;/*aproximação da imagem, MAIS AMPLA, MENOS*/
+   width: 100%; /* reduzido para dar espaço lateral */
+   margin-left: auto;
+    margin-right: auto;
+   object-fit: cover;
     z-index: -1; /*imagem para traz do menu*/
-/*}*/
+}
   
 .topo .header {
 	display: flex;
@@ -37,14 +43,18 @@
 	margin-left: 15px;
 }
 .topo .header .menu {
-	background-color: #3b1212ba ;                  /*VOLTAR*/
+	background-color: #243238 ;                  /*VOLTAR*/
 	padding: 15px;
-    width: 100vw;           /* Faz ocupar toda a largura da tela */
-    box-sizing: border-box;
+    width: 100vw;   
+	 margin-bottom: 20px;        /* Faz ocupar toda a largura da tela */
+    /*box-sizing: border-box;*/
 	/*border-top-left-radius: 25px;/*arrendonda*/
 	/*border-bottom-left-radius: 25;*/
 }
 .topo .header .menu ul {
+position: -webkit-sticky; 	/*https://www.w3schools.com/css/css_navbar_horizontal.asp*/
+	position: sticky;
+  top: 0;
 	list-style-type: none;  /* remove os pontos etc, tava em tópico*/
 	margin: 0;
 	padding: 0;
@@ -58,6 +68,9 @@
 	text-decoration: none; /*remove o sublinhado padrão que aparece em links.*/
 	color: white; /*cor do texto*/
 	padding: 10px; /* 10 pixels ao redor do texto do link.*/
+}
+.topo .header .menu .active {
+  background-color: #04AA6D;
 }
 .topo .header .menu a:hover {
     color: rgb(169, 94, 62); /* Exemplo de mudança de cor ao passar o mouse */
@@ -93,7 +106,7 @@
 	padding-top: 0px;
 	color: rgb(0, 0, 0);
 	font-size: 18px;
-	font-family: Verdana, sans-serif;
+	font-family: Roboto, sans-serif;
 	box-sizing: border-box;
 }
 /*--------------------*/
@@ -126,7 +139,7 @@
 	padding-top: 0px;
 	color: rgb(0, 0, 0);
 	font-size: 18px;
-	font-family: Verdana, sans-serif;
+	font-family: Roboto, sans-serif;
 	box-sizing: border-box;
 }
 /*-+---------------------------------*/
@@ -137,14 +150,14 @@
 	align-items: center;
 	text-align: justify;
 	width: 94%; /*tamanho do texto, comprido*/
-	height: 200px; /*espaçamente entre o container e o seguinte*/
-	
+	height: 200px; /*espaçamente entre o container e o seguinte*/	
 }
-.desbravadores .text_desbravadores{
-     text-align: center;
-	flex: 1;
-    margin: 20px
- 
+
+.desbravadores .text_desbravadores {
+    text-align: center;
+    flex: 1;
+    margin: 20px; /* Margem ao redor do texto */
+
 }
 .desbravadores .text_desbravadores h3 {
 	padding: 25px;
@@ -159,7 +172,7 @@
 	padding-top: 0px;
 	color: rgb(0, 0, 0);
 	font-size: 18px;
-	font-family: Verdana, sans-serif;
+	font-family: Roboto, sans-serif; /*Verdana*/
 	box-sizing: border-box;
 }
 /*----------------------*/
@@ -192,12 +205,12 @@
 	padding-top: 0px;
 	color: rgb(0, 0, 0);
 	font-size: 18px;
-	font-family: Verdana, sans-serif;
+	font-family: Roboto, sans-serif;
 	box-sizing: border-box;
 }
 /*--------------------------*/
 .servicos-dark {
-    background-color: #2d1212d6;
+    background-color: #243238 ;
     padding: 5rem 2rem;
   }
 

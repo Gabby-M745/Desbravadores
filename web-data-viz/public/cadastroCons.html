@@ -2,113 +2,174 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <!--<link rel="icon" href="../public/assets/Design%20sem%20nome%20(20).png"> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <!--<link rel="icon" href="../public/assets/Design%20sem%20nome%20(20).png"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="css/cadastro.css">
-    <title>ClubeD7- Cadastro Cons</title>
+  <link rel="stylesheet" href="css/cadastro.css">
+  <title>ClubeD7- Cadastro Cons</title>
 </head>
 
 <body>
-    <section class="containerPai">
-        <div class="card loginActive"><!---->
-            <div class="esquerda">
-                <div class="formLogin">
-                    <h2>Fazer login</h2>
-                    <form>
-                    <input type="text" id="nomeLogin" placeholder="Nome">
-                        <input type="password" placeholder="Senha">
-                       <!-- <button type="submit">Entrar</button>--> 
-                      <button onclick="entrar()">Entrar</button>
+  <section class="containerPai">
+    <div class="card loginActive"><!---->
+      <div class="esquerda">
+        <div class="formLogin">
+          <h2>Fazer login</h2>
+          <form>
+            <input type="text" id="nomeLogin" placeholder="Nome">
+            <input type="password" id="senhaLogin" placeholder="Senha">
+            <!-- <button type="submit">Entrar</button>-->
 
-                    </form>
-                </div>
-                <div class="facaLogin">
-                    <h2>Já tem <br>uma conta?</h2>
-                    <p>Lo lo lo lala lala</p>
-<!--                     <button>Faça o login</button>-->
-                     <button onclick="logar()">Faça o Login</button>
-
-                </div>
-            </div>
-            <!--javascript do botão vai acionar juntamente com css-->
-            <div class="direita"> <!--primeiro container-->
-                <div class="formCadastro">
-                    <h2>Cadastro</h2>
-                    <form>
-                        <input type="text" id="nome" placeholder="Nome">
-                        <input type="text" id="clube" placeholder="Clube">
-                        <input type="text" id="unidade" placeholder="Unidade">
-                         <input type="text" id="missao" placeholder="Associação/Missão">
-                        <input type="password" id="senha" placeholder="Senha">
-                        <input type="password" id="confirmaS" placeholder="Confirma a sua senha">
-                        <!-- <button type="submit">Cadastrar</button>-->
-                         <button onclick="cadastrar()">Cadastrar</button>
-
-                    </form>
-                </div>
-                <div class="facaCadastro">
-                    <h2>Não tem <br>uma conta?</h2>
-                    <p>lolo lala lala lal lalala</p>
-                    <button>Cadastre-se</button>
-                </div>
-            </div>
+          </form>
         </div>
-    </section>
+        <div class="facaLogin">
+          <h2>Já tem <br>uma conta?</h2>
+          <p>Lo lo lo lala lala</p>
+          <!--                     <button>Faça o login</button>-->
+          <button onclick="entrar()">Entrar</button>
+
+
+        </div>
+      </div>
+      <!--javascript do botão vai acionar juntamente com css-->
+      <div class="direita"> <!--primeiro container-->
+        <div class="formCadastro">
+          <h2>Cadastro</h2>
+          <form>
+            <input type="text" id="nome" placeholder="Nome">
+            <input type="text" id="clube" placeholder="Clube">
+            <input type="text" id="unidade" placeholder="Unidade">
+            <input type="text" id="missao" placeholder="Associação/Missão">
+
+            <select id="resultado">
+                            <option value=""></option>
+
+              <option value="visitante">Visitante</option>
+              <option value="desbravador">Desbravador</option>
+            </select>
+            <button onclick="cadastrar()">Cadastrar</button>
+
+            <input type="password" id="senha" placeholder="Senha">
+            <input type="password" id="confirmaS" placeholder="Confirma a sua senha">
+            <!-- <button type="submit">Cadastrar</button>-->
+            <!-- <button onclick="cadastrar()">Cadastrar</button>-->
+
+          </form>
+        </div>
+        <div class="facaCadastro">
+          <h2>Não tem <br>uma conta?</h2>
+          <p>lolo lala lala lal lalala</p>
+          <button onclick="cadastrar()">Cadastrar</button>
+
+        </div>
+      </div>
+    </div>
+  </section>
 </body>
 
 </html>
 <script>
+ 
 
-function cadastrar(){
+  function entrar() {
+    var nomeVar = nomeLogin.value;
+    var senhaVar = senhaLogin.value;
 
-    var usuario= nome.value;
-    var clubeD7= clube.value;
-    var unidadeD7= uniade.value;
-    var assocaiaoM= missao.value;
-    var senhaD7= senha.value;
-    var confimar= confirmaS.value;
+    if (nomeVar == "" || senhaVar == "") {
+      alert("Mensagem de erro para todos os campos em branco");
+    }
+    console.log("FORM LOGIN: ", nomeVar);
+    console.log("FORM SENHA: ", senhaVar);
 
-  if(senhaD7 != confirmar){
-    alert("Senhas não coincidem!!")
-  }else{
-fetch("/usuarios/cadastrar", {
+    fetch("/usuarios/autenticar", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        nomeServer: usuario,
-        clubeServer: clubeD7,
-        unidadeServer: unidadeD7,
-        assocServer: assocaiaoM,
-        senhaServer: senhaD7
-       
-      }),
-    })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
-
-        if (resposta.ok) {
-
-         alert("Cadastro realizado com sucesso! Redirecionando para tela de Login..." );
-
-            /*window.location = "login.html"; redirecionamento*/
-          
-        } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
-          alert("Erro no cadastro!")
-        }
+        nomeServer: nomeVar,
+        senhaServer: senhaVar
       })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-       
-      });
+    }).then(function (resposta) {
+      console.log("ESTOU NO THEN DO entrar()!")
+
+      if (resposta.ok) {
+        console.log(resposta);
+
+        resposta.json().then(json => {
+          console.log(json);
+          console.log(JSON.stringify(json));
+          sessionStorage.NOME_USUARIO = json.Nome;
+          sessionStorage.ID_USUARIO = json.idUsuario;
+          /*window.location="#.html"*/
+          alert("login realizado com sucesso!")
+        });
+
+      } else {
+
+        console.log("Houve um erro ao tentar realizar o login!");
+
+        resposta.text().then(texto => {
+          console.error(texto);
+        });
+      }
+
+    }).catch(function (erro) {
+      console.log(erro);
+    })
 
   }
-}
+
+  function cadastrar() {
+
+    var usuario = nome.value;
+    var clubeD7 = clube.value;
+    var unidadeD7 = unidade.value;
+    var assocaiaoM = missao.value;
+    var senhaD7 = senha.value;
+    var confirmar = confirmaS.value;
+
+    if (senhaD7 != confirmar) {
+      alert("Senhas não coincidem!!")
+    } else {
+      //  alert("Acessando o fetch!");
+      fetch("/usuarios/cadastrar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+          nomeServer: usuario,
+          clubeServer: clubeD7,
+          unidadeServer: unidadeD7,
+          assocServer: assocaiaoM,
+          senhaServer: senhaD7
+
+        }),
+      })
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
+
+          if (resposta.ok) {
+
+            alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
+
+            /*window.location = "login.html"; redirecionamento*/
+
+          } else {
+            throw "Houve um erro ao tentar realizar o cadastro!";
+            alert("Erro no cadastro!")
+          }
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+
+        });
+
+    }
+  }
 
 </script>

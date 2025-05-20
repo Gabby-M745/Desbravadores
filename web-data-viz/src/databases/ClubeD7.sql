@@ -1,7 +1,7 @@
 CREATE DATABASE ClubeD7;
 USE ClubeD7;
 desc Usuario;
-drop table Usuario;
+-- drop table Usuario;
 CREATE TABLE Usuario (
   idUsuario INT PRIMARY KEY auto_increment,
   Nome VARCHAR(45),
@@ -12,7 +12,11 @@ CREATE TABLE Usuario (
  -- Email VARCHAR(45) unique,  
   -- dtNasc date,
   AssoMissao VARCHAR(45),
-  Senha VARCHAR(45) unique
+  Senha VARCHAR(45),
+  fkDesbravador int,
+  constraint fKDesbrava foreign key (fkDesbravador) references Usuario(idUsuario),
+  fkVisitante int,
+  constraint fkVisit foreign key (fkVisitante) references Usuario(idUsuario)
   );
   
 /*CREATE TABLE Login (
@@ -34,7 +38,8 @@ insert into Usuario (membro, Unidade ) VALUES
 ('Desbravador', 'Tigresas');
 
 SELECT * FROM Usuario;
---  drop database ClubeD7;
+-- d
+-- drop database ClubeD7;
 -- APELIDOS -ALIASES
 -- as: como " este campo será como..."
 -- SELECT statusMembro AS 'Status do Membro' from Login;

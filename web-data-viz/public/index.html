@@ -1,19 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <!--   <link rel="icon" href="../public/img/icon01.png"> -->
-    <link rel="icon" href="img/icon01.png"> 
+    <link rel="icon" href="img/icon01.png">
+    <link rel="stylesheet" href="css/index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <button onclick="cadastro()">Cadastro</button>
+
+    <div class="menu-container">
+        <img src="img/icon01.png" alt="Logo da Empresa" class="menu-logo" />
+        <nav class="menu-items">
+            <a href="#" onclick="Mensagem(event, 'Home clicado')">home</a> <!--# => colocar ID E CHAMAR NA CLASS-->
+            <a href="#" onclick="Mensagem(event, 'D7 clicado')">D7</a>
+            <a href="#" onclick="Mensagem(event, 'DBV clicado')">DBV</a>
+        </nav>
+    </div>
+    <p> Seja bem-vindo ao Clube D7, um espaço feito para os Desbravadores e entusiastas que desejam revisitar e explorar
+        conhecimentos incríveis compartilhados por clubes ao redor do país, principalmente através de nossas
+        especialidades.
+
+        Aqui, você pode testar seu aprendizado e curiosidade com nosso Quiz interativo de perguntas e respostas — ideal
+        tanto para membros dos clubes quanto para visitantes que desejam conhecer mais sobre nosso universo </p>
+    <button onclick="cadastro()">Saiba Mais</button>
 </body>
+
 </html>
 <script>
 
-    function cadastro(){
-    window.location ="EuSou.html";
+    function cadastro() {
+        window.location = "EuSou.html";
+
+    }
+    function Mensagem(event, aviso) {
+        event.preventDefault();
+        alert(aviso);
+        window.location.href = event.target.href;
     }
 </script>
