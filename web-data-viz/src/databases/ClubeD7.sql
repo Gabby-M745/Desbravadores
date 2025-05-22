@@ -7,11 +7,13 @@ CREATE TABLE Usuario (
   Nome VARCHAR(45),
   Clube VARCHAR(45),
   Unidade VARCHAR(45),
-  constraint chkUnidade 
-  check (Unidade in ('Leões','Tigresas', 'Onças', 'Panteras')),
+/*  constraint chkUnidade 
+  check (Unidade in ('Leões','Tigresas', 'Onças', 'Panteras')),*/
  -- Email VARCHAR(45) unique,  
   -- dtNasc date,
   AssoMissao VARCHAR(45),
+  Usuario int,
+  constraint chkUser check(Usuario in("Visita","Desbravador")),
   Senha VARCHAR(45),
   fkDesbravador int,
   constraint fKDesbrava foreign key (fkDesbravador) references Usuario(idUsuario),
