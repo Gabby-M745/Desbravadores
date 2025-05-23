@@ -50,6 +50,7 @@ function cadastrar(req, res) {
     var unidade = req.body.unidadeServer;
     var associaM = req.body.assocServer;
     var senha = req.body.senhaServer;
+    var pessoA = req.body.pessoaServer;
 
     // Faça as validações dos valores
     if (nome == undefined) {
@@ -62,10 +63,11 @@ function cadastrar(req, res) {
         res.status(400).send("Sua unidade está undefined!");
     } else if(associaM== undefined){
         res.status(400).send("Sua associação/Missão está undefined!")
-
-    }   
+    }   else if (pessoA== undefined){
+                res.status(400).send("Seu campo 'pessoa' está undefined!")
+    }
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, clube, unidade, associaM, senha) 
+        usuarioModel.cadastrar(nome, clube, unidade, associaM, senha, pessoA) 
         .then(
             function (resultado) {
                 res.json(resultado);

@@ -44,8 +44,8 @@
 
             <select id="resultado">
                <option value="nada" disabled selected>Selecione o tipo de usuário:</option>
-              <option value="visitante">Visitante</option>
-              <option value="desbravador">Desbravador</option>
+              <option value="Visita">Visita</option>
+              <option value="Desbravador">Desbravador</option>
             </select>
 
             <input type="password" id="senha" placeholder="Senha">
@@ -71,9 +71,7 @@ var user=[];
     var nomeVar = nomeLogin.value;
     var senhaVar = senhaLogin.value;
 
-    if(resultado != 'nada'){
-      user.push(resultado.value);
-    }
+    
     if (nomeVar == "" || senhaVar == "") {
       alert("Mensagem de erro para todos os campos em branco");
     }
@@ -127,7 +125,11 @@ var user=[];
     var assocaiaoM = missao.value;
     var senhaD7 = senha.value;
     var confirmar = confirmaS.value;
+    var pessoa = resultado.value; /*do select option*/
 
+if(resultado != 'nada'){
+      user.push(resultado.value);
+    }
     if (senhaD7 != confirmar) {
       alert("Senhas não coincidem!!")
     } else {
@@ -144,7 +146,8 @@ var user=[];
           clubeServer: clubeD7,
           unidadeServer: unidadeD7,
           assocServer: assocaiaoM,
-          senhaServer: senhaD7
+          senhaServer: senhaD7,
+          pessoaServer: pessoa
 
         }),
       })
