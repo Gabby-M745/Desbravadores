@@ -4,238 +4,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz em JavaScript</title>
-    <link rel="stylesheet" href="css/Quiz1.css">
-</head>
-
-<body>
-    <div class="quiz-container">
-        <div id="quiz">
-            <h1>Quiz de Conhecimento</h1>
-            <div class="pergunta-container">
-                <h2 id="pergunta">Pergunta aqui</h2>
-                                <div id="NumeroPergunta"></div>
-
-                <ul>
-                    <li><button class="botao-resposta">Resposta 1</button></li>
-                    <li><button class="botao-resposta">Resposta 2</button></li>
-                    <li><button class="botao-resposta">Resposta 3</button></li>
-                    <li><button class="botao-resposta">Resposta 4</button></li>
-                </ul>
-                <div id="msgPergunta"></div>
-            </div>
-            <button id="botao-proximo" class="botao" style="display: none;">Próxima Pergunta</button>
-            <div id="resultado" style="display: none;">
-                <h2>Seu resultado: <span id="pontuacao"></span></h2>
-            </div>
+  <title>Quiz</title>
+    <link rel="stylesheet" href="css/Quiz1.css" />
+  </head>
+  <body>
+    <div class="app">
+      <h1>Quiz</h1>
+      <div class="quiz">
+        <h2 id="question">Question goes here</h2>
+        <div id="answer-buttons">
+          <button class="btn"> 1°</button>
+          <button class="btn"> 2°</button>
+          <button class="btn"> 3°</button>
+          <button class="btn"> 4°</button>
         </div>
+        <button id="next-btn">Next</button>
+      </div>
     </div>
-
-    <!--<div class="buttons">
-			<button class="restart">Refazer Questionário</button>
-			<button class="quit">Sair</button>
-			<a href="../teste/index.html"><button class="main">principal</button></a>
-    -->
-			</div>		
     <!--<script src="script.js"></script>-->
-</body>
-
+  </body>
 </html>
+
 <script>
 // Array contendo as perguntas, respostas e a resposta correta para cada pergunta
-var perguntas = [
-    {
-    numb: 1,
-    pergunta: " Qual é o nome da filha adolescente da família, que tem o poder de se tornar invisível e criar campos de força no filme Os Incríveis?",   
-    correta: "A) Violeta",
-    respostas: [
-      "A) Violeta",
-      "B) Crystal",
-      "C) Esmeralda",
-      "D) Cecília"
-
-    ]
-  },
-    {
-    numb: 2,
-    pergunta: "Qual é o nome do restaurante parisiense que serve como cenário central do filme Ratatouille?",
-    correta:  "C) Gusteau's",
-    respostas: [
-         "A) Linguni's",
-         "B) Chez Remy",
-         "C) Gusteau's",
-         "D) Bistrot Chic"
-
-    ]
-  },
-    {
-    numb: 3,
-    pergunta: "Que recompensa Lord Farquaad promete a Shrek em troca de resgatar a princesa Fiona?",
-    correta:   "D) Posse do pântano",
-    respostas: [
-       "A) Transformá-lo em humano",
-       "B) Riqueza",
-       "C) Um beijo",
-       "D) Posse do pântano"
-    ]
-  },
-    {
-    numb: 4,
-    pergunta: "Qual é o nome do jovem escoteiro que acidentalmente embarca na aventura de Carl no filme Up Altas Aventuras?    ",
-    correta:  "D) Russell",
-    respostas: [
-     "A) David",
-     "B) Kevin",
-     "C) Lucas",
-     "D) Russell"
-    ]
-  },
-    {
-    numb: 5,
-    pergunta: "Qual é o nome do monstro azul e peludo que é um dos protagonistas do filme Monstros S.A? ",
-    correta: "C) Sully",
-    respostas: [/*options*/
-	    "A) Bob",
-        "B) Mike",
-        "C) Sully",
-        "D) Ranky"
-
-    ]
-  },
-   {
-    numb: 6,
-    pergunta: "Qual é o nome da protagonista que é transformada em uma mulher gigante após ser atingida por um meteoro no filme Monstros vs Aliens? ",
-    correta: "C) Samantha",
-    respostas: [ /*options*/
-        "A) Susan",
-        "B) Sabrina",
-        "C) Samantha",
-        "D) Sandy"
-
-    ]
-  },
-  
-   {
-    numb: 7,
-    pergunta:"Qual é o nome do rival de Sully que tenta bater o recorde de assustar mais crianças no filme Monstros S.A?",
-    correta: "A) Randell",
-    respostas: [
-        "A) Randell",
-        "B) Mikey",
-        "C) Wazowski",
-        "D) Stuart"
- 
-
-    ]
-  },
-
+const questions = [
   {
-    numb: 8,
-    pergunta: "Qual é o item que WALL-E encontra que muda sua perspectiva sobre a vida e o amor? ",
-    correta: "B) Planta",
-    respostas: [
-      "A) Pintura",
-      "B) Planta",
-      "C) Vídeo",
-      "D) Violão"
-  
-
+    numb: 1,
+    question: "Qual é o maior animal do mundo?",
+    answer: "B) Baleia Azul",
+    options: [
+      "A) Tubarão",
+      "B) Baleia Azul",
+      "C) Elefante",
+      "D) Girafa"
+    ]
+  },
+   {
+    numb: 2,
+    question: "Qual é o maior deserto do mundo?",
+    answer: "C) Saara",
+    options: [
+      "A) Kalahari",
+      "B) Gobi",
+      "C) Saara",
+      "D) Antártica"
+    ]
+  },
+  {
+    numb: 3,
+    question: "Qual é o menor continente do mundo?",
+    answer: "B) Austrália",
+    options: [
+      "A) Ásia",
+      "B) Austrália",
+      "C) Ártico",
+      "D) África"
+    ]
+  },
+   {
+    numb: 4,
+    question: "Qual é o menor país do mundo?",
+    answer: "A) Vaticano",
+    options: [
+      "A) Vaticano",
+      "B) Butão",
+      "C) Nepal",
+      "D) Sri Lanka"
     ]
   },
 ];
+const questionElement = document.getElementById("question");
+const answerButtons = document.getElementById("answer-buttons");
+const nextButton = document.getElementById("next-btn");
 
-// Variáveis para armazenar o índice da pergunta atual e a pontuação
-var indicePerguntaAtual = 0;
-var pontuacao = 0;
 
-// Selecionando os elementos HTML que serão manipulados pelo JavaScript
-const elementoPergunta = document.getElementById("pergunta");
-const botoesResposta = document.querySelectorAll(".botao-resposta");
-const botaoProximo = document.getElementById("botao-proximo");
-const containerResultado = document.getElementById("resultado");
-const elementoPontuacao = document.getElementById("pontuacao");
-
-const NumeroPergunta = document.getElementById("NumeroPergunta");
-const msgPergunta = document.getElementById("msgPergunta");
-
-// Função para iniciar o quiz, exibindo a primeira pergunta
-function iniciarQuiz() {
-    indicePerguntaAtual = 0;
-    pontuacao = 0;
-    botaoProximo.style.display = "none";
-    containerResultado.style.display = "none";
-    exibirPergunta();
+var currentQuestionIndex = 0;
+var score = 0;
+function startQuiz() {
+  currentQuestionIndex = 0;
+  score = 0;
+  nextButton.innerHTML = "Próxima";
+  showQuestion();
+}
+function showQuestion() {
+  resetState();
+  var currentQuestion = questions[currentQuestionIndex];
+  var questionNo = currentQuestion.numb;
+  questionElement.innerHTML = questionNo + ". " + currentQuestion.question; /**/
+  currentQuestion.options.forEach((option, index) => {
+    const button = document.createElement("button");
+    button.innerHTML = option;
+    button.classList.add("btn");
+    answerButtons.appendChild(button);
+    button.dataset.id = option.charAt(0); // Armazena a letra da opção (A, B, C, D)
+    button.addEventListener("click", selectAnswer);
+  });
 }
 
-// Função para exibir a pergunta atual e as respostas
-
-function exibirPergunta() {
-    const perguntaAtual = perguntas[indicePerguntaAtual]; // Obter a pergunta atual
-    // Exibir o número da pergunta e a pergunta
-    NumeroPergunta.innerHTML = '<span>' + perguntaAtual.numb + ". " + perguntaAtual.pergunta + '</span>';
-    // Exibir as opções de resposta
-    msgPergunta.innerHTML = '<div class="option"><span>' + perguntaAtual.respostas[0] + '</span></div>'
-        + '<div class="option"><span>' + perguntaAtual.respostas[1] + '</span></div>'
-        + '<div class="option"><span>' + perguntaAtual.respostas[2] + '</span></div>'
-        + '<div class="option"><span>' + perguntaAtual.respostas[3] + '</span></div>';
+function resetState() {
+  nextButton.style.display = "none";
+  while (answerButtons.firstChild) {
+    answerButtons.removeChild(answerButtons.firstChild);
+  }
 }
-// Iniciar o quiz ao carregar a página
-window.onload = iniciarQuiz;
-
-/*function exibirPergunta() {
-    resetarEstado(); // Reseta o estado dos botões a cada nova pergunta
-    const perguntaAtual = perguntas[indicePerguntaAtual]; // Obtém a pergunta atual
-    elementoPergunta.innerText = perguntaAtual.pergunta; // Exibe a pergunta
-
-    // Exibe as respostas nos botões
-    botoesResposta.forEach((botao, index) => {
-        botao.innerText = perguntaAtual.respostas[index];
-        botao.addEventListener("click", selecionarResposta); // Adiciona o evento de clique
-    });
-}*/
-
-// Função para resetar o estado dos botões entre as perguntas
-function resetarEstado() {
-    botaoProximo.style.display = "none"; // Esconde o botão de próxima pergunta
-    botoesResposta.forEach(botao => {
-        botao.disabled = false; // Habilita os botões
-        botao.classList.remove("correto", "incorreto"); // Remove as classes de estilo de resposta
-    });
-}
-
-// Função para processar a resposta selecionada pelo usuário
-function selecionarResposta(e) {
-    const botaoSelecionado = e.target; // Identifica o botão clicado
-    const respostaCorreta = botaoSelecionado.innerText === perguntas[indicePerguntaAtual].correta; // Verifica se a resposta está correta
-    if (respostaCorreta) {
-        botaoSelecionado.classList.add("correto"); // Aplica estilo de resposta correta
-        pontuacao++; // Incrementa a pontuação
-    } else {
-        botaoSelecionado.classList.add("incorreto"); // Aplica estilo de resposta incorreta
+function selectAnswer(e) {
+  const selectedBtn = e.target;
+  const correctAnswer = questions[currentQuestionIndex].answer;
+  const isCorrect = selectedBtn.innerHTML === correctAnswer;
+  if (isCorrect) {
+    selectedBtn.classList.add("correct");
+    score++;
+  } else {
+    selectedBtn.classList.add("incorrect");
+  }
+  Array.from(answerButtons.children).forEach((button) => {
+    if (button.innerHTML === correctAnswer) {
+      button.classList.add("correct");
     }
-
-    // Desativa todos os botões de resposta após a seleção
-    botoesResposta.forEach(botao => botao.disabled = true);
-
-    botaoProximo.style.display = "block"; // Exibe o botão para ir para a próxima pergunta
+    button.disabled = true;
+  });
+  nextButton.style.display = "block";
 }
-
-// Função para exibir o resultado final do quiz
-function exibirResultado() {
-    containerResultado.style.display = "block"; // Exibe o resultado
-    elementoPontuacao.innerText = `${pontuacao} de ${perguntas.length}`; // Exibe a pontuação
+function showScore() {
+  resetState();
+  questionElement.innerHTML = `Você acertou ${score} de ${questions.length}!`;
+  nextButton.innerHTML = "Play Again"; /*VOLTAR NO JOGO*/
+  nextButton.style.display = "block";
 }
-
-// Evento para avançar para a próxima pergunta
-botaoProximo.addEventListener("click", () => {
-    indicePerguntaAtual++; // Avança para a próxima pergunta
-    if (indicePerguntaAtual < perguntas.length) {
-        exibirPergunta(); // Exibe a próxima pergunta
-    } else {
-        exibirResultado(); // Exibe o resultado final quando as perguntas acabarem
-    }
+function handleNextButton() {
+  currentQuestionIndex++;
+  if (currentQuestionIndex < questions.length) {
+    showQuestion();
+  } else {
+    showScore();
+  }
+}
+nextButton.addEventListener("click", () => {
+  if (currentQuestionIndex < questions.length) {
+    handleNextButton();
+  } else {
+    startQuiz();
+  }
 });
-
-// Inicializa o quiz ao carregar a página
-iniciarQuiz();
- </script>
+startQuiz();
+</script>

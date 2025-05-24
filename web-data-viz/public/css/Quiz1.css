@@ -4,116 +4,84 @@
     padding: 0;
     box-sizing: border-box;
 }
+/** {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}*/
 
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #6eadec;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  background: #001e4d;
 }
 
-.quiz-container {
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 500px;
-    width: 100%;
+.app {
+  background: #fff;
+  width: 90%;
+  max-width: 600px;
+  margin: 100px auto 0;
+  padding: 30px;
 }
 
-h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
+.app h1 {
+  font-weight: 25px;
+  color: #001e4d;
+  font-weight: 600;
+  border-bottom: 1px solid #333;
+  padding-bottom: 30px;
 }
 
-.pergunta-container h2 {
-    margin-bottom: 15px;
-    font-size: 1.2rem;
-    color: #333;
+.quiz {
+  padding: 20px 0;
 }
 
-ul {
-    list-style: none;
-    padding: 0;
+.quiz h2 {
+  font-size: 18px;
+  color: #001e4d;
+  font-weight: 600;
 }
 
-ul li {
-    margin: 10px 0;
+.btn {
+  background: #fff;
+  color: #222;
+  font-weight: 500;
+  width: 100%;
+  border: 1px solid #222;
+  padding: 10px;
+  margin: 10px 0;
+  text-align: left;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
 }
 
-.botao-resposta {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px;
-    width: 100%;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
+.btn:hover:not([disabled]) {
+  background: #222;
+  color: #fff;
 }
 
-.botao-resposta:hover {
-    background-color: #0056b3;
+.btn:disabled {
+  cursor: no-drop;
 }
 
-.botao {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 1rem;
-    border-radius: 5px;
-    margin-top: 20px;
-    display: block;
-    width: 100%;
-    text-align: center;
-}
-/*botão restart irecionamento para index*/
-.buttons button.restart{
-    color: #fff;
-    background: #007bff;
+#next-btn {
+  background: #001e4d;
+  color: #fff;
+  font-weight: 500;
+  width: 150px;
+  border: 0;
+  padding: 10px;
+  margin: 20px auto 0;
+  border-radius: 4px;
+  cursor: pointer;
+    display: none;
+
 }
 
-.buttons button.restart:hover{
-    background: #0263ca;
+.correct {
+  background: #9aeabc;
 }
 
-.buttons button.quit{
-    color: #007bff;
-    background: #fff;
-}
-
-.buttons button.quit:hover{
-    color: #fff;
-    background: #007bff;
-}
-
-.buttons button.main{
-    color: #007bff;
-    background: #fff;
-}
-
-.buttons button.main:hover{
-    color: #fff;
-    background: #007bff;
-}
-
-footer {
- color: #ffffff;
-background-color:#9370DB	;
-}
-/*sair */
-
-#resultado h2 {
-    text-align: center;
-    color: #333;
-}
-
-#pontuacao {
-    font-size: 1.5rem;
-    color: #28a745;
+.incorrect {
+  background: #ff9393;
 }
