@@ -1,289 +1,241 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exemplo - Quiz</title>
+    <title>Quiz em JavaScript</title>
     <link rel="stylesheet" href="css/Quiz1.css">
 </head>
 
+<body>
+    <div class="quiz-container">
+        <div id="quiz">
+            <h1>Quiz de Conhecimento</h1>
+            <div class="pergunta-container">
+                <h2 id="pergunta">Pergunta aqui</h2>
+                                <div id="NumeroPergunta"></div>
 
-<body onload="onloadEsconder()">
-    <div id="pontuacaoEJogo">
-        <button id="btnIniciarQuiz" onclick="iniciarQuiz()">INICIAR QUIZ</button>
-
-        <div id="pontuacao" class="flex-colunar width-fit-content border-primary">
-            <div id="pontuacaoDuranteJogo" class="flex-colunar padding-8">
-                <span class="width-fit-content">Quantidade de acertos: <span id="spanCertas"></span></span>
-                <span class="width-fit-content">Quantidade de erros: <span id="spanErradas"></span></span>
+                <ul>
+                    <li><button class="botao-resposta">Resposta 1</button></li>
+                    <li><button class="botao-resposta">Resposta 2</button></li>
+                    <li><button class="botao-resposta">Resposta 3</button></li>
+                    <li><button class="botao-resposta">Resposta 4</button></li>
+                </ul>
+                <div id="msgPergunta"></div>
             </div>
-            <div id="pontuacaoFinalJogo" class="flex-colunar padding-8">
-                <span id="pontuacaoFinal" class="width-fit-content">Pontuação Final:
-                    <span id="spanPontuacaoFinal">***</span>
-                </span>
-                <span id="msgFinal" class="width-fit-content">***</span>
+            <button id="botao-proximo" class="botao" style="display: none;">Próxima Pergunta</button>
+            <div id="resultado" style="display: none;">
+                <h2>Seu resultado: <span id="pontuacao"></span></h2>
             </div>
-        </div>
-
-        <div id="jogo" class="width-fit-content flex-colunar border-secondary">
-
-            <div id="infoQuestao" class="padding-8">
-                <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de <span id="qtdQuestoes"></span>
-                    questões.</span>
-            </div>
-
-            <div id="perguntaDaQuestaoAtual" class="padding-8">
-                <span id="spanQuestaoExibida" class="text-bold"></span>
-            </div>
-
-            <div id="infoAlternativas" class="padding-8">
-                <span><em>Escolha uma opção dentre as abaixo:</em></span>
-            </div>
-
-            <div id="opcoes" class="flex-colunar padding-8">
-                <span>
-                    <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
-                    <label for="primeiraOpcao" class="option" id="labelOpcaoUm"></label>
-                </span>
-                <span>
-                    <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />
-                    <label for="segundaOpcao" class="option" id="labelOpcaoDois"></label>
-                </span>
-                <span>
-                    <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />
-                    <label for="terceiraOpcao" class="option" id="labelOpcaoTres"></label>
-                </span>
-                <span>
-                    <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />
-                    <label for="quartaOpcao" class="option" id="labelOpcaoQuatro"></label>
-                </span>
-            </div>
-
-            <div id="botoes" class="flex-colunar padding-8">
-                <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
-                <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima questão</button>
-                <!-- <button onclick="finalizar()" id="btnConcluir" disabled>Finalizar Quiz</button> -->
-                <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
-            </div>
-
         </div>
     </div>
+
+    <!--<div class="buttons">
+			<button class="restart">Refazer Questionário</button>
+			<button class="quit">Sair</button>
+			<a href="../teste/index.html"><button class="main">principal</button></a>
+    -->
+			</div>		
+    <!--<script src="script.js"></script>-->
 </body>
 
 </html>
 <script>
-    const listaDeQuestoes = [
-
-        {
-            pergunta: "Qual o nome das três partes do santuário? ",
-            alternativaA: "Janeiro",
-            alternativaB: "Dezembro",
-            alternativaC: "Junho",
-            alternativaD: "Agosto",
-            alternativaCorreta: "alternativaC"
-        },
-
-        {
-            pergunta: "Quantos revestimentos cobriam o Santuário?",
-            alternativaA: "30 horas",
-            alternativaB: "38 horas",
-            alternativaC: "48 horas",
-            alternativaD: "24 horas",
-            alternativaCorreta: "alternativaD"
-        },
-
-        {
-            pergunta: "Qual destes números é ímpar?",
-            alternativaA: "Dez",
-            alternativaB: "Doze",
-            alternativaC: "Oito",
-            alternativaD: "Onze",
-            alternativaCorreta: "alternativaD"
-        }
+// Array contendo as perguntas, respostas e a resposta correta para cada pergunta
+var perguntas = [
+    {
+    numb: 1,
+    pergunta: " Qual é o nome da filha adolescente da família, que tem o poder de se tornar invisível e criar campos de força no filme Os Incríveis?",   
+    correta: "A) Violeta",
+    respostas: [
+      "A) Violeta",
+      "B) Crystal",
+      "C) Esmeralda",
+      "D) Cecília"
 
     ]
+  },
+    {
+    numb: 2,
+    pergunta: "Qual é o nome do restaurante parisiense que serve como cenário central do filme Ratatouille?",
+    correta:  "C) Gusteau's",
+    respostas: [
+         "A) Linguni's",
+         "B) Chez Remy",
+         "C) Gusteau's",
+         "D) Bistrot Chic"
 
-    // variáveis globais    
-    let numeroDaQuestaoAtual = 0
-    let pontuacaoFinal = 0
-    let tentativaIncorreta = 0
-    let certas = 0
-    let erradas = 0
-    let quantidadeDeQuestoes = listaDeQuestoes.length
-    // let isUltima = numeroDaQuestaoAtual == quantidadeDeQuestoes-1 ? true : false
+    ]
+  },
+    {
+    numb: 3,
+    pergunta: "Que recompensa Lord Farquaad promete a Shrek em troca de resgatar a princesa Fiona?",
+    correta:   "D) Posse do pântano",
+    respostas: [
+       "A) Transformá-lo em humano",
+       "B) Riqueza",
+       "C) Um beijo",
+       "D) Posse do pântano"
+    ]
+  },
+    {
+    numb: 4,
+    pergunta: "Qual é o nome do jovem escoteiro que acidentalmente embarca na aventura de Carl no filme Up Altas Aventuras?    ",
+    correta:  "D) Russell",
+    respostas: [
+     "A) David",
+     "B) Kevin",
+     "C) Lucas",
+     "D) Russell"
+    ]
+  },
+    {
+    numb: 5,
+    pergunta: "Qual é o nome do monstro azul e peludo que é um dos protagonistas do filme Monstros S.A? ",
+    correta: "C) Sully",
+    respostas: [/*options*/
+	    "A) Bob",
+        "B) Mike",
+        "C) Sully",
+        "D) Ranky"
 
-    function onloadEsconder() {
-        document.getElementById('pontuacao').style.display = "none"
-        document.getElementById('jogo').style.display = "none"
+    ]
+  },
+   {
+    numb: 6,
+    pergunta: "Qual é o nome da protagonista que é transformada em uma mulher gigante após ser atingida por um meteoro no filme Monstros vs Aliens? ",
+    correta: "C) Samantha",
+    respostas: [ /*options*/
+        "A) Susan",
+        "B) Sabrina",
+        "C) Samantha",
+        "D) Sandy"
+
+    ]
+  },
+  
+   {
+    numb: 7,
+    pergunta:"Qual é o nome do rival de Sully que tenta bater o recorde de assustar mais crianças no filme Monstros S.A?",
+    correta: "A) Randell",
+    respostas: [
+        "A) Randell",
+        "B) Mikey",
+        "C) Wazowski",
+        "D) Stuart"
+ 
+
+    ]
+  },
+
+  {
+    numb: 8,
+    pergunta: "Qual é o item que WALL-E encontra que muda sua perspectiva sobre a vida e o amor? ",
+    correta: "B) Planta",
+    respostas: [
+      "A) Pintura",
+      "B) Planta",
+      "C) Vídeo",
+      "D) Violão"
+  
+
+    ]
+  },
+];
+
+// Variáveis para armazenar o índice da pergunta atual e a pontuação
+var indicePerguntaAtual = 0;
+var pontuacao = 0;
+
+// Selecionando os elementos HTML que serão manipulados pelo JavaScript
+const elementoPergunta = document.getElementById("pergunta");
+const botoesResposta = document.querySelectorAll(".botao-resposta");
+const botaoProximo = document.getElementById("botao-proximo");
+const containerResultado = document.getElementById("resultado");
+const elementoPontuacao = document.getElementById("pontuacao");
+
+const NumeroPergunta = document.getElementById("NumeroPergunta");
+const msgPergunta = document.getElementById("msgPergunta");
+
+// Função para iniciar o quiz, exibindo a primeira pergunta
+function iniciarQuiz() {
+    indicePerguntaAtual = 0;
+    pontuacao = 0;
+    botaoProximo.style.display = "none";
+    containerResultado.style.display = "none";
+    exibirPergunta();
+}
+
+// Função para exibir a pergunta atual e as respostas
+
+function exibirPergunta() {
+    const perguntaAtual = perguntas[indicePerguntaAtual]; // Obter a pergunta atual
+    // Exibir o número da pergunta e a pergunta
+    NumeroPergunta.innerHTML = '<span>' + perguntaAtual.numb + ". " + perguntaAtual.pergunta + '</span>';
+    // Exibir as opções de resposta
+    msgPergunta.innerHTML = '<div class="option"><span>' + perguntaAtual.respostas[0] + '</span></div>'
+        + '<div class="option"><span>' + perguntaAtual.respostas[1] + '</span></div>'
+        + '<div class="option"><span>' + perguntaAtual.respostas[2] + '</span></div>'
+        + '<div class="option"><span>' + perguntaAtual.respostas[3] + '</span></div>';
+}
+// Iniciar o quiz ao carregar a página
+window.onload = iniciarQuiz;
+
+/*function exibirPergunta() {
+    resetarEstado(); // Reseta o estado dos botões a cada nova pergunta
+    const perguntaAtual = perguntas[indicePerguntaAtual]; // Obtém a pergunta atual
+    elementoPergunta.innerText = perguntaAtual.pergunta; // Exibe a pergunta
+
+    // Exibe as respostas nos botões
+    botoesResposta.forEach((botao, index) => {
+        botao.innerText = perguntaAtual.respostas[index];
+        botao.addEventListener("click", selecionarResposta); // Adiciona o evento de clique
+    });
+}*/
+
+// Função para resetar o estado dos botões entre as perguntas
+function resetarEstado() {
+    botaoProximo.style.display = "none"; // Esconde o botão de próxima pergunta
+    botoesResposta.forEach(botao => {
+        botao.disabled = false; // Habilita os botões
+        botao.classList.remove("correto", "incorreto"); // Remove as classes de estilo de resposta
+    });
+}
+
+// Função para processar a resposta selecionada pelo usuário
+function selecionarResposta(e) {
+    const botaoSelecionado = e.target; // Identifica o botão clicado
+    const respostaCorreta = botaoSelecionado.innerText === perguntas[indicePerguntaAtual].correta; // Verifica se a resposta está correta
+    if (respostaCorreta) {
+        botaoSelecionado.classList.add("correto"); // Aplica estilo de resposta correta
+        pontuacao++; // Incrementa a pontuação
+    } else {
+        botaoSelecionado.classList.add("incorreto"); // Aplica estilo de resposta incorreta
     }
 
-    function iniciarQuiz() {
-        document.getElementById('pontuacao').style.display = "flex"
-        document.getElementById('jogo').style.display = "flex"
-        document.getElementById('btnIniciarQuiz').style.display = "none"
+    // Desativa todos os botões de resposta após a seleção
+    botoesResposta.forEach(botao => botao.disabled = true);
 
-        document.getElementById('qtdQuestoes').innerHTML = quantidadeDeQuestoes
+    botaoProximo.style.display = "block"; // Exibe o botão para ir para a próxima pergunta
+}
 
-        preencherHTMLcomQuestaoAtual(0)
+// Função para exibir o resultado final do quiz
+function exibirResultado() {
+    containerResultado.style.display = "block"; // Exibe o resultado
+    elementoPontuacao.innerText = `${pontuacao} de ${perguntas.length}`; // Exibe a pontuação
+}
 
-        btnSubmeter.disabled = false
-        btnProx.disabled = true
-        // btnConcluir.disabled = true
-        btnTentarNovamente.disabled = true
+// Evento para avançar para a próxima pergunta
+botaoProximo.addEventListener("click", () => {
+    indicePerguntaAtual++; // Avança para a próxima pergunta
+    if (indicePerguntaAtual < perguntas.length) {
+        exibirPergunta(); // Exibe a próxima pergunta
+    } else {
+        exibirResultado(); // Exibe o resultado final quando as perguntas acabarem
     }
+});
 
-    function preencherHTMLcomQuestaoAtual(index) {
-        habilitarAlternativas(true)
-        const questaoAtual = listaDeQuestoes[index]
-        numeroDaQuestaoAtual = index
-        console.log("questaoAtual")
-        console.log(questaoAtual)
-        document.getElementById("spanNumeroDaQuestaoAtual").innerHTML = Number(index) + 1 // ajustando porque o index começa em 0
-        document.getElementById("spanQuestaoExibida").innerHTML = questaoAtual.pergunta;
-        document.getElementById("labelOpcaoUm").innerHTML = questaoAtual.alternativaA;
-        document.getElementById("labelOpcaoDois").innerHTML = questaoAtual.alternativaB;
-        document.getElementById("labelOpcaoTres").innerHTML = questaoAtual.alternativaC;
-        document.getElementById("labelOpcaoQuatro").innerHTML = questaoAtual.alternativaD;
-    }
-
-    function submeter() {
-        const options = document.getElementsByName("option"); // recupera alternativas no html
-
-        let hasChecked = false
-        for (let i = 0; i < options.length; i++) {
-            if (options[i].checked) {
-                hasChecked = true
-                break
-            }
-        }
-
-        if (!hasChecked) {
-            alert("Não há alternativas escolhidas. Escolha uma opção.")
-        } else {
-            btnSubmeter.disabled = true
-            btnProx.disabled = false
-
-            habilitarAlternativas(false)
-
-            checarResposta()
-        }
-    }
-
-    function habilitarAlternativas(trueOrFalse) {
-        let opcaoEscolhida = trueOrFalse ? false : true
-
-        primeiraOpcao.disabled = opcaoEscolhida
-        segundaOpcao.disabled = opcaoEscolhida
-        terceiraOpcao.disabled = opcaoEscolhida
-        quartaOpcao.disabled = opcaoEscolhida
-
-    }
-
-    function avancar() {
-        btnProx.disabled = true
-        btnSubmeter.disabled = false
-
-        desmarcarRadioButtons()
-
-        if (numeroDaQuestaoAtual < quantidadeDeQuestoes - 1) {
-            preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual)
-        } else if (numeroDaQuestaoAtual == quantidadeDeQuestoes - 1) {
-            alert("Atenção... a próxima é a ultima questão!")
-            preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual)
-        } else {
-            finalizarJogo()
-        }
-        limparCoresBackgroundOpcoes()
-    }
-
-    function tentarNovamente() {
-        // atualiza a página
-        window.location.reload()
-    }
-
-    function checarResposta() {
-        const questaoAtual = listaDeQuestoes[numeroDaQuestaoAtual] // questão atual 
-        const respostaQuestaoAtual = questaoAtual.alternativaCorreta // qual é a resposta correta da questão atual
-
-        const options = document.getElementsByName("option"); // recupera alternativas no html
-
-        let alternativaCorreta = null // variável para armazenar a alternativa correta
-
-        options.forEach((option) => {
-            if (option.value === respostaQuestaoAtual) {
-                console.log("alternativaCorreta está no componente: " + alternativaCorreta)
-                alternativaCorreta = option.labels[0].id
-            }
-        })
-
-        // verifica se resposta assinalada é correta
-        options.forEach((option) => {
-            if (option.checked === true && option.value === respostaQuestaoAtual) {
-                document.getElementById(alternativaCorreta).classList.add("text-success-with-bg")
-                pontuacaoFinal++
-                certas++
-                document.getElementById("spanCertas").innerHTML = certas
-                numeroDaQuestaoAtual++
-            } else if (option.checked && option.value !== respostaQuestaoAtual) {
-                const wrongLabelId = option.labels[0].id
-
-                document.getElementById(wrongLabelId).classList.add("text-danger-with-bg")
-                document.getElementById(alternativaCorreta).classList.add("text-success-with-bg")
-                tentativaIncorreta++
-                erradas++
-                document.getElementById("spanErradas").innerHTML = erradas
-                numeroDaQuestaoAtual++
-            }
-        })
-    }
-
-    function limparCoresBackgroundOpcoes() {
-        const options = document.getElementsByName("option");
-        options.forEach((option) => {
-            document.getElementById(option.labels[0].id).classList.remove("text-danger-with-bg")
-            document.getElementById(option.labels[0].id).classList.remove("text-success-with-bg")
-        })
-    }
-
-    function desmarcarRadioButtons() {
-        const options = document.getElementsByName("option");
-        for (let i = 0; i < options.length; i++) {
-            options[i].checked = false;
-        }
-    }
-
-    function finalizarJogo() {
-        let textoParaMensagemFinal = null
-        let classComCoresParaMensagemFinal = null
-        const porcentagemFinalDeAcertos = pontuacaoFinal / quantidadeDeQuestoes
-
-        if (porcentagemFinalDeAcertos <= 0.3) {
-            textoParaMensagemFinal = "Parece que você não estudou..."
-            classComCoresParaMensagemFinal = "text-danger-with-bg"
-        }
-        else if (porcentagemFinalDeAcertos > 0.3 && porcentagemFinalDeAcertos < 0.9) {
-            textoParaMensagemFinal = "Pode melhorar na próxima, hein!"
-            classComCoresParaMensagemFinal = "text-warning-with-bg"
-        }
-        else if (porcentagemFinalDeAcertos >= 0.9) {
-            textoParaMensagemFinal = "Uau, parabéns!"
-            classComCoresParaMensagemFinal = "text-success-with-bg"
-        }
-
-        textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos)*100) + "% das questões."
-
-
-        document.getElementById('msgFinal').innerHTML = textoParaMensagemFinal
-        document.getElementById('msgFinal').classList.add(classComCoresParaMensagemFinal) 
-        document.getElementById('spanPontuacaoFinal').innerHTML = pontuacaoFinal
-
-        document.getElementById('jogo').classList.add("text-new-gray") 
-
-        btnProx.disabled = true
-        btnSubmeter.disabled = true
-        // btnConcluir.disabled = true
-        btnTentarNovamente.disabled = false
-
-    }
-</script>
+// Inicializa o quiz ao carregar a página
+iniciarQuiz();
+ </script>

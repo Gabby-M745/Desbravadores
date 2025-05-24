@@ -1,74 +1,119 @@
-/* Não usar pure white or pure black: https://uxplanet.org/basicdesign-never-use-pure-black-in-typography-36138a3327a6 */
-/* The 4-point grid system: https://medium.com/@sainzkike/controlling-spacing-in-design-systems-multiple-spacing-9bf1afec87f */
 
-:root {
-    --primary-brand-color: #ED145B;
-    --secondary-brand-color: #0762C8;
-    --success: #198754;
-    --success-dark: #095c36;
-    --success-light: #9dd3ba;
-    --warning: #ffc107;
-    --warning-dark: #705400;
-    --warning-light: #fdebb3;
-    --danger: #dc3545;
-    --danger-dark: #990c19;
-    --danger-light: #f0c1c6;
-    --new-gray: #CCCCCC;
-    --new-black: #212427;
-    --new-white: #E8E8E8;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    color: var(--new-black);
-    background-color: var(--new-white);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-button {
-    font-family: monospace;
-    font-weight: bold;
-}
-
-.flex-colunar {
+    font-family: 'Arial', sans-serif;
+    background-color: #6eadec;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-.width-fit-content {
-    width: fit-content;
+.quiz-container {
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 100%;
 }
 
-.border-primary {
-    border: 3px solid var(--primary-brand-color);
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
 }
 
-.border-secondary {
-    border: 3px solid var(--secondary-brand-color);
+.pergunta-container h2 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    color: #333;
 }
 
-.padding-8 {
-    padding: 8px;
+ul {
+    list-style: none;
+    padding: 0;
 }
 
-.text-bold {
-    font-weight: bold;
+ul li {
+    margin: 10px 0;
 }
 
-.text-success-with-bg {
-    color: var(--success-dark);
-    background-color: var(--success-light);
+.botao-resposta {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
 }
 
-.text-warning-with-bg {
-    color: var(--warning-dark);
-    background-color: var(--warning-light);
+.botao-resposta:hover {
+    background-color: #0056b3;
 }
 
-.text-danger-with-bg {
-    color: var(--danger-dark);
-    background-color: var(--danger-light);
+.botao {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+/*botão restart irecionamento para index*/
+.buttons button.restart{
+    color: #fff;
+    background: #007bff;
 }
 
-.text-new-gray {
-    color: var(--new-gray);
+.buttons button.restart:hover{
+    background: #0263ca;
+}
+
+.buttons button.quit{
+    color: #007bff;
+    background: #fff;
+}
+
+.buttons button.quit:hover{
+    color: #fff;
+    background: #007bff;
+}
+
+.buttons button.main{
+    color: #007bff;
+    background: #fff;
+}
+
+.buttons button.main:hover{
+    color: #fff;
+    background: #007bff;
+}
+
+footer {
+ color: #ffffff;
+background-color:#9370DB	;
+}
+/*sair */
+
+#resultado h2 {
+    text-align: center;
+    color: #333;
+}
+
+#pontuacao {
+    font-size: 1.5rem;
+    color: #28a745;
 }
