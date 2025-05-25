@@ -12,6 +12,7 @@
     
       <h1>Quiz</h1>
       <div class="quiz">
+           <div id="timer">Tempo restante: 30 segundos</div>
         <h2 id="question">Question goes here</h2>
         <div id="answer-buttons">
           <button class="btn"> 1°</button>
@@ -77,10 +78,36 @@ const questions = [
 const questionElement = document.getElementById("question");//DIV
 const answerButtons = document.getElementById("answer-buttons");//H2
 const nextButton = document.getElementById("next-btn");//BUTTON
+    const timerElement = document.getElementById("timer");
+    let currentQuestionIndex = 0;
+    let score = 0;
+    let timer;
+    let timeLeft = 30;
+    function startTimer() {
+      clearInterval(timer);
+      timeLeft = 30;
+      updateTimerDisplay();
+      timer = setInterval(() => {
+        timeLeft--;
+        updateTimerDisplay();
+        if (timeLeft <= 0) {
+          clearInterval(timer);
+          // Finalizar quiz ou avançar automaticamente
+          // Aqui vamos finalizar exibindo o score
+          showScore();
+        }
+      }, 1000);
+    }
+    function updateTimerDisplay() {
+      timerElement.innerText = `Tempo restante: ${timeLeft} segundo${timeLeft !== 1 ? 's' : ''}`;
+    }
+function handleNextButton() {
+  clearInterval(timer); // Para o cronômetro atual
+  currentQuestionIndex++;
+  if (currentQuestionIndex < questions.length) {
+    startTimer(); // Reinicia o cronômetro
+    }}
 
-
-var currentQuestionIndex = 0;
-var score = 0;
 function startQuiz() {
   currentQuestionIndex = 0;
   score = 0;
@@ -147,5 +174,7 @@ nextButton.addEventListener("click", () => {
     startQuiz();
   }
 });
+
+
 startQuiz();
 </script>
