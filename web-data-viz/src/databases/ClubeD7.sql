@@ -20,13 +20,13 @@ CREATE TABLE Usuario (
   Senha VARCHAR(45)
   );
   show tables;
-  ALTER TABLE Usuario drop constraint chkUser ;
+  -- ALTER TABLE Usuario drop constraint chkUser ;
   /*Tabela perguntas1*/
   create table Perguntas (idPerguntas int primary key auto_increment,
   perguntas text, 
   alternativas char(1)
   );
-  
+
 /*Associativa Petguntas1*/
 create table Resultado (idResultado int primary key auto_increment,
 fkUsuario int,
