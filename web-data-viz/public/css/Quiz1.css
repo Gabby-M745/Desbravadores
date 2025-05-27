@@ -12,11 +12,15 @@
 }*/
 
 body {
-  background: #001e4d;
+  /*background: #001e4d;*/
+   background-image: url("../img/quiz.png");
+    background-repeat: no-repeat;
+	background-size: 100%;
+	background-attachment:fixed;
 }
 
-.app {
-  background: #fff;
+.app {/*BLOCO ONDE FICA AS PERGUNTAS*/
+  background-color: rgba(255, 255, 255, 0.734);
   width: 90%;
   max-width: 600px;
   margin: 100px auto 0;
@@ -35,6 +39,7 @@ body {
 
 .quiz {
   padding: 20px 0;
+ /*  background-color: rgba(255 255 255 / .10);*/
 }
 
 .quiz h2 {
@@ -96,3 +101,4 @@ body {
       letter-spacing: 1px;
       user-select: none;
     }
+/*    --------------*/

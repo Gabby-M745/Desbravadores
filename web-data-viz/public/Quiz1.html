@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+        <link rel="icon" href="img/icon01.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quiz</title>
     <link rel="stylesheet" href="css/Quiz1.css" />
@@ -23,6 +24,8 @@
         <button id="next-btn">Next</button>
       </div>
     </div>
+    <p></p>
+
     <!--<script src="script.js"></script>-->
   </body>
 </html>
@@ -32,13 +35,13 @@
 const questions = [
   {
     numb: 1,
-    question: "Qual é o maior animal do mundo?",
-    answer: "B) Baleia Azul",
+    question: "Qual o nome das três partes do santuário?",
+    answer: "A) Pátio, Lugar Santo, Lugar Santíssimo",
     options: [
-      "A) Tubarão",
-      "B) Baleia Azul",
-      "C) Elefante",
-      "D) Girafa"
+      "A) Pátio, Lugar Santo, Lugar Santíssimo",
+      "B) Pátio, Lugar Sagrado, Lugar de Oração ",
+      "C) Pátio, Templo, Altar",
+      "D) Pátio, Sacerdócio, Arca "
     ]
   },
    {
@@ -100,7 +103,7 @@ const nextButton = document.getElementById("next-btn");//BUTTON
     }
     function updateTimerDisplay() {
       timerElement.innerText = `Tempo restante: ${timeLeft} segundo${timeLeft !== 1 ? 's' : ''}`;
-    }
+    }/*nao FUNCIONA*/
 function handleNextButton() {
   clearInterval(timer); // Para o cronômetro atual
   currentQuestionIndex++;

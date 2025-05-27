@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
+      <link rel="icon" href="img/icon01.png">
   <!--<link rel="icon" href="../public/assets/Design%20sem%20nome%20(20).png"> -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -68,6 +69,8 @@
 var user=[];
 
   function entrar() {
+      window.location = "Diretoria.html";
+
     var nomeVar = nomeLogin.value;
     var senhaVar = senhaLogin.value;
 
@@ -160,11 +163,18 @@ if(resultado != 'nada'){
 
             /*window.location = "login.html"; redirecionamento*/
 
-          } else {
+             } else {
+    // Aqui você pode ler a resposta do servidor para entender o erro
+    return resposta.text().then(text => {
+      alert("Erro no cadastro: " + text);
+    });
+  }
+})
+          /*} else {
             throw "Houve um erro ao tentar realizar o cadastro!";
             alert("Erro no cadastro!")
           }
-        })
+        })*/
         .catch(function (resposta) {
           console.log(`#ERRO: ${resposta}`);
 
