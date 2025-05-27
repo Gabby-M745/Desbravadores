@@ -70,7 +70,7 @@ p{/**seletor geral a própria tag pq tem apenas a P sento utilizada especificame
     width: 100%;
     height: 100vh;
     /*altura*/
-    background-color: #14151A;
+    background-color: #243238;
     /*cor do fundo*/
     display:flex;/*tinha esquecido*/
     justify-content: center;
@@ -80,7 +80,7 @@ p{/**seletor geral a própria tag pq tem apenas a P sento utilizada especificame
 .card {
     width: 80%;
     height: 90vh;
-    background-color: rgba(255 255 255 / .10);
+    background-color: rgba(220, 220, 220, 0.446);/*bloco do cadastro*/
     /*co r de opacidade: / .100*/
     border-radius: 32px;
     padding: 10px 20px;  /*antes estava 32px 20px*/
