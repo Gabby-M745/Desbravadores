@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-      <link rel="icon" href="img/icon01.png">
+  <link rel="icon" href="img/icon01.png">
   <!--<link rel="icon" href="../public/assets/Design%20sem%20nome%20(20).png"> -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -24,14 +24,15 @@
 
           </form>
         </div>
-        <div class="facaLogin">
-          <h2>Já tem <br>uma conta?</h2>
-          <p>Lo lo lo lala lala</p>
-          <!--                     <button>Faça o login</button>-->
-          <button onclick="entrar()">Entrar</button>
+      </div>
+      
+      <div class="facaLogin">
+        <h2 style="margin: 0">Já tem <br>uma conta?</h2>
+       
+        <!--                     <button>Faça o login</button>-->
+        <button onclick="entrar()" style="margin:0">Entrar</button>
 
 
-        </div>
       </div>
       <!--javascript do botão vai acionar juntamente com css-->
       <div class="direita"> <!--primeiro container-->
@@ -44,7 +45,7 @@
             <input type="text" id="missao" placeholder="Associação/Missão">
 
             <select id="resultado">
-               <option value="nada" disabled selected>Selecione o tipo de usuário:</option>
+              <option value="nada" disabled selected>Selecione o tipo de usuário:</option>
               <option value="Visita">Visita</option>
               <option value="Desbravador">Desbravador</option>
             </select>
@@ -57,7 +58,7 @@
 
           </form>
         </div>
-       
+
       </div>
     </div>
   </section>
@@ -65,16 +66,16 @@
 
 </html>
 <script>
- 
-var user=[];
+
+  var user = [];
 
   function entrar() {
-      window.location = "Diretoria.html";
+    window.location = "Diretoria.html";
 
     var nomeVar = nomeLogin.value;
     var senhaVar = senhaLogin.value;
 
-    
+
     if (nomeVar == "" || senhaVar == "") {
       alert("Mensagem de erro para todos os campos em branco");
     }
@@ -130,7 +131,7 @@ var user=[];
     var confirmar = confirmaS.value;
     var pessoa = resultado.value; /*do select option*/
 
-if(resultado != 'nada'){
+    if (resultado != 'nada') {
       user.push(resultado.value);
     }
     if (senhaD7 != confirmar) {
@@ -153,28 +154,33 @@ if(resultado != 'nada'){
           pessoaServer: pessoa
 
         }),
+
+      }).then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!")
+        alert("Atenção!");
+        alert("OLHA!");
+        if (resposta.ok) {
+          console.log(resposta);
+
+          resposta.json().then(json => {
+            console.log(json);
+            console.log(JSON.stringify(json));
+            /*window.location="#.html"*/
+            alert("login realizado com sucesso!")
+          });
+
+        } else {
+          // Aqui você pode ler a resposta do servidor para entender o erro
+          return resposta.text().then(text => {
+            alert("Erro no cadastro: " + text);
+          });
+        }
       })
-        .then(function (resposta) {
-          console.log("resposta: ", resposta);
-
-          if (resposta.ok) {
-
-            alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
-
-            /*window.location = "login.html"; redirecionamento*/
-
-             } else {
-    // Aqui você pode ler a resposta do servidor para entender o erro
-    return resposta.text().then(text => {
-      alert("Erro no cadastro: " + text);
-    });
-  }
-})
-          /*} else {
-            throw "Houve um erro ao tentar realizar o cadastro!";
-            alert("Erro no cadastro!")
-          }
-        })*/
+        /*} else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+          alert("Erro no cadastro!")
+        }
+      })*/
         .catch(function (resposta) {
           console.log(`#ERRO: ${resposta}`);
 
