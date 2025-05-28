@@ -12,65 +12,109 @@
 </head>
 
 <body>
-  <section class="containerPai">
-    <div id="pai" class="card loginActive"> <!---->
-      <div class="esquerda">
-        <div class="formLogin">
-          <h2>Fazer login</h2>
-          <form>
-            <input type="text" id="nomeLogin" placeholder="Nome">
-            <input type="password" id="senhaLogin" placeholder="Senha">
-            <!-- <button type="submit">Entrar</button>-->
-
-          </form>
-        </div>
+  <div class="container">
+    <div class="content first-content">
+      <div class="first-column">
+        <h2 class="title title-primary">welcome back!</h2>
+        <p class="description description-primary">To keep connected with us</p>
+        <p class="description description-primary">please login with your personal info</p>
+        <button id="signin" class="btn btn-primary">sign in</button>
       </div>
-      
-      <div class="facaLogin">
-        <h2 style="margin: 0">Já tem <br>uma conta?</h2>
-       
-        <!--                     <button>Faça o login</button>-->
-        <button onclick="entrar()" style="margin:0">Entrar</button>
-
-
-      </div>
-      <!--javascript do botão vai acionar juntamente com css-->
-      <div class="direita"> <!--primeiro container-->
-        <div class="formCadastro">
-          <h2>Cadastro</h2>
-          <form>
+      <div class="second-column">
+        <h2 class="title title-second">create account</h2>
+        <form class="form">
+          <label class="label-input" for="">
+            <i class="far fa-user icon-modify"></i>
             <input type="text" id="nome" placeholder="Nome">
-            <input type="text" id="clube" placeholder="Clube">
-            <input type="text" id="unidade" placeholder="Unidade">
-            <input type="text" id="missao" placeholder="Associação/Missão">
+          </label>
 
+          <label class="label-input" for="">
+            <i class="far fa-envelope icon-modify"></i>
+            <input type="text" id="clube" placeholder="Clube">
+          </label>
+
+          <label class="label-input" for="">
+            <i class="fas fa-lock icon-modify"></i>
+            <input type="text" id="unidade" placeholder="Unidade">
+          </label>
+
+
+          <label class="label-input" for="">
+            <input type="text" id="missao" placeholder="Associação/Missão">
+          </label>
+
+          <label class="label-input" for="">
             <select id="resultado">
-              <option value="nada" disabled selected>Selecione o tipo de usuário:</option>
+              <option value="nada" disabled selected>Selecione</option>
               <option value="Visita">Visita</option>
               <option value="Desbravador">Desbravador</option>
             </select>
+          </label>
 
+          <label class="label-input" for="">
+            <i class="fas fa-lock icon-modify"></i>
             <input type="password" id="senha" placeholder="Senha">
+          </label>
+
+          <label class="label-input" for="">
+            <i class="fas fa-lock icon-modify"></i>
             <input type="password" id="confirmaS" placeholder="Confirma a sua senha">
-            <button onclick="cadastrar()">Cadastrar</button>
-            <!-- <button type="submit">Cadastrar</button>-->
-            <!-- <button onclick="cadastrar()">Cadastrar</button>-->
+          </label>
 
-          </form>
-        </div>
 
+          <button class="btn btn-second" onclick="cadastrar()">sign up</button>
+        </form>
+      </div><!-- second column -->
+    </div><!-- first content -->
+    <div class="content second-content">
+      <div class="first-column">
+        <h2 class="title title-primary">hello, friend!</h2>
+        <p class="description description-primary">Enter your personal details</p>
+        <p class="description description-primary">and start journey with us</p>
+        <button id="signup" class="btn btn-primary">sign up</button>
       </div>
-    </div>
-  </section>
+      <div class="second-column">
+        <h2 class="title title-second">sign in to developer</h2>
+        <p class="description description-second">or use your email account:</p>
+        <form class="form">
+
+          <label class="label-input" for="">
+            <i class="far fa-envelope icon-modify"></i>
+            <input type="email" placeholder="Email">
+          </label>
+
+          <label class="label-input" for="">
+            <i class="fas fa-lock icon-modify"></i>
+            <input type="password" placeholder="Password">
+          </label>
+
+          <a class="password" href="#">forgot your password?</a>
+          <button class="btn btn-second" onclick="entrar()">sign in</button>
+        </form>
+      </div><!-- second column -->
+    </div><!-- second-content -->
+  </div>
 </body>
 
 </html>
 <script>
+  var btnSignin = document.querySelector("#signin");
+  var btnSignup = document.querySelector("#signup");
 
+  var body = document.querySelector("body");
+
+
+  btnSignin.addEventListener("click", function () {
+    body.className = "sign-in-js";
+  });
+
+  btnSignup.addEventListener("click", function () {
+    body.className = "sign-up-js";
+  })
   var user = [];
 
   function entrar() {
-    window.location = "Diretoria.html";
+    // window.location = "Diretoria.html";
 
     var nomeVar = nomeLogin.value;
     var senhaVar = senhaLogin.value;
@@ -155,32 +199,19 @@
 
         }),
 
-      }).then(function (resposta) {
-        console.log("ESTOU NO THEN DO entrar()!")
-        alert("Atenção!");
-        alert("OLHA!");
-        if (resposta.ok) {
-          console.log(resposta);
+      })       
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
 
-          resposta.json().then(json => {
-            console.log(json);
-            console.log(JSON.stringify(json));
-            /*window.location="#.html"*/
-            alert("login realizado com sucesso!")
-          });
+          if (resposta.ok) {
 
-        } else {
-          // Aqui você pode ler a resposta do servidor para entender o erro
-          return resposta.text().then(text => {
-            alert("Erro no cadastro: " + text);
-          });
-        }
-      })
-        /*} else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
-          alert("Erro no cadastro!")
-        }
-      })*/
+            alert("Cadastro realizado com sucesso!");
+
+
+          } else {
+            throw "Houve um erro ao tentar realizar o cadastro!";
+          }
+        })
         .catch(function (resposta) {
           console.log(`#ERRO: ${resposta}`);
 
