@@ -67,7 +67,7 @@ function cadastrar(req, res) {
                 res.status(400).send("Seu campo 'pessoa' está undefined!")
     }
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, clube, unidade, associaM, senha, pessoA) 
+        usuarioModel.cadastrar(nome, clube, unidade, associaM, pessoA, senha) 
         .then(
             function (resultado) {
                 res.json(resultado);
