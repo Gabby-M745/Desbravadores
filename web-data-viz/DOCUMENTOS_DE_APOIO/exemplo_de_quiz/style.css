@@ -18,6 +18,22 @@
     --new-white: #E8E8E8;
 }
 
+#app {/*BLOCO ONDE FICA AS PERGUNTAS*/
+  background-color: rgba(215, 9, 9, 0.734);
+  width: 90%;
+  max-width: 600px;
+  margin: 100px auto 0;
+  padding: 30px;
+  border-radius:10px
+}/*
+.app h1 {
+  font-weight: 25px;
+  color: #001e4d;
+  font-weight: 600;
+  border-bottom: 1px solid #333;
+  padding-bottom: 30px;
+  text-align:center
+}*/
 body {
     color: var(--new-black);
     background-color: var(--new-white);
@@ -43,7 +59,8 @@ button {
 }
 
 .border-secondary {
-    border: 3px solid var(--secondary-brand-color);
+    border: 0px solid var(--secondary-brand-color);/*!!!!!!!!!!!! BORDA DO: <div id="jogo" class="width-fit-content flex-colunar border-secondary">
+*/
 }
 
 .padding-8 {
