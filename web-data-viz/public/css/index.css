@@ -43,3 +43,61 @@ body {
     background-color: #c03706e0;
     color: #fff;
   }
+  /*----------------------------------*/
+  .servicos-dark {
+    background-color: #243238 ;
+    padding: 5rem 2rem;
+  }
+
+  .cards-mvv {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    padding: 2px 0;
+  }
+  
+  .card-mvv {
+    width: 500px;
+    min-height: 320px;
+    padding: 24px;
+    background-color: #eeeeee;
+    border-radius: 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+   
+  .card-mvv:hover { /*interaçãoo do cursosr sobre o card branco*/
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card-mvv h5 {
+    margin-top: 16px;
+    font-size: 1.25rem;
+    color: #1a1a1a;
+  }
+  
+  .card-mvv ul {
+    margin-top: 12px;
+    font-size: 0.95rem;
+    color: #333;
+    line-height: 1.5;
+  }
+  
+  .icone-circulo {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .icone-circulo img {
+    width: 32px;
+    height: 32px;
+  }
