@@ -80,16 +80,17 @@
 
           <label class="label-input" for="">
             <i class="far fa-envelope icon-modify"></i>
-            <input type="email" placeholder="Email">
+            <input type="text" id="nomeLogin" placeholder="Nome">
           </label>
 
           <label class="label-input" for="">
             <i class="fas fa-lock icon-modify"></i>
-            <input type="password" placeholder="Password">
+            <input type="password" id="senhaLogin" placeholder="Password">
           </label>
 
           <a class="password" href="#">forgot your password?</a>
-          <button class="btn btn-second" onclick="entrar()">sign in</button>
+          <button class="btn btn-second" onclick="autenticar()">Entrar!</button>
+          
         </form>
       </div><!-- second column -->
     </div><!-- second-content -->
@@ -113,7 +114,7 @@
   })
   var user = [];
 
-  function entrar() {
+  function autenticar() {
     // window.location = "Diretoria.html";
 
     var nomeVar = nomeLogin.value;
@@ -148,6 +149,7 @@
           sessionStorage.ID_USUARIO = json.idUsuario;
           /*window.location="#.html"*/
           alert("login realizado com sucesso!")
+          window.location = "Direcionar.html";
         });
 
       } else {
@@ -174,10 +176,12 @@
     var senhaD7 = senha.value;
     var confirmar = confirmaS.value;
     var pessoa = resultado.value; /*do select option*/
-
-    if (resultado != 'nada') {
+/*
+    if (resultado != 'nada') { 
       user.push(resultado.value);
-    }
+      alert("Preencha todos os campos");
+      return
+    }*/
     if (senhaD7 != confirmar) {
       alert("Senhas não coincidem!!")
     } else {
@@ -202,22 +206,15 @@
       })       
         .then(function (resposta) {
           console.log("resposta: ", resposta);
-
-          if (resposta.ok) {
-
-            alert("Cadastro realizado com sucesso!");
-
-
-          } else {
-            throw "Houve um erro ao tentar realizar o cadastro!";
-          }
+          
         })
         .catch(function (resposta) {
           console.log(`#ERRO: ${resposta}`);
 
         });
+           }
+                    alert("Cadastro realizado com sucesso!");
 
-    }
   }
 
 </script>
