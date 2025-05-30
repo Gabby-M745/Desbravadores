@@ -18,7 +18,19 @@
     --new-black: #212427;
     --new-white: #E8E8E8;
 }
+#imagem {
 
+        position: absolute;  /* Fixa no canto da tela */
+        top: 520px;
+        right: 100px;
+        padding: 0;    /* Espaço da borda */
+      }
+      
+      #imagem img {
+        width: 120%;
+        height: 100%;     /* Tamanho da imagem, ajuste se quiser */
+      }
+      
 #app { /*BLOCO ONDE FICA AS PERGUNTAS*/
       --glow-color: rgb(255, 244, 144);/*cor da variável*/
         --glow-spread-color: rgba(255, 255, 255, 0.781);
@@ -45,8 +57,18 @@
     flex-direction: column; /* Alinha os itens em coluna */
    /* border: 2px solid var(--secondary-brand-color); /* Borda azul */
     padding: 20px; /* Adiciona espaço interno */
+}
+
+#opcoes span{
+margin-bottom: 15px;
 
 }
+
+#opcoes span.ultOpcao{
+    margin-bottom: 0;/*espaco entre  o botão e a opção */
+    
+    }
+
 /*
 .app h1 {
   font-weight: 25px;
@@ -61,7 +83,11 @@ body {
     color: var(--new-black);
     background-color: var(--new-white);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-color: #8b8b8b;
+    background-color: #000000;
+  /*  background-image: url("sant-removebg-preview.png");*/
+    background-repeat: no-repeat;
+	background-size: 100%;
+	background-attachment:fixed;
 }
 
 button {
@@ -185,4 +211,10 @@ transform: perspective(1.5em) rotateX(35deg) scale(1, .6);/*efeito de luz*/
   box-shadow: 0 0 0.6em .25em var(--glow-color),
          0 0 2.5em 2em var(--glow-spread-color),
          inset 0 0 .5em .25em var(--glow-color);
+ }
+
+ @media (max-width: 1500px) {
+    #imagem{
+        visibility: hidden;
+    }
  }
