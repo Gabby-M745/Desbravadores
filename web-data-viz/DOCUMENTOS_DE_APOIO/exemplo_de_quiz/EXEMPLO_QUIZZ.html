@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+      <link rel="icon" href="img/icon01.png"> <!--voltar e fazer o caminho-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exemplo - Quiz</title>
     <link rel="stylesheet" href="style.css">
@@ -62,12 +63,11 @@
                 </div>
 
                 <div id="botoes" class="flex-colunar padding-8">
-                    <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>/<!--SOBRE O BOTÃO QUE APARECE LÁ NO PRIMEIRO BOTÃO-->
+                    <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button><!--SOBRE O BOTÃO QUE APARECE LÁ NO PRIMEIRO BOTÃO-->
                     <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima questão</button><!--SOBRE O SEGUNDO BOTÃO QUE FICA SUBLINHADO-->
                     <!-- <button onclick="finalizar()" id="btnConcluir" disabled>Finalizar Quiz</button> -->
                     <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
                 </div>
-
             </div>
         </div>
     </div>
@@ -127,7 +127,6 @@
         document.getElementById('jogo').style.display = "flex"
         document.getElementById('btnIniciarQuiz').style.display = "none"
         document.getElementById('app').style.display = "flex"/*!!!!!!!!!*/
-
         document.getElementById('qtdQuestoes').innerHTML = quantidadeDeQuestoes
 
         preencherHTMLcomQuestaoAtual(0)

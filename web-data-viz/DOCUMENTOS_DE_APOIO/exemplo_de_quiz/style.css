@@ -1,9 +1,10 @@
 /* Não usar pure white or pure black: https://uxplanet.org/basicdesign-never-use-pure-black-in-typography-36138a3327a6 */
 /* The 4-point grid system: https://medium.com/@sainzkike/controlling-spacing-in-design-systems-multiple-spacing-9bf1afec87f */
 
+
 :root {
     --primary-brand-color: #ED145B;
-    --secondary-brand-color: #0762C8;
+    --secondary-brand-color: #000000;
     --success: #198754;
     --success-dark: #095c36;
     --success-light: #9dd3ba;
@@ -18,14 +19,35 @@
     --new-white: #E8E8E8;
 }
 
-#app {/*BLOCO ONDE FICA AS PERGUNTAS*/
-  background-color: rgba(215, 9, 9, 0.734);
+#app { /*BLOCO ONDE FICA AS PERGUNTAS*/
+      --glow-color: rgb(255, 244, 144);/*cor da variável*/
+        --glow-spread-color: rgba(255, 255, 255, 0.781);
+
+  background-color: rgba(247, 247, 247, 0.734);
   width: 90%;
   max-width: 600px;
   margin: 100px auto 0;
-  padding: 30px;
-  border-radius:10px
-}/*
+  padding: 25px;
+  border-radius:30px;
+  border: 0.25em solid gold; /* Borda dourada */
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5); /* Sombra dourada */
+  border: .25em solid var(--glow-color);
+   box-shadow: 0 0 1em .25em var(--glow-color),/*sombreamento da borda*/
+         0 0 4em 1em var(--glow-spread-color),/*também*/
+         inset 0 0 .75em .25em var(--glow-color);/*tambéma  msm coisa*/
+
+}
+
+#jogo{
+    width: 100%; /* Ocupar 100% da largura do contêiner pai */
+    height: 100%; /* Ocupar 100% da altura do contêiner pai */
+    display: flex; /* Usar flexbox para alinhar os itens */
+    flex-direction: column; /* Alinha os itens em coluna */
+   /* border: 2px solid var(--secondary-brand-color); /* Borda azul */
+    padding: 20px; /* Adiciona espaço interno */
+
+}
+/*
 .app h1 {
   font-weight: 25px;
   color: #001e4d;
@@ -34,10 +56,12 @@
   padding-bottom: 30px;
   text-align:center
 }*/
+
 body {
     color: var(--new-black);
     background-color: var(--new-white);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #8b8b8b;
 }
 
 button {
@@ -59,8 +83,9 @@ button {
 }
 
 .border-secondary {
-    border: 0px solid var(--secondary-brand-color);/*!!!!!!!!!!!! BORDA DO: <div id="jogo" class="width-fit-content flex-colunar border-secondary">
-*/
+    border: 0px solid var(--secondary-brand-color);/*!!!!!!!!!!!! BORDA DO: <div id="jogo" class="width-fit-content flex-colunar border-secondary">*/
+    
+    border-radius: 20px;
 }
 
 .padding-8 {
@@ -89,3 +114,75 @@ button {
 .text-new-gray {
     color: var(--new-gray);
 }
+
+#pontuacaoEJogo {
+    position: relative; /* Adicione isso ao contêiner pai */
+    height: 100vh; /* Defina uma altura para o contêiner, se necessário */
+}
+/*BOTÃO*/
+#btnIniciarQuiz{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
+                0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+#btnIniciarQuiz  {
+  --glow-color: rgb(217, 176, 255);/*cor da variável*/
+  --glow-spread-color: rgba(191, 123, 255, 0.781);
+  --enhanced-glow-color: rgb(231, 206, 255);
+  --btn-color: rgb(100, 61, 136);
+  border: .25em solid var(--glow-color);
+  padding: 1em 3em;
+  color: var(--glow-color);
+  font-size: 25px;
+  font-weight: bold;
+  background-color: var(--btn-color);
+  border-radius: 1em;
+  outline: none;
+  box-shadow: 0 0 1em .25em var(--glow-color),/*sombreamento da borda*/
+         0 0 4em 1em var(--glow-spread-color),/*também*/
+         inset 0 0 .75em .25em var(--glow-color);/*tambéma  msm coisa*/
+  text-shadow: 0 0 .5em var(--glow-color);/*sombreamento do texto*/
+  position: relative;
+  transition: all 0.3s;
+ }
+    /*font-size: 25px;
+    font-weight: 500;
+    color: #007bff;
+    padding: 15px 30px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background: #fff;
+	display:flex;*/
+
+
+    /*estilização da sombra*/
+/*#btnIniciarQuiz:after {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  top: 120%;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--glow-spread-color);
+  filter: blur(2em);/*listro de extenção da luz*/
+ /*opacity: .7;
+transform: perspective(1.5em) rotateX(35deg) scale(1, .6);/*efeito de luz*/
+ /*}*/
+ 
+ #btnIniciarQuiz:hover {/*responsável na cor do botão ativado*/
+  color: var(--btn-color);
+  background-color: var(--glow-color);
+  box-shadow: 0 0 1em .25em var(--glow-color),
+         0 0 4em 2em var(--glow-spread-color),
+         inset 0 0 .75em .25em var(--glow-color);
+ }
+ #btnIniciarQuiz:active {/*cor ativada*/
+  box-shadow: 0 0 0.6em .25em var(--glow-color),
+         0 0 2.5em 2em var(--glow-spread-color),
+         inset 0 0 .5em .25em var(--glow-color);
+ }
