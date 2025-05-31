@@ -18,56 +18,73 @@
     --new-black: #212427;
     --new-white: #E8E8E8;
 }
+
 #imagem {
 
-        position: absolute;  /* Fixa no canto da tela */
-        top: 520px;
-        right: 100px;
-        padding: 0;    /* Espaço da borda */
-      }
-      
-      #imagem img {
-        width: 120%;
-        height: 100%;     /* Tamanho da imagem, ajuste se quiser */
-      }
-      
-#app { /*BLOCO ONDE FICA AS PERGUNTAS*/
-      --glow-color: rgb(255, 244, 144);/*cor da variável*/
-        --glow-spread-color: rgba(255, 255, 255, 0.781);
+    position: absolute;
+    /* Fixa no canto da tela */
+    top: 520px;
+    right: 100px;
+    padding: 0;
+    /* Espaço da borda */
+}
 
-  background-color: rgba(247, 247, 247, 0.734);
-  width: 90%;
-  max-width: 600px;
-  margin: 100px auto 0;
-  padding: 25px;
-  border-radius:30px;
-  border: 0.25em solid gold; /* Borda dourada */
-  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5); /* Sombra dourada */
-  border: .25em solid var(--glow-color);
-   box-shadow: 0 0 1em .25em var(--glow-color),/*sombreamento da borda*/
-         0 0 4em 1em var(--glow-spread-color),/*também*/
-         inset 0 0 .75em .25em var(--glow-color);/*tambéma  msm coisa*/
+#imagem img {
+    width: 120%;
+    height: 100%;
+    /* Tamanho da imagem, ajuste se quiser */
+}
+
+#app {
+    /*BLOCO ONDE FICA AS PERGUNTAS*/
+    --glow-color: rgb(255, 244, 144);
+    /*cor da variável*/
+    --glow-spread-color: rgba(255, 255, 255, 0.781);
+
+    background-color: rgba(255, 255, 255, 0.734);
+    width: 90%;
+    max-width: 600px;
+    margin: 100px auto 0;
+    padding: 25px;
+    border-radius: 30px;
+    border: 0.25em solid gold;
+    /* Borda dourada */
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    /* Sombra dourada */
+    border: .25em solid var(--glow-color);
+    box-shadow: 0 0 1em .25em var(--glow-color),
+        /*sombreamento da borda*/
+        0 0 4em 1em var(--glow-spread-color),
+        /*também*/
+        inset 0 0 .75em .25em var(--glow-color);
+    /*tambéma  msm coisa*/
 
 }
 
-#jogo{
-    width: 100%; /* Ocupar 100% da largura do contêiner pai */
-    height: 100%; /* Ocupar 100% da altura do contêiner pai */
-    display: flex; /* Usar flexbox para alinhar os itens */
-    flex-direction: column; /* Alinha os itens em coluna */
-   /* border: 2px solid var(--secondary-brand-color); /* Borda azul */
-    padding: 20px; /* Adiciona espaço interno */
+#jogo {
+    width: 100%;
+    /* Ocupar 100% da largura do contêiner pai */
+    height: 100%;
+    /* Ocupar 100% da altura do contêiner pai */
+    display: flex;
+    /* Usar flexbox para alinhar os itens */
+    flex-direction: column;
+    /* Alinha os itens em coluna */
+    /* border: 2px solid var(--secondary-brand-color); /* Borda azul */
+    padding: 20px;
+    /* Adiciona espaço interno */
 }
 
-#opcoes span{
-margin-bottom: 15px;
+#opcoes span {
+    margin-bottom: 15px;
 
 }
 
-#opcoes span.ultOpcao{
-    margin-bottom: 0;/*espaco entre  o botão e a opção */
-    
-    }
+#opcoes span.ultOpcao {
+    margin-bottom: 0;
+    /*espaco entre  o botão e a opção */
+
+}
 
 /*
 .app h1 {
@@ -84,15 +101,16 @@ body {
     background-color: var(--new-white);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     background-color: #000000;
-  /*  background-image: url("sant-removebg-preview.png");*/
+    /*  background-image: url("sant-removebg-preview.png");*/
     background-repeat: no-repeat;
-	background-size: 100%;
-	background-attachment:fixed;
+    background-size: 100%;
+    background-attachment: fixed;
 }
 
 button {
-    font-family: monospace;
+   /* font-family: monospace;*/
     font-weight: bold;
+    font-size: 16px;
 }
 
 .flex-colunar {
@@ -109,8 +127,9 @@ button {
 }
 
 .border-secondary {
-    border: 0px solid var(--secondary-brand-color);/*!!!!!!!!!!!! BORDA DO: <div id="jogo" class="width-fit-content flex-colunar border-secondary">*/
-    
+    border: 0px solid var(--secondary-brand-color);
+    /*!!!!!!!!!!!! BORDA DO: <div id="jogo" class="width-fit-content flex-colunar border-secondary">*/
+
     border-radius: 20px;
 }
 
@@ -142,39 +161,49 @@ button {
 }
 
 #pontuacaoEJogo {
-    position: relative; /* Adicione isso ao contêiner pai */
-    height: 100vh; /* Defina uma altura para o contêiner, se necessário */
+    position: relative;
+    /* Adicione isso ao contêiner pai */
+    height: 100vh;
+    /* Defina uma altura para o contêiner, se necessário */
 }
+
 /*BOTÃO*/
-#btnIniciarQuiz{
+#btnIniciarQuiz {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
-                0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-#btnIniciarQuiz  {
-  --glow-color: rgb(217, 176, 255);/*cor da variável*/
-  --glow-spread-color: rgba(191, 123, 255, 0.781);
-  --enhanced-glow-color: rgb(231, 206, 255);
-  --btn-color: rgb(100, 61, 136);
-  border: .25em solid var(--glow-color);
-  padding: 1em 3em;
-  color: var(--glow-color);
-  font-size: 25px;
-  font-weight: bold;
-  background-color: var(--btn-color);
-  border-radius: 1em;
-  outline: none;
-  box-shadow: 0 0 1em .25em var(--glow-color),/*sombreamento da borda*/
-         0 0 4em 1em var(--glow-spread-color),/*também*/
-         inset 0 0 .75em .25em var(--glow-color);/*tambéma  msm coisa*/
-  text-shadow: 0 0 .5em var(--glow-color);/*sombreamento do texto*/
-  position: relative;
-  transition: all 0.3s;
- }
-    /*font-size: 25px;
+
+#btnIniciarQuiz {
+    --glow-color: rgb(217, 176, 255);
+    /*cor da variável*/
+    --glow-spread-color: rgba(191, 123, 255, 0.781);
+    --enhanced-glow-color: rgb(231, 206, 255);
+    --btn-color: rgb(100, 61, 136);
+    border: .25em solid var(--glow-color);
+    padding: 1em 3em;
+    color: var(--glow-color);
+    font-size: 25px;
+    font-weight: bold;
+    background-color: var(--btn-color);
+    border-radius: 1em;
+    outline: none;
+    box-shadow: 0 0 1em .25em var(--glow-color),
+        /*sombreamento da borda*/
+        0 0 4em 1em var(--glow-spread-color),
+        /*também*/
+        inset 0 0 .75em .25em var(--glow-color);
+    /*tambéma  msm coisa*/
+    text-shadow: 0 0 .5em var(--glow-color);
+    /*sombreamento do texto*/
+    position: relative;
+    transition: all 0.3s;
+}
+
+/*font-size: 25px;
     font-weight: 500;
     color: #007bff;
     padding: 15px 30px;
@@ -185,7 +214,7 @@ button {
 	display:flex;*/
 
 
-    /*estilização da sombra*/
+/*estilização da sombra*/
 /*#btnIniciarQuiz:after {
   pointer-events: none;
   content: "";
@@ -196,25 +225,78 @@ button {
   width: 100%;
   background-color: var(--glow-spread-color);
   filter: blur(2em);/*listro de extenção da luz*/
- /*opacity: .7;
+/*opacity: .7;
 transform: perspective(1.5em) rotateX(35deg) scale(1, .6);/*efeito de luz*/
- /*}*/
- 
- #btnIniciarQuiz:hover {/*responsável na cor do botão ativado*/
-  color: var(--btn-color);
-  background-color: var(--glow-color);
-  box-shadow: 0 0 1em .25em var(--glow-color),
-         0 0 4em 2em var(--glow-spread-color),
-         inset 0 0 .75em .25em var(--glow-color);
- }
- #btnIniciarQuiz:active {/*cor ativada*/
-  box-shadow: 0 0 0.6em .25em var(--glow-color),
-         0 0 2.5em 2em var(--glow-spread-color),
-         inset 0 0 .5em .25em var(--glow-color);
- }
+/*}*/
 
- @media (max-width: 1500px) {
-    #imagem{
+#btnIniciarQuiz:hover {
+    /*responsável na cor do botão ativado*/
+    color: var(--btn-color);
+    background-color: var(--glow-color);
+    box-shadow: 0 0 1em .25em var(--glow-color),
+        0 0 4em 2em var(--glow-spread-color),
+        inset 0 0 .75em .25em var(--glow-color);
+}
+
+#btnIniciarQuiz:active {
+    /*cor ativada*/
+    box-shadow: 0 0 0.6em .25em var(--glow-color),
+        0 0 2.5em 2em var(--glow-spread-color),
+        inset 0 0 .5em .25em var(--glow-color);
+}
+/*
+#infoQuestao{
+
+}*/
+@media (max-width: 1500px) {
+    /* #imagem{
         visibility: hidden;
-    }
- }
+    }*/
+}
+
+#btnSubmeter {
+    border-radius: 1em;
+    cursor: pointer;
+padding: 0.5em 1.5em;/*espaçamento interno do botão*/
+
+}
+
+#btnSubmeter:hover {
+    color: var(--btn-color);
+    /*  background-color: var(--glow-color);*/
+    box-shadow: 0 0 1em .25em var(--glow-color),
+        0 0 4em 2em var(--glow-spread-color),
+        inset 0 0 .75em .25em var(--glow-color);
+
+}
+
+#btnProx {
+    border-radius: 1em;
+    cursor: pointer;
+padding: 0.5em 1.5em;/*espaçamento interno do botão*/
+
+}
+
+#btnSubmeter:hover {
+    color: var(--btn-color);
+    /*  background-color: var(--glow-color);*/
+    box-shadow: 0 0 1em .25em var(--glow-color),
+        0 0 4em 2em var(--glow-spread-color),
+        inset 0 0 .75em .25em var(--glow-color);
+
+}
+
+#btnTentarNovamente {
+    border-radius: 1em;
+    cursor: pointer;
+padding: 0.5em 1.5em;/*espaçamento interno do botão*/
+}
+
+#btnTentarNovamente:hover {
+    color: var(--btn-color);
+    /*  background-color: var(--glow-color);*/
+    box-shadow: 0 0 1em .25em var(--glow-color),
+        0 0 4em 2em var(--glow-spread-color),
+        inset 0 0 .75em .25em var(--glow-color);
+
+}
