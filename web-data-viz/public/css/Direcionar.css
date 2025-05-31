@@ -17,6 +17,14 @@ body {
     background: #1a2f38;
     /*cor de fundo*/
     font-family: sans-serif;
+       color: var(--new-black);
+    background-color: var(--new-white);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /*background-color: #d1cccc;*/
+    background-image: url("../img/quiz1.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-attachment: fixed;
 }
 .containerPai {
     margin-top: 40px;
