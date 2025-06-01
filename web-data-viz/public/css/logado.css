@@ -1,110 +1,53 @@
 * {
-	margin: 0px;
-	padding: 0px;
-}html {
-	scroll-behavior: smooth; /*scroll suave*/
+    margin: 0 auto;
+    padding: 0%;
+    font-family: Poppins, sans-serif;
 }
-body {
-    font-family: Arial, sans-serif;
-    background: #f0f0f0;
-    margin: 20px;
-    color: #333;
-  }
-/*  ------- */
-  .menu-container {
+
+header {
     background: #1a2f38;
     border-radius: 8px;
     padding: 10px 20px;
-    /*width: 100%;*/
-/*    max-width: 700px; LARGURA DO MENU
-  */  margin-bottom: 30px;
+    margin: 0;
+    /* Remover a margem para ocupar 100% da largura */
+    width: 100%;
+    /* Descomentar esta linha para garantir 100% da largura */
+    margin-bottom: 30px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
-  .menu-logo {
-    width: 60px;          
-  height: auto;         
-  margin-right: 20px;   
-  cursor: pointer;       
-  transition: transform 0.3s ease;
 
-  }
-  .menu-items {
+    /*background-color: #f1d598;
+        padding: 12px 0;
+        width: 100%;
+        position: relative;*/
+}
+
+.container {
+    width: 95%;
+    margin: 0 auto;
     display: flex;
-    gap: 30px;
-  }
-  .menu-items a {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navegacao {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.navegacao li a {
+    text-decoration: none;
     color: #cfd8dc;
     font-weight: 600;
-    font-size: 1.1rem;
-    padding: 8px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    user-select: none;
-    line-height: 1.5;
-  }
-  .menu-items a:hover {
-    background-color: #c03706e0;
-    color: #fff;
-  }
-  /*------------------------*/
-.servicos-dark {
-    background-color: #243238 ;
-    padding: 5rem 2rem;
-  }
+}
 
-  .cards-mvv {
-    display: flex;
-    justify-content: center;
-    gap: 32px;
-    padding: 2px 0;
-  }
-  
-  .card-mvv {
-    width: 500px;
-    min-height: 320px;
-    padding: 24px;
-    background-color: #eeeeee;
-    border-radius: 16px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .card-mvv:hover { /*interaçãoo do cursosr sobre o card branco*/
-    transform: scale(1.05);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-  }
-  
-  .card-mvv h5 {
-    margin-top: 16px;
-    font-size: 1.25rem;
-    color: #1a1a1a;
-  }
-  
-  .card-mvv ul {
-    margin-top: 12px;
-    font-size: 0.95rem;
-    color: #333;
-    line-height: 1.5;
-  }
-  
-  .icone-circulo {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    background-color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .icone-circulo img {
-    width: 32px;
-    height: 32px;
-  }
+.acesso a {
+    margin-left: 15px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #cfd8dc;
+}

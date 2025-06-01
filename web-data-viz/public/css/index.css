@@ -1,53 +1,135 @@
+html{
+  scroll-behavior: smooth; /*scroll suave*/
+}
 body {
     font-family: Arial, sans-serif;
     background: #f0f0f0;
     color: #333;
   }
-  .menu-container {
+  * {
+  margin: 0 auto;
+  padding: 0%;
+  font-family: Poppins, sans-serif;
+}
+:root {
+  --bege-claro: #f2d79d;
+  --verde-escoteiro: #166345;
+  --laranja-escoteiro: #d99b50;
+  --texto-escuro: #333;
+}
+ header {
     background: #1a2f38;
-    border-radius: 8px;
-    padding: 10px 20px;
-    margin: 20px;
-    /*width: 100%;*/
-/*    max-width: 700px; LARGURA DO MENU
-  */  margin-bottom: 30px;
+    border-radius: 2px;
+    padding: 3px 20px;
+    margin: 0;
+    /* Remover a margem para ocupar 100% da largura */
+    width: 98%;
+    /* Descomentar esta linha para garantir 100% da largura */
+    margin-bottom: 30px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
-  .menu-logo {
-    width: 60px;          
-  height: auto;         
-  margin-right: 20px;   
-  cursor: pointer;       
-  transition: transform 0.3s ease;
 
-  }
-  .menu-items {
+    /*background-color: #f1d598;
+        padding: 12px 0;
+        width: 100%;
+        position: relative;*/
+}
+
+.container {
+    width: 95%;
+    margin: 0 auto;
     display: flex;
-    gap: 30px;
-  }
-  .menu-items a {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navegacao {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.navegacao li a {
+    text-decoration: none;
     color: #cfd8dc;
     font-weight: 600;
-    font-size: 1.1rem;
-    padding: 8px 12px;
-    border-radius: 6px;
-    cursor: pointer;
+}
+.navegacao li a:hover{
+    color: #b64d2d;
+
+}
+.acesso a {
+    margin-left: 15px;
     text-decoration: none;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    user-select: none;
-    line-height: 1.5;
-  }
-  .menu-items a:hover {
-    background-color: #c03706e0;
-    color: #fff;
-  }
-  /*----------------------------------*/
+    font-weight: 600;
+    color: #cfd8dc;
+}
+ 
+/*------------------------------*/
+.inicio {
+background: url('../img/5fundo.png') center/cover no-repeat;
+ height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+  position: relative;
+  color: white;
+}
+.inicio h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/*----------------------------------*/
+.criadora-section {
+    background: #1a2f38;
+  padding: 70px 20px;
+}
+
+.criadora-container {
+
+  background-color: rgba(133, 148, 151, 0.404);
+  width: 90%;
+  max-width: 600px;
+  margin: 100px auto 0;
+  padding: 30px;
+  border-radius:10px;
+
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.criadora-container h2 {
+  color: #ffffff;
+  font-family: Rubik, sans-serif;
+}
+
+.criadora-conteudo {
+    color: #dadada;
+
+  flex: 1;
+  min-width: 260px;
+}
+.criadora-imagem img{
+ width: 170px;
+
+}
+/*----------------------*/
   .servicos-dark {
-    width: 96.9%;
+    width: 96.6%;
     background-color: #243238 ;
-    padding: 5rem 2rem;
+    padding: 4rem 2rem;
   }
 
   .cards-mvv {
@@ -102,3 +184,63 @@ body {
     width: 32px;
     height: 32px;
   }
+  /*também embaixo*/
+
+.notas-futuro {
+  display: flex;
+  flex-direction: row;
+  background-color: #eeee;
+  color: #222;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 0px;
+  font-size: 0.95rem;
+  text-align: left;
+}
+
+.notas-futuro img {
+ position: relative;
+ right: -150px;
+ top: -10px;
+}
+
+.imagem-direita img {
+  width: 350px;
+  height: auto;
+  border-radius: 10px;
+  position: relative;
+  left: -65px;
+  top: 110px;
+  z-index: 10;
+}
+
+  /*embaixoooooo*/
+footer {
+    background-color: #243238 ;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  width: 100%;
+}
+
+.logo {
+  width:150px;
+}
+
+.icons a {
+  margin-left: 15px;
+}
+.icons a img {
+ width: 70px;;
+}
+footer p {
+  font-size: 14px;
+  margin-top: 10px;
+}
