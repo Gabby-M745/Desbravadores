@@ -11,7 +11,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #ecf0f1;
+    background-color: #9b9b9b;
 }
 .content {
     background-color: #fff; /*PARTE DIREITA:nome, clube,unidade,associação/Missão, senha, confirmação*/
@@ -25,7 +25,7 @@ body {
 .content::before {
     content: "";
     position: absolute;
-    background-color: #58af9b;/*PARTE ESQUERDA: "BOAS VINDAS" E "FAÇA LOGIN COOM SUAS INFORMAÇÕES"*/
+    background: #1a2f38;/*PARTE ESQUERDA: "BOAS VINDAS" E "FAÇA LOGIN COOM SUAS INFORMAÇÕES"*/
     width: 40%;
     height: 100%;
     border-top-left-radius: 15px;
@@ -43,7 +43,7 @@ body {
     color: #fff;
 }
 .title-second {
-    color: #58af9b; /*TÍTULO DO CADASTRO; PARTE DE nome, clube etc */
+  color: #1a2f38; /*TÍTULO DO CADASTRO; PARTE DE nome, clube etc */
 }
 .description {
     font-size: 14px;
@@ -76,11 +76,11 @@ body {
 }
 .btn-primary:hover {
     background-color: #fff;
-    color: #58af9b;
+    color: #3d3f3f;
 }
 .btn-second {
-    background-color: #58af9b;
-    border: 1px solid #58af9b;
+    background: #1a2f38;
+    border: 1px solid #393b3b;
     transition: background-color .5s;
 }
 .btn-second:hover {

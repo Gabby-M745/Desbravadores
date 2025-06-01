@@ -15,17 +15,17 @@
   <div class="container">
     <div class="content first-content">
       <div class="first-column">
-        <h2 class="title title-primary">welcome back!</h2>
-        <p class="description description-primary">To keep connected with us</p>
-        <p class="description description-primary">please login with your personal info</p>
-        <button id="signin" class="btn btn-primary">sign in</button>
+        <h2 class="title title-primary">bem vindo de volta!</h2>
+        <p class="description description-primary">Para se manter conectado conosco</p>
+        <p class="description description-primary">por favor faça login com suas informações pessoais</p>
+        <button id="signin" class="btn btn-primary">entrar</button>
       </div>
       <div class="second-column">
-        <h2 class="title title-second">create account</h2>
+        <h2 class="title title-second">criar uma conta</h2>
         <form class="form">
           <label class="label-input" for="">
             <i class="far fa-user icon-modify"></i>
-            <input type="text" id="nome" placeholder="Nome">
+            <input type="text" id="nome" placeholder="Nome**">
           </label>
 
           <label class="label-input" for="">
@@ -53,29 +53,29 @@
 
           <label class="label-input" for="">
             <i class="fas fa-lock icon-modify"></i>
-            <input type="password" id="senha" placeholder="Senha">
+            <input type="password" id="senha" placeholder="Senha**">
           </label>
 
           <label class="label-input" for="">
             <i class="fas fa-lock icon-modify"></i>
-            <input type="password" id="confirmaS" placeholder="Confirma a sua senha">
+            <input type="password" id="confirmaS" placeholder="Confirma a sua senha**">
           </label>
 
 
-          <button class="btn btn-second" onclick="cadastrar()">sign up</button>
+          <button class="btn btn-second" onclick="cadastrar()">Entrar</button>
         </form>
       </div><!-- second column -->
     </div><!-- first content -->
     <div class="content second-content">
       <div class="first-column">
-        <h2 class="title title-primary">hello, friend!</h2>
-        <p class="description description-primary">Enter your personal details</p>
-        <p class="description description-primary">and start journey with us</p>
-        <button id="signup" class="btn btn-primary">sign up</button>
+        <h2 class="title title-primary">Olá!</h2>
+        <p class="description description-primary">Insira seus dados pessoais</p>
+        <p class="description description-primary">e comece a jornada conosco</p>
+        <button id="signup" class="btn btn-primary">Entrar</button>
       </div>
       <div class="second-column">
-        <h2 class="title title-second">sign in to developer</h2>
-        <p class="description description-second">or use your email account:</p>
+        <h2 class="title title-second">Entre na página!</h2>
+        <p class="description description-second">ou use sua conta de e-mail:</p>
         <form class="form">
 
           <label class="label-input" for="">
@@ -88,7 +88,7 @@
             <input type="password" id="senhaLogin" placeholder="Password">
           </label>
 
-          <a class="password" href="#">forgot your password?</a>
+          <a class="password" href="#">Esqueceu sua senha?</a>
           <button class="btn btn-second" onclick="autenticar()">Entrar!</button>
           
         </form>
@@ -182,39 +182,39 @@
       alert("Preencha todos os campos");
       return
     }*/
+
+if (!usuario ||  !senhaD7 || !confirmar || !pessoa) {
+        alert("Por favor, preencha todos os campos obrigatórios!");
+        // Interrompe a execução da função
+       }
     if (senhaD7 != confirmar) {
-      alert("Senhas não coincidem!!")
+        alert("Senhas não coincidem!!");
     } else {
-      //  alert("Acessando o fetch!");
-      fetch("/usuarios/cadastrar", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          // crie um atributo que recebe o valor recuperado aqui
-          // Agora vá para o arquivo routes/usuario.js
-          nomeServer: usuario,
-          clubeServer: clubeD7,
-          unidadeServer: unidadeD7,
-          assocServer: assocaiaoM,
-          senhaServer: senhaD7,
-          pessoaServer: pessoa
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                nomeServer: usuario,
+                clubeServer: clubeD7,
+                unidadeServer: unidadeD7,
+                assocServer: assocaiaoM,
+                senhaServer: senhaD7,
+                pessoaServer: pessoa
+            }),
+        })
 
-        }),
-
-      })       
         .then(function (resposta) {
-          console.log("resposta: ", resposta);
-          
+            console.log("resposta: ", resposta);
+            alert("Cadastro realizado com sucesso!");
         })
         .catch(function (resposta) {
-          console.log(`#ERRO: ${resposta}`);
-
+            console.log(`#ERRO: ${resposta}`);
+            return;
         });
-           }
-                    alert("Cadastro realizado com sucesso!");
-
-  }
+      
+    }
+}
 
 </script>
