@@ -75,7 +75,7 @@
       </div>
       <div class="second-column">
         <h2 class="title title-second">Entre na página!</h2>
-        <p class="description description-second">ou use sua conta de e-mail:</p>
+      <!-- <p class="description description-second">ou use sua conta de e-mail:</p> --> 
         <form class="form">
 
           <label class="label-input" for="">
@@ -88,7 +88,7 @@
             <input type="password" id="senhaLogin" placeholder="Password">
           </label>
 
-          <a class="password" href="#">Esqueceu sua senha?</a>
+        <!-- <a class="password" href="#">Esqueceu sua senha?</a>-->  
           <button class="btn btn-second" onclick="autenticar()">Entrar!</button>
           
         </form>
@@ -189,6 +189,7 @@ if (!usuario ||  !senhaD7 || !confirmar || !pessoa) {
        }
     if (senhaD7 != confirmar) {
         alert("Senhas não coincidem!!");
+        
     } else {
         fetch("/usuarios/cadastrar", {
             method: "POST",

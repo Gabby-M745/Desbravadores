@@ -12,9 +12,10 @@ body {
     align-items: center;
     height: 100vh;
     background-color: #9b9b9b;
+    background-image: url('../img/len.png');
 }
 .content {
-    background-color: #fff; /*PARTE DIREITA:nome, clube,unidade,associação/Missão, senha, confirmação*/
+   background-color: rgba(133, 148, 151, 0.404); /*PARTE DIREITA:nome, clube,unidade,associação/Missão, senha, confirmação*/
     border-radius: 15px;
     width: 960px;
     height: 85%;
@@ -43,7 +44,7 @@ body {
     color: #fff;
 }
 .title-second {
-  color: #1a2f38; /*TÍTULO DO CADASTRO; PARTE DE nome, clube etc */
+  color: #ffffff; /*TÍTULO DO CADASTRO; PARTE DE nome, clube etc */
 }
 .description {
     font-size: 14px;
@@ -52,10 +53,10 @@ body {
 }
 .description-primary {
     color: #fff;
-}
+}/*
 .description-second {
-    color: #8d817f; /*descrição da parte do LOGIN , o login mesmo*/
-}
+    color: #dddbda; /*descrição da parte do LOGIN , o login mesmo
+}*/
 .btn {
     border-radius: 15px;
     text-transform: uppercase;
