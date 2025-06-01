@@ -118,12 +118,17 @@ background: url('../img/5fundo.png') center/cover no-repeat;
     margin: 30px auto 0 auto;
     padding: 10px 25px;
     font-size: 1.1rem;
-    border-radius: 8px;
+    border-radius: 3px;
     border: none;
-    background-color: #3b82f6;
+    background-color:#1a2f38;
     color: white;
     cursor: pointer;  
 }
+.apresentar button:hover {
+background-color: #2a586b;
+}
+
+
 
 /*----------------------------------*/
 .criadora-section {
