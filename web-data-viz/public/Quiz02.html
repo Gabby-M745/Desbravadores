@@ -3,12 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="icon.png"> <!--voltar e fazer o caminho-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exemplo - Quiz</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/Quiz2.css">
 </head>
-
 
 <body onload="onloadEsconder()">
     <div id="pontuacaoEJogo">
@@ -27,56 +25,49 @@
             </div>
         </div>
 
-        <div id="app"> <!--QUADRADO # no CSS-->
-            <div id="jogo" class="width-fit-content flex-colunar border-secondary">
+        <div id="jogo" class="width-fit-content flex-colunar border-secondary">
 
-                <div id="infoQuestao" class="padding-8">
-                    <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de <span id="qtdQuestoes"></span>
-                        questões.</span>
-                </div>
-
-                <div id="perguntaDaQuestaoAtual" class="padding-8">
-                    <span id="spanQuestaoExibida" class="text-bold"></span>
-                </div>
-
-                <div id="infoAlternativas" class="padding-8">
-                    <span><em>Escolha uma opção dentre as abaixo:</em></span>
-                </div>
-
-                <div id="opcoes" class="flex-colunar padding-8">
-                    <span>
-                        <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
-                        <label for="primeiraOpcao" class="option" id="labelOpcaoUm"></label>
-                    </span>
-                    <span>
-                        <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />
-                        <label for="segundaOpcao" class="option" id="labelOpcaoDois"></label>
-                    </span>
-                    <span>
-                        <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />
-                        <label for="terceiraOpcao" class="option" id="labelOpcaoTres"></label>
-                    </span>
-                    <span class="ultOpcao">
-                        <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />
-                        <label for="quartaOpcao" class="option" id="labelOpcaoQuatro"></label>
-                    </span>
-                </div>
-
-                <div id="botoes" class="flex-colunar padding-8">
-                    <button onclick="submeter()" id="btnSubmeter">Submeter
-                        resposta</button><!--SOBRE O BOTÃO QUE APARECE LÁ NO PRIMEIRO BOTÃO-->
-                    <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima
-                        questão</button><!--SOBRE O SEGUNDO BOTÃO QUE FICA SUBLINHADO-->
-                    <!-- <button onclick="finalizar()" id="btnConcluir" disabled>Finalizar Quiz</button> -->
-                    <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
-                </div>
+            <div id="infoQuestao" class="padding-8">
+                <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de <span id="qtdQuestoes"></span>
+                    questões.</span>
             </div>
+
+            <div id="perguntaDaQuestaoAtual" class="padding-8">
+                <span id="spanQuestaoExibida" class="text-bold"></span>
+            </div>
+
+            <div id="infoAlternativas" class="padding-8">
+                <span><em>Escolha uma opção dentre as abaixo:</em></span>
+            </div>
+
+            <div id="opcoes" class="flex-colunar padding-8">
+                <span>
+                    <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
+                    <label for="primeiraOpcao" class="option" id="labelOpcaoUm"></label>
+                </span>
+                <span>
+                    <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />
+                    <label for="segundaOpcao" class="option" id="labelOpcaoDois"></label>
+                </span>
+                <span>
+                    <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />
+                    <label for="terceiraOpcao" class="option" id="labelOpcaoTres"></label>
+                </span>
+                <span>
+                    <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />
+                    <label for="quartaOpcao" class="option" id="labelOpcaoQuatro"></label>
+                </span>
+            </div>
+
+            <div id="botoes" class="flex-colunar padding-8">
+                <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
+                <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima questão</button>
+                <!-- <button onclick="finalizar()" id="btnConcluir" disabled>Finalizar Quiz</button> -->
+                <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
+            </div>
+
         </div>
     </div>
-    <!--<div id="imagem"> 
-        <img src="sant-removebg-preview.png" alt="Imagem">
-      </div>
-    -->
 </body>
 
 </html>
@@ -84,75 +75,32 @@
     const listaDeQuestoes = [
 
         {
-            pergunta: "Quantos revestimentos cobriam o Santuário?",
-            alternativaA: "A) Pátio, Lugar Santo, Lugar Santíssimo",
-            alternativaB: "B) Pátio, Lugar Sagrado, Lugar de Oração ",
-            alternativaC: "C) Pátio, Templo, Altar",
-            alternativaD: "D) Pátio, Sacerdócio, Arca",
-            alternativaCorreta: "alternativaA"
-        },
-
-        {
-            pergunta: "Quantos revestimentos cobriam o Santuário?",
-            alternativaA: "A) 2 revestimentos",
-            alternativaB: "B) 3 revestimentos",
-            alternativaC: "C) 4 revestimentos",
-            alternativaD: "D) 5 revestimentos",
+            pergunta: "Qual mês tem 30 dias?",
+            alternativaA: "Janeiro",
+            alternativaB: "Dezembro",
+            alternativaC: "Junho",
+            alternativaD: "Agosto",
             alternativaCorreta: "alternativaC"
         },
 
         {
-            pergunta: "Quais cores foram usadas no Santuário e nas vestes do Sacerdote?",
-            alternativaA: "A) Vermelho, Azul, Púrpura, Branco, Preto, Ouro, Prata, Bronze",
-            alternativaB: "B) Verde, Amarelo, Azul, Vermelho, Preto, Ouro, Prata, Bronze",
-            alternativaC: "C) Vermelho, Azul, Verde, Branco, Preto, Ouro, Prata, Bronze",
-            alternativaD: "D) Vermelho, Azul, Púrpura, Branco, Preto, Ouro, Prata, Cinza",
-            alternativaCorreta: "alternativaA"
+            pergunta: "Quantas horas tem em um dia?",
+            alternativaA: "30 horas",
+            alternativaB: "38 horas",
+            alternativaC: "48 horas",
+            alternativaD: "24 horas",
+            alternativaCorreta: "alternativaD"
         },
-           {
-            pergunta: "De qual das 12 tribos pertencia o Sacerdote?",
-            alternativaA: "A) Tribo de Judá ",
-            alternativaB: "B) Tribo de Levi ",
-            alternativaC: "C) Tribo de Benjamim",
-            alternativaD: "D) Tribo de Efraim",
-            alternativaCorreta: "alternativaB"
-        },
-           {
-            pergunta: "Descreva as vestimentas do Sumo-Sacerdote:",
-            alternativaA: "A) Vestes simples ",
-            alternativaB: "B) Vestes de linho ",
-            alternativaC: "C) Vestes ornamentadas ",
-            alternativaD: "D) Vestes de lã",
-            alternativaCorreta: "alternativaC"
-             
-        },
+
         {
-            pergunta: "Quais animais eram trazidos diariamente ao pátio?",
-            alternativaA: "A) Cordeiro, Cabra, Pomba  ",
-            alternativaB: "B) Cordeiro Macho, Novilho, Ovelha, Pombinha, Cabrito, Boi, Cabra, Bode, Aves, Novilha Ruiva",
-            alternativaC: "C) Cordeiro, Galo, Pato",
-            alternativaD: "D) Cordeiro, Porco, Cabra",
-            alternativaCorreta: "alternativaB"
-         
-        },
-        {
-            pergunta: "Como Cristo era representado através do Santuário e seus serviços?",
-            alternativaA: "A) Através de sacrifícios de animais  ",
-            alternativaB: "B) Através de rituais de purificação",
-            alternativaC: "C) Através de orações ",
-            alternativaD: "D) Através de festas religiosas ",
-            alternativaCorreta: "alternativaA"
-        },
-        {
-            pergunta: "Qual era a função principal do Santuário no contexto do povo de Israel?",
-            alternativaA: "A)Servir como um local de adoração e sacrifício a Deus  ",
-            alternativaB: "B)Prover abrigo para os viajantes",
-            alternativaC: "C) Ser um centro de comércio e troca.",
-            alternativaD: "D)Funcionar como uma escola para ensinar a lei.",
-            alternativaCorreta: "alternativaC"
-             
+            pergunta: "Qual destes números é ímpar?",
+            alternativaA: "Dez",
+            alternativaB: "Doze",
+            alternativaC: "Oito",
+            alternativaD: "Onze",
+            alternativaCorreta: "alternativaD"
         }
-        
+
     ]
 
     // variáveis globais    
@@ -167,20 +115,18 @@
     function onloadEsconder() {
         document.getElementById('pontuacao').style.display = "none"
         document.getElementById('jogo').style.display = "none"
-        document.getElementById('app').style.display = "none"/**/
-
     }
 
     function iniciarQuiz() {
-        document.getElementById('pontuacao').style.display = "none"
+        document.getElementById('pontuacao').style.display = "flex"
         document.getElementById('jogo').style.display = "flex"
         document.getElementById('btnIniciarQuiz').style.display = "none"
-        document.getElementById('app').style.display = "flex"/*!!!!!!!!!*/
+
         document.getElementById('qtdQuestoes').innerHTML = quantidadeDeQuestoes
 
         preencherHTMLcomQuestaoAtual(0)
 
-        btnSubmeter.disabled = false/*!!!!!!!!!!!!!*/
+        btnSubmeter.disabled = false
         btnProx.disabled = true
         // btnConcluir.disabled = true
         btnTentarNovamente.disabled = true
@@ -201,7 +147,6 @@
     }
 
     function submeter() {
-
         const options = document.getElementsByName("option"); // recupera alternativas no html
 
         let hasChecked = false
@@ -307,10 +252,7 @@
         }
     }
 
-    function finalizarJogo() {/**/
-        document.getElementById('pontuacao').style.display = "flex"
-         document.getElementById('app').style.display = "none"/*!!!!!!!!!*/
-
+    function finalizarJogo() {
         let textoParaMensagemFinal = null
         let classComCoresParaMensagemFinal = null
         const porcentagemFinalDeAcertos = pontuacaoFinal / quantidadeDeQuestoes
@@ -328,49 +270,19 @@
             classComCoresParaMensagemFinal = "text-success-with-bg"
         }
 
-        textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos) * 100) + "% das questões."
+        textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos)*100) + "% das questões."
 
 
         document.getElementById('msgFinal').innerHTML = textoParaMensagemFinal
-        document.getElementById('msgFinal').classList.add(classComCoresParaMensagemFinal)
+        document.getElementById('msgFinal').classList.add(classComCoresParaMensagemFinal) 
         document.getElementById('spanPontuacaoFinal').innerHTML = pontuacaoFinal
 
-        document.getElementById('jogo').classList.add("text-new-gray")
+        document.getElementById('jogo').classList.add("text-new-gray") 
 
         btnProx.disabled = true
         btnSubmeter.disabled = true
         // btnConcluir.disabled = true
         btnTentarNovamente.disabled = false
-
-        sessionStorage.setItem("acertos", pontuacaoFinal);
-        sessionStorage.setItem("erros", erradas);
-    
-        conectaQuiz();/*coector para a API*/
-    }
-
-    function conectaQuiz() {
-
-    var corretaVar = pontuacaoFinal;
-    var erradaVar = erradas;
-
-    fetch("/usuarios/conectaQuiz", {  /*ACESSE O USUARIO*/
-        method: "POST",/*INSERÇÃO DO  BANCO DE DADOS*/
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({/*esá guardando as variaveis,*/
-            corretaServer: corretaVar,
-            erradoServer: erradaVar,
-        }),
-    })
-    .then(function (resposta) {
-        console.log("resposta: ", resposta);
-    })
-    .catch(function (error) {
-        console.log("Erro ao enviar os dados: ", error);
-        alert("Erro ao enviar os dados.");
-    });
-
 
     }
 </script>

@@ -11,7 +11,7 @@
   <title>ClubeD7- Cadastro Cons</title>
 </head>
 
-<body>
+<body class="sign-in-js">
   <div class="container">
     <div class="content first-content">
       <div class="first-column">
@@ -99,22 +99,107 @@
 
 </html>
 <script>
-  var btnSignin = document.querySelector("#signin");
-  var btnSignup = document.querySelector("#signup");
+ function LogarURL() {
+const params = new URLSearchParams(window.location.search);
+const mode = params.get('mode');
+if (mode === 'login') {
+document.body.className = 'sign-in-js';
+} else if (mode === 'cadastro') {
+document.body.className = 'sign-up-js';
+}
+}
 
-  var body = document.querySelector("body");
+LogarURL();
+
+var btnSignin = document.querySelector("#signin");
+var btnSignup = document.querySelector("#signup");
+
+var body = document.querySelector("body");
 
 
-  btnSignin.addEventListener("click", function () {
-    body.className = "sign-in-js";
-  });
+btnSignin.addEventListener("click", function () {
+body.className = "sign-in-js";
 
-  btnSignup.addEventListener("click", function () {
-    body.className = "sign-up-js";
-  })
+setTimeout(function () {
+}, 300);
+});
+
+btnSignup.addEventListener("click", function () {
+body.className = "sign-up-js";
+
+setTimeout(function () {
+}, 300);
+})
+
+
+document.querySelectorAll('.acesso a').forEach(link => {
+link.addEventListener('click', function (e) {
+if (window.location.pathname.endsWith('cadastroCons.html')) {
+e.preventDefault();
+const mode = this.href.includes('mode=cadastro') ? 'sign-in-js' : 'sign-up-js';
+document.body.className = mode;
+window.history.replaceState({}, '', `cadastroCons.html?mode=${mode === 'sign-up-js' ? 'cadastro' : 'login'}`);
+}
+});
+});
+
+
+
   var user = [];
 
-  function autenticar() {
+  function cadastrar() {
+
+    var usuario = nome.value;
+    var clubeD7 = clube.value;
+    var unidadeD7 = unidade.value;
+    var assocaiaoM = missao.value;
+    var senhaD7 = senha.value;
+    var confirmar = confirmaS.value;
+    var pessoa = resultado.value; /*do select option*/
+/*
+    if (resultado != 'nada') { 
+      user.push(resultado.value);
+      alert("Preencha todos os campos");
+      return
+    }*/
+
+if (!usuario || !clubeD7||!unidadeD7|| !assocaiaoM||!senhaD7 || !confirmar || !pessoa) {
+        alert("Por favor, preencha todos os campos obrigatórios!");
+        // Interrompe a execução da função
+       }
+    if (senhaD7 != confirmar) {
+        alert("Senhas não coincidem!!");
+        
+        return
+    } else {
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                nomeServer: usuario,
+                clubeServer: clubeD7,
+                unidadeServer: unidadeD7,
+                assocServer: assocaiaoM,
+                senhaServer: senhaD7,
+                pessoaServer: pessoa
+            }),
+        })
+
+        .then(function (resposta) {
+            console.log("resposta: ", resposta);
+            alert("Cadastro realizado com sucesso!");
+        })
+        .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            return;
+        });
+      /*QUANDO EXECUTADO, NÃO APARECE O ALERT DE CADASTO COM SUCESSO, APENAS DPS DE UMA SEGUNDA VEZ CLICADA NO BOTÃO, E APARECE AINDA PRIMEIRO  O CAMPO NÃO PREENCHIDO*/
+    }
+}
+
+function autenticar() {
     // window.location = "Diretoria.html";
 
     var nomeVar = nomeLogin.value;
@@ -149,7 +234,7 @@
           sessionStorage.ID_USUARIO = json.idUsuario;
           /*window.location="#.html"*/
           alert("login realizado com sucesso!")
-          window.location.href = "EXEMPLO_QUIZZ.html";
+          window.location.href = "Direcionar.html";/**/
         });
 
       } else {
@@ -166,56 +251,5 @@
     })
 
   }
-
-  function cadastrar() {
-
-    var usuario = nome.value;
-    var clubeD7 = clube.value;
-    var unidadeD7 = unidade.value;
-    var assocaiaoM = missao.value;
-    var senhaD7 = senha.value;
-    var confirmar = confirmaS.value;
-    var pessoa = resultado.value; /*do select option*/
-/*
-    if (resultado != 'nada') { 
-      user.push(resultado.value);
-      alert("Preencha todos os campos");
-      return
-    }*/
-
-if (!usuario || !clubeD7||!unidadeD7|| !assocaiaoM||!senhaD7 || !confirmar || !pessoa) {
-        alert("Por favor, preencha todos os campos obrigatórios!");
-        // Interrompe a execução da função
-       }
-    if (senhaD7 != confirmar) {
-        alert("Senhas não coincidem!!");
-        
-    } else {
-        fetch("/usuarios/cadastrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                nomeServer: usuario,
-                clubeServer: clubeD7,
-                unidadeServer: unidadeD7,
-                assocServer: assocaiaoM,
-                senhaServer: senhaD7,
-                pessoaServer: pessoa
-            }),
-        })
-
-        .then(function (resposta) {
-            console.log("resposta: ", resposta);
-            alert("Cadastro realizado com sucesso!");
-        })
-        .catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-            return;
-        });
-      /*QUANDO EXECUTADO, NÃO APARECE O ALERT DE CADASTO COM SUCESSO, APENAS DPS DE UMA SEGUNDA VEZ CLICADA NO BOTÃO, E APARECE AINDA PRIMEIRO  O CAMPO NÃO PREENCHIDO*/
-    }
-}
 
 </script>

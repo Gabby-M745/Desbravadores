@@ -1,228 +1,386 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-        <link rel="icon" href="img/icon01.png">
+    <link rel="icon" href="icon.png"> <!--voltar e fazer o caminho-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quiz</title>
-    <link rel="stylesheet" href="css/Quiz1.css" />
-  </head>
-  <body>
-    <div class="app">
-    
-      <h1>Quiz</h1>
-      <div class="quiz">
-           <div id="timer">Tempo restante: 30 segundos</div>
-        <h2 id="question">Question goes here</h2>
-        <div id="answer-buttons">
-          <button class="btn"> 1°</button>
-          <button class="btn"> 2°</button>
-          <button class="btn"> 3°</button>
-          <button class="btn"> 4°</button>
+    <title>Exemplo - Quiz</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+
+<body onload="onloadEsconder()">
+    <div id="pontuacaoEJogo">
+        <button id="btnIniciarQuiz" onclick="iniciarQuiz()">INICIAR QUIZ</button>
+
+        <div id="pontuacao" class="flex-colunar width-fit-content border-primary">
+            <div id="pontuacaoDuranteJogo" class="flex-colunar padding-8">
+                <span class="width-fit-content">Quantidade de acertos: <span id="spanCertas"></span></span>
+                <span class="width-fit-content">Quantidade de erros: <span id="spanErradas"></span></span>
+            </div>
+            
+            <div id="pontuacaoFinalJogo" class="flex-colunar padding-8">
+                <span id="pontuacaoFinal" class="width-fit-content">Pontuação Final:
+                    <span id="spanPontuacaoFinal">***</span>
+                </span>
+                <span id="msgFinal" class="width-fit-content">***</span>
+            </div>
+            <button onclick="voltarInicio()" id="voltarpInicio" style="display:none;">Voltar</button>
         </div>
-        <button id="next-btn">Next</button>
-      </div>
+
+        <div id="app"> <!--QUADRADO # no CSS-->
+            <div id="jogo" class="width-fit-content flex-colunar border-secondary">
+
+                <div id="infoQuestao" class="padding-8">
+                    <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de <span id="qtdQuestoes"></span>
+                        questões.</span>
+                </div>
+
+                <div id="perguntaDaQuestaoAtual" class="padding-8">
+                    <span id="spanQuestaoExibida" class="text-bold"></span>
+                </div>
+
+                <div id="infoAlternativas" class="padding-8">
+                    <span><em>Escolha uma opção dentre as abaixo:</em></span>
+                </div>
+
+                <div id="opcoes" class="flex-colunar padding-8">
+                    <span>
+                        <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
+                        <label for="primeiraOpcao" class="option" id="labelOpcaoUm"></label>
+                    </span>
+                    <span>
+                        <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />
+                        <label for="segundaOpcao" class="option" id="labelOpcaoDois"></label>
+                    </span>
+                    <span>
+                        <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />
+                        <label for="terceiraOpcao" class="option" id="labelOpcaoTres"></label>
+                    </span>
+                    <span class="ultOpcao">
+                        <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />
+                        <label for="quartaOpcao" class="option" id="labelOpcaoQuatro"></label>
+                    </span>
+                </div>
+
+                <div id="botoes" class="flex-colunar padding-8">
+                    <button onclick="submeter()" id="btnSubmeter">Submeter
+                        resposta</button><!--SOBRE O BOTÃO QUE APARECE LÁ NO PRIMEIRO BOTÃO-->
+                    <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima
+                        questão</button><!--SOBRE O SEGUNDO BOTÃO QUE FICA SUBLINHADO-->
+                    <!-- <button onclick="finalizar()" id="btnConcluir" disabled>Finalizar Quiz</button> -->
+                    <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
+
+                </div>
+            </div>
+        </div>
     </div>
-    <p></p>
+    <!--<div id="imagem"> 
+        <img src="sant-removebg-preview.png" alt="Imagem">
+      </div>
+    -->
+</body>
 
-    <!--<script src="script.js"></script>-->
-  </body>
 </html>
-
 <script>
-// Array contendo as perguntas, respostas e a resposta correta para cada pergunta
-const questions = [
-  {
-    numb: 1,
-    question: "Qual o nome das três partes do santuário?",
-    answer: "A) Pátio, Lugar Santo, Lugar Santíssimo",
-    options: [
-      "A) Pátio, Lugar Santo, Lugar Santíssimo",
-      "B) Pátio, Lugar Sagrado, Lugar de Oração ",
-      "C) Pátio, Templo, Altar",
-      "D) Pátio, Sacerdócio, Arca "
-    ]
-  },
-   {
-    numb: 2,
-    question: "Quantos revestimentos cobriam o Santuário?",
-    answer: "C) 4 revestimentos",
-    options: [
-      "A) 2 revestimentos ",
-      "B) 3 revestimentos ",
-      "C) 4 revestimentos",
-      "D) 5 revestimentos "
-    ]
-  },
- 
-   {
-    numb: 3,
-    question: "Quais cores foram usadas no Santuário e nas vestes do Sacerdote? ",
-    answer: "A) Vermelho, Azul, Púrpura, Branco, Preto, Ouro, Prata, Bronze ",
-    options: [
-      "A) Vermelho, Azul, Púrpura, Branco, Preto, Ouro, Prata, Bronze ",
-      "B) Verde, Amarelo, Azul, Vermelho, Preto, Ouro, Prata, Bronze",
-      "C) Vermelho, Azul, Verde, Branco, Preto, Ouro, Prata, Bronze ",
-      "D) Vermelho, Azul, Púrpura, Branco, Preto, Ouro, Prata, Cinz"
-    ]
-  },
-   {
-    numb: 4,
-    question: "De qual das 12 tribos pertencia o Sacerdote?",
-    answer: "B) Tribo de Levi ",
-    options: [
-      "A) Tribo de Judá ",
-      "B) Tribo de Levi ",
-      "C) Tribo de Benjamim ",
-      "D) Tribo de Efraim "
-    ]
-  },
-{
-    numb: 5,
-    question: "Descreva as vestimentas do Sumo-Sacerdote:",
-    answer: "C) Vestes ornamentadas ",
-    options: [
-      "A) Vestes simples  ",
-      "B) Vestes de linho  ",
-      "C) Vestes ornamentadas ",
-      "D) Vestes de lã "
-    ]
-  },
-{
-    numb: 6,
-    question: "Quais animais eram trazidos diariamente ao pátio? ",
-    answer: "B) Cordeiro Macho, Novilho, Ovelha, Pombinha, Cabrito, Boi, Cabra, Bode, Aves, Novilha Ruiva ",
-    options: [
-      "A) Cordeiro, Cabra, Pomba  ",
-      "B) Cordeiro Macho, Novilho, Ovelha, Pombinha, Cabrito, Boi, Cabra, Bode, Aves, Novilha Ruiva ",
-      "C) Cordeiro, Galo, Pato ",
-      "D) Cordeiro, Porco, Cabra  "
-    ]
-  },
-     {
-    numb: 7,
-    question: "Como Cristo era representado através do Santuário e seus serviços? ",
-    answer: "A) Através de sacrifícios de animais ",
-    options: [
-      "A) Através de sacrifícios de animais ",
-      "B) Através de rituais de purificação ",
-      "C) Através de orações  ",
-      "D) Através de festas religiosas  "
-    ]
-  },
-   {
-    numb: 8, /*ALTERAR- PERGUNTA REPETIDA*/
-    question: "De qual das 12 tribos pertencia o Sacerdote?",
-    answer: "B) Tribo de Levi ",
-    options: [
-      "A) Tribo de Judá ",
-      "B) Tribo de Levi ",
-      "C) Tribo de Benjamim ",
-      "D) Tribo de Efraim "
-    ]
-  },
-];
-const questionElement = document.getElementById("question");//DIV
-const answerButtons = document.getElementById("answer-buttons");//H2
-const nextButton = document.getElementById("next-btn");//BUTTON
-    const timerElement = document.getElementById("timer");
-    let currentQuestionIndex = 0;
-    let score = 0;
-    let timer;
-    let timeLeft = 30;
-    function startTimer() {
-      clearInterval(timer);
-      timeLeft = 30;
-      updateTimerDisplay();
-      timer = setInterval(() => {
-        timeLeft--;
-        updateTimerDisplay();
-        if (timeLeft <= 0) {
-          clearInterval(timer);
-          // Finalizar quiz ou avançar automaticamente
-          // Aqui vamos finalizar exibindo o score
-          showScore();
+    const listaDeQuestoes = [
+
+        {
+            pergunta: "Quantos revestimentos cobriam o Santuário?",
+            alternativaA: "A) Pátio, Lugar Santo, Lugar Santíssimo",
+            alternativaB: "B) Pátio, Lugar Sagrado, Lugar de Oração ",
+            alternativaC: "C) Pátio, Templo, Altar",
+            alternativaD: "D) Pátio, Sacerdócio, Arca",
+            alternativaCorreta: "alternativaA"
+        },
+
+        {
+            pergunta: "Quantos revestimentos cobriam o Santuário?",
+            alternativaA: "A) 2 revestimentos",
+            alternativaB: "B) 3 revestimentos",
+            alternativaC: "C) 4 revestimentos",
+            alternativaD: "D) 5 revestimentos",
+            alternativaCorreta: "alternativaC"
+        },
+
+        {
+            pergunta: "Quais cores foram usadas no Santuário e nas vestes do Sacerdote?",
+            alternativaA: "A) Vermelho, Azul, Púrpura, Branco, Preto, Ouro, Prata, Bronze",
+            alternativaB: "B) Verde, Amarelo, Azul, Vermelho, Preto, Ouro, Prata, Bronze",
+            alternativaC: "C) Vermelho, Azul, Verde, Branco, Preto, Ouro, Prata, Bronze",
+            alternativaD: "D) Vermelho, Azul, Púrpura, Branco, Preto, Ouro, Prata, Cinza",
+            alternativaCorreta: "alternativaA"
+        },
+           {
+            pergunta: "De qual das 12 tribos pertencia o Sacerdote?",
+            alternativaA: "A) Tribo de Judá ",
+            alternativaB: "B) Tribo de Levi ",
+            alternativaC: "C) Tribo de Benjamim",
+            alternativaD: "D) Tribo de Efraim",
+            alternativaCorreta: "alternativaB"
+        },
+           {
+            pergunta: "Descreva as vestimentas do Sumo-Sacerdote:",
+            alternativaA: "A) Vestes simples ",
+            alternativaB: "B) Vestes de linho ",
+            alternativaC: "C) Vestes ornamentadas ",
+            alternativaD: "D) Vestes de lã",
+            alternativaCorreta: "alternativaC"
+             
+        },
+        {
+            pergunta: "Quais animais eram trazidos diariamente ao pátio?",
+            alternativaA: "A) Cordeiro, Cabra, Pomba  ",
+            alternativaB: "B) Cordeiro Macho, Novilho, Ovelha, Pombinha, Cabrito, Boi, Cabra, Bode, Aves, Novilha Ruiva",
+            alternativaC: "C) Cordeiro, Galo, Pato",
+            alternativaD: "D) Cordeiro, Porco, Cabra",
+            alternativaCorreta: "alternativaB"
+         
+        },
+        {
+            pergunta: "Como Cristo era representado através do Santuário e seus serviços?",
+            alternativaA: "A) Através de sacrifícios de animais  ",
+            alternativaB: "B) Através de rituais de purificação",
+            alternativaC: "C) Através de orações ",
+            alternativaD: "D) Através de festas religiosas ",
+            alternativaCorreta: "alternativaA"
+        },
+        {
+            pergunta: "Qual era a função principal do Santuário no contexto do povo de Israel?",
+            alternativaA: "A)Servir como um local de adoração e sacrifício a Deus  ",
+            alternativaB: "B)Prover abrigo para os viajantes",
+            alternativaC: "C) Ser um centro de comércio e troca.",
+            alternativaD: "D)Funcionar como uma escola para ensinar a lei.",
+            alternativaCorreta: "alternativaC"
+             
         }
-      }, 1000);
+        
+    ]
+
+    // variáveis globais    
+    let numeroDaQuestaoAtual = 0
+    let pontuacaoFinal = 0
+    let tentativaIncorreta = 0
+    let certas = 0
+    let erradas = 0
+    let quantidadeDeQuestoes = listaDeQuestoes.length
+    // let isUltima = numeroDaQuestaoAtual == quantidadeDeQuestoes-1 ? true : false
+
+    function onloadEsconder() {
+        document.getElementById('pontuacao').style.display = "none"
+        document.getElementById('jogo').style.display = "none"
+        document.getElementById('app').style.display = "none"/**/
+        document.getElementById('voltarpInicio').style.display = "none"
+
     }
-    function updateTimerDisplay() {
-      timerElement.innerText = `Tempo restante: ${timeLeft} segundo${timeLeft !== 1 ? 's' : ''}`;
-    }/*nao FUNCIONA*/
-function handleNextButton() {
-  clearInterval(timer); // Para o cronômetro atual
-  currentQuestionIndex++;
-  if (currentQuestionIndex < questions.length) {
-    startTimer(); // Reinicia o cronômetro
-    }}
 
-function startQuiz() {
-  currentQuestionIndex = 0;
-  score = 0;
-  nextButton.innerHTML = "Próxima";
-  showQuestion();
-}
-function showQuestion() {
-  resetState();
-  var currentQuestion = questions[currentQuestionIndex];
-  var questionNo = currentQuestion.numb;
-  questionElement.innerHTML = questionNo + ". " + currentQuestion.question; /**/
-  currentQuestion.options.forEach((option, index) => {
-    const button = document.createElement("button");
-    button.innerHTML = option;
-    button.classList.add("btn");
-    answerButtons.appendChild(button);
-    button.dataset.id = option.charAt(0); // Armazena a letra da opção (A, B, C, D)
-    button.addEventListener("click", selectAnswer);
-  });
-}
+    function iniciarQuiz() {
+        
+        document.getElementById('voltarpInicio').style.display = "none"
 
-function resetState() {
-  nextButton.style.display = "none";
-  while (answerButtons.firstChild) {
-    answerButtons.removeChild(answerButtons.firstChild);
-  }
-}
-function selectAnswer(e) {
-  const selectedBtn = e.target;
-  const correctAnswer = questions[currentQuestionIndex].answer;
-  const isCorrect = selectedBtn.innerHTML === correctAnswer;
-  if (isCorrect) {
-    selectedBtn.classList.add("correct");
-    score++;
-  } else {
-    selectedBtn.classList.add("incorrect");
-  }
-  Array.from(answerButtons.children).forEach((button) => {
-    if (button.innerHTML === correctAnswer) {
-      button.classList.add("correct");
+        document.getElementById('pontuacao').style.display = "none"
+        document.getElementById('jogo').style.display = "flex"
+        document.getElementById('btnIniciarQuiz').style.display = "none"
+        document.getElementById('app').style.display = "flex"/*!!!!!!!!!*/
+        document.getElementById('qtdQuestoes').innerHTML = quantidadeDeQuestoes
+
+        preencherHTMLcomQuestaoAtual(0)
+
+        btnSubmeter.disabled = false/*!!!!!!!!!!!!!*/
+        btnProx.disabled = true
+        // btnConcluir.disabled = true
+        btnTentarNovamente.disabled = true
     }
-    button.disabled = true;
-  });
-  nextButton.style.display = "block";
-}
-function showScore() {
-  resetState();
-  questionElement.innerHTML = `Você acertou ${score} de ${questions.length}!`;
-  nextButton.innerHTML = "Play Again"; /*VOLTAR NO JOGO*/
-  nextButton.style.display = "block";
-}
-function handleNextButton() {
-  currentQuestionIndex++;
-  if (currentQuestionIndex < questions.length) {
-    showQuestion();
-  } else {
-    showScore();
-  }
-}
-nextButton.addEventListener("click", () => {
-  if (currentQuestionIndex < questions.length) {
-    handleNextButton();
-  } else {
-    startQuiz();
-  }
-});
+
+    function preencherHTMLcomQuestaoAtual(index) {
+        habilitarAlternativas(true)
+        const questaoAtual = listaDeQuestoes[index]
+        numeroDaQuestaoAtual = index
+        console.log("questaoAtual")
+        console.log(questaoAtual)
+        document.getElementById("spanNumeroDaQuestaoAtual").innerHTML = Number(index) + 1 // ajustando porque o index começa em 0
+        document.getElementById("spanQuestaoExibida").innerHTML = questaoAtual.pergunta;
+        document.getElementById("labelOpcaoUm").innerHTML = questaoAtual.alternativaA;
+        document.getElementById("labelOpcaoDois").innerHTML = questaoAtual.alternativaB;
+        document.getElementById("labelOpcaoTres").innerHTML = questaoAtual.alternativaC;
+        document.getElementById("labelOpcaoQuatro").innerHTML = questaoAtual.alternativaD;
+    }
+
+    function submeter() {
+
+        const options = document.getElementsByName("option"); // recupera alternativas no html
+
+        let hasChecked = false
+        for (let i = 0; i < options.length; i++) {
+            if (options[i].checked) {
+                hasChecked = true
+                break
+            }
+        }
+
+        if (!hasChecked) {
+            alert("Não há alternativas escolhidas. Escolha uma opção.")
+        } else {
+            btnSubmeter.disabled = true
+            btnProx.disabled = false
+
+            habilitarAlternativas(false)
+
+            checarResposta()
+        }
+    }
+
+    function habilitarAlternativas(trueOrFalse) {
+        let opcaoEscolhida = trueOrFalse ? false : true
+
+        primeiraOpcao.disabled = opcaoEscolhida
+        segundaOpcao.disabled = opcaoEscolhida
+        terceiraOpcao.disabled = opcaoEscolhida
+        quartaOpcao.disabled = opcaoEscolhida
+
+    }
+
+    function avancar() {
+        btnProx.disabled = true
+        btnSubmeter.disabled = false
+
+        desmarcarRadioButtons()
+
+        if (numeroDaQuestaoAtual < quantidadeDeQuestoes - 1) {
+            preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual)
+        } else if (numeroDaQuestaoAtual == quantidadeDeQuestoes - 1) {
+            alert("Atenção... a próxima é a ultima questão!")
+            preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual)
+        } else {
+            finalizarJogo()
+        }
+        limparCoresBackgroundOpcoes()
+    }
+
+    function tentarNovamente() {
+        // atualiza a página
+        window.location.reload()
+    }
+
+    function checarResposta() {
+        const questaoAtual = listaDeQuestoes[numeroDaQuestaoAtual] // questão atual 
+        const respostaQuestaoAtual = questaoAtual.alternativaCorreta // qual é a resposta correta da questão atual
+
+        const options = document.getElementsByName("option"); // recupera alternativas no html
+
+        let alternativaCorreta = null // variável para armazenar a alternativa correta
+
+        options.forEach((option) => {
+            if (option.value === respostaQuestaoAtual) {
+                console.log("alternativaCorreta está no componente: " + alternativaCorreta)
+                alternativaCorreta = option.labels[0].id
+            }
+        })
+
+        // verifica se resposta assinalada é correta
+        options.forEach((option) => {
+            if (option.checked === true && option.value === respostaQuestaoAtual) {
+                document.getElementById(alternativaCorreta).classList.add("text-success-with-bg")
+                pontuacaoFinal++
+                certas++
+                document.getElementById("spanCertas").innerHTML = certas
+                numeroDaQuestaoAtual++
+            } else if (option.checked && option.value !== respostaQuestaoAtual) {
+                const wrongLabelId = option.labels[0].id
+
+                document.getElementById(wrongLabelId).classList.add("text-danger-with-bg")
+                document.getElementById(alternativaCorreta).classList.add("text-success-with-bg")
+                tentativaIncorreta++
+                erradas++
+                document.getElementById("spanErradas").innerHTML = erradas
+                numeroDaQuestaoAtual++
+            }
+        })
+    }
+
+    function limparCoresBackgroundOpcoes() {
+        const options = document.getElementsByName("option");
+        options.forEach((option) => {
+            document.getElementById(option.labels[0].id).classList.remove("text-danger-with-bg")
+            document.getElementById(option.labels[0].id).classList.remove("text-success-with-bg")
+        })
+    }
+
+    function desmarcarRadioButtons() {
+        const options = document.getElementsByName("option");
+        for (let i = 0; i < options.length; i++) {
+            options[i].checked = false;
+        }
+    }
+
+    function finalizarJogo() {/**/
+        document.getElementById('pontuacao').style.display = "flex"
+         document.getElementById('app').style.display = "none"/*!!!!!!!!!*/
+
+        let textoParaMensagemFinal = null
+        let classComCoresParaMensagemFinal = null
+        const porcentagemFinalDeAcertos = pontuacaoFinal / quantidadeDeQuestoes
+
+        if (porcentagemFinalDeAcertos <= 0.3) {
+            textoParaMensagemFinal = "Parece que você não estudou..."
+            classComCoresParaMensagemFinal = "text-danger-with-bg"
+        }
+        else if (porcentagemFinalDeAcertos > 0.3 && porcentagemFinalDeAcertos < 0.9) {
+            textoParaMensagemFinal = "Pode melhorar na próxima, hein!"
+            classComCoresParaMensagemFinal = "text-warning-with-bg"
+        }
+        else if (porcentagemFinalDeAcertos >= 0.9) {
+            textoParaMensagemFinal = "Uau, parabéns!"
+            classComCoresParaMensagemFinal = "text-success-with-bg"
+        }
+
+        textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos) * 100) + "% das questões."
 
 
-startQuiz();
+        document.getElementById('msgFinal').innerHTML = textoParaMensagemFinal
+        document.getElementById('msgFinal').classList.add(classComCoresParaMensagemFinal)
+        document.getElementById('spanPontuacaoFinal').innerHTML = pontuacaoFinal
+
+        document.getElementById('jogo').classList.add("text-new-gray")
+
+        btnProx.disabled = true
+        btnSubmeter.disabled = true
+        // btnConcluir.disabled = true
+        btnTentarNovamente.disabled = false
+
+        sessionStorage.setItem("acertos", pontuacaoFinal);
+        sessionStorage.setItem("erros", erradas);
+   /* tentarNovamente();*/
+
+   document.getElementById('voltarpInicio').style.display = "block"; 
+
+        conectaQuiz();/*coector para a API*/
+    }
+
+    function conectaQuiz() {
+
+    var corretaVar = pontuacaoFinal;
+    var erradaVar = erradas;
+
+    fetch("/usuarios/conectaQuiz", {  /*ACESSE O USUARIO*/
+        method: "POST",/*INSERÇÃO DO  BANCO DE DADOS*/
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({/*esá guardando as variaveis,*/
+            corretaServer: corretaVar,
+            erradoServer: erradaVar,
+        }),
+    })
+    .then(function (resposta) {
+        console.log("resposta: ", resposta);
+    })
+    .catch(function (error) {
+        console.log("Erro ao enviar os dados: ", error);
+        alert("Erro ao enviar os dados.");
+    });
+
+
+    }
 </script>

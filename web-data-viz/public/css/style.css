@@ -19,6 +19,10 @@
     --new-white: #E8E8E8;
 }
 
+body {
+    overflow: hidden; /*tira o scrool da página*/
+}
+
 #imagem {
 
     position: absolute;
@@ -37,13 +41,16 @@
 
 #pontuacao {
  /*BLOCO ONDE FICA AS PERGUNTAS*/
+ position: relative;
+
     --glow-color: rgb(255, 244, 144);
     /*cor da variável*/
     --glow-spread-color: rgba(255, 255, 255, 0.781);
-
+top:25%;
     background-color: rgba(255, 255, 255, 0.734);
     width: 90%;
     max-width: 600px;
+    margin-top: 100px;
     margin: 100px auto 0;
     padding: 25px;
     border-radius: 30px;
@@ -61,14 +68,17 @@
 
 }
 #app {
+    position: relative;
     /*BLOCO ONDE FICA AS PERGUNTAS*/
-    --glow-color: rgb(255, 244, 144);
+    --glow-color: rgb(222, 149, 77);
     /*cor da variável*/
-    --glow-spread-color: rgba(255, 255, 255, 0.781);
-
+    --glow-spread-color: rgba(231, 132, 26, 0.781);
+    
+    top: 25%;
     background-color: rgba(255, 255, 255, 0.734);
     width: 90%;
     max-width: 600px;
+    margin-top: 100px;
     margin: 100px auto 0;
     padding: 25px;
     border-radius: 30px;
@@ -204,11 +214,11 @@ button {
 }
 
 #btnIniciarQuiz {
-    --glow-color: rgb(217, 176, 255);
+    --glow-color: rgb(213, 184, 182);
     /*cor da variável*/
-    --glow-spread-color: rgba(191, 123, 255, 0.781);
-    --enhanced-glow-color: rgb(231, 206, 255);
-    --btn-color: rgb(100, 61, 136);
+    --glow-spread-color: rgba(231, 132, 26, 0.781);
+    --enhanced-glow-color: rgb(255, 225, 206);
+    --btn-color: rgba(189, 68, 41, 0.858);
     border: .25em solid var(--glow-color);
     padding: 1em 3em;
     color: var(--glow-color);
