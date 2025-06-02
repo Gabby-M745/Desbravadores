@@ -1,6 +1,6 @@
 /*COPIA ALTERARA*/
-CREATE DATABASE ClubeD7;
-USE ClubeD7;
+CREATE DATABASE clubeD7;
+USE clubeD7;
 -- desc Usuario;
 
 -- alter table  Usuario drop constraint chkUser;
