@@ -30,17 +30,17 @@
 
           <label class="label-input" for="">
             <i class="far fa-envelope icon-modify"></i>
-            <input type="text" id="clube" placeholder="Clube">
+            <input type="text" id="clube" placeholder="Clube/Não tenho">
           </label>
 
           <label class="label-input" for="">
             <i class="fas fa-lock icon-modify"></i>
-            <input type="text" id="unidade" placeholder="Unidade">
+            <input type="text" id="unidade" placeholder="Unidade/Não participo">
           </label>
 
 
           <label class="label-input" for="">
-            <input type="text" id="missao" placeholder="Associação/Missão">
+            <input type="text" id="missao" placeholder="Associação/Missão/Não participo">
           </label>
 
           <label class="label-input" for="">
@@ -149,7 +149,7 @@
           sessionStorage.ID_USUARIO = json.idUsuario;
           /*window.location="#.html"*/
           alert("login realizado com sucesso!")
-          window.location = "Direcionar.html";
+          window.location.href = "EXEMPLO_QUIZZ.html";
         });
 
       } else {
@@ -183,7 +183,7 @@
       return
     }*/
 
-if (!usuario ||  !senhaD7 || !confirmar || !pessoa) {
+if (!usuario || !clubeD7||!unidadeD7|| !assocaiaoM||!senhaD7 || !confirmar || !pessoa) {
         alert("Por favor, preencha todos os campos obrigatórios!");
         // Interrompe a execução da função
        }
