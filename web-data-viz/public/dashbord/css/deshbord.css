@@ -1,0 +1,224 @@
+body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.topo {
+    display: flex;
+    padding: 0vh 2rem;
+    box-shadow: 0px 4px 10px rgb(0, 0, 0);
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topo .column-1 {
+    font-size: 26px;
+    display: flex;
+    gap: 8vw;
+    align-items: center;
+}
+
+.sub select {
+    background-color: #15191c00;
+    color: white;
+    border-color: #ffffff00;
+    padding: 2% 0%;
+    width: 150px;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+option {
+    background-color: #15191C;
+}
+
+.sub {
+    display: flex;
+    justify-content: space-between;
+    border-color: #7e9b7e00;
+}
+
+.topo .column-2 {
+    justify-content: flex-end;
+}
+
+.topo .column-2 div {
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+}
+
+
+
+
+.card-topo {
+    display: flex;
+    justify-content: space-between;
+    padding: 0vh 4vh;
+    margin-top: 7px;
+
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    color: #15191C;
+    width: 16vw;
+    height: 12vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.4rem;
+    position: relative;
+}
+
+.pouco_texto {
+    justify-content: space-evenly;
+}
+
+.texto_card {
+    position: absolute;
+    bottom: 0;
+    font-weight: 900;
+    font-size: 2.1rem;
+}
+
+.titulo_card {
+    background-color: #661e1e;
+    background-color: #696969;
+    color: white;
+    width: 100%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.notificacoes {
+    background-color: #2C343A;
+    padding: 1rem;
+}
+
+#icone_fechar {
+    padding-left: 10vh;
+
+}
+
+.notificacoes span {
+    color: blue;
+}
+
+.notificacao {
+    display: flex;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.notificacao span {
+    color: #95999C;
+    font-size: 14px;
+}
+
+.notificacao img {
+    height: 30px;
+    padding-right: 10px;
+}
+
+#notificacao_caixa {
+    position: absolute;
+    top: 5vh;
+    right: 10vh;
+    border-radius: 10px;
+}
+
+.container {
+    display: flex;
+    padding: 1.8vh 3.8vh;
+    gap: 1.5rem;
+    height: 74vh;
+    width: 83.3vw;
+    position: relative;
+}
+
+.container .column-1 {
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+}
+
+.container .column-2 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+}
+
+/*comceco grafico*/
+.grafico {
+    background-color: white;
+    border-radius: 10px;
+    color: black;
+    text-align: center;
+    font-size: 2.5vh;
+    box-shadow: 0 10px 20px rgb(0, 0, 0);
+
+}
+
+.container h4 {
+    color: rgb(0, 0, 0);
+    width: 100%;
+    height: 8vh;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    font-size: 1.5rem;
+}
+.column-2 h4{
+    height: 5vh;
+}
+
+.pizza,
+.donut {
+    width: 20vw;
+}
+
+.card_parametros{
+    background-color: white;
+    color: black;
+    font-size:1.2rem;
+    border-radius: 9px;
+    width: 20vw;
+    gap: 10px;
+    padding: 0.4vw 0vw 0vw 0vw;
+}
+.card_parametros div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-bottom: solid 2px black;
+    background-color: #6b6b6b;
+    color: white;
+    padding: 0vh 2vw;
+}
+.card_parametros div div{
+    border: none;
+    display: flex;
+    flex-direction: row;
+    background-color: #ffffff;
+    color: black;
+    position: relative;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}

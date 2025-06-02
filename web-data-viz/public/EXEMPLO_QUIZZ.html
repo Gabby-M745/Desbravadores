@@ -108,8 +108,51 @@
             alternativaC: "C) Vermelho, Azul, Verde, Branco, Preto, Ouro, Prata, Bronze",
             alternativaD: "D) Vermelho, Azul, Púrpura, Branco, Preto, Ouro, Prata, Cinza",
             alternativaCorreta: "alternativaA"
+        },
+           {
+            pergunta: "De qual das 12 tribos pertencia o Sacerdote?",
+            alternativaA: "A) Tribo de Judá ",
+            alternativaB: "B) Tribo de Levi ",
+            alternativaC: "C) Tribo de Benjamim",
+            alternativaD: "D) Tribo de Efraim",
+            alternativaCorreta: "alternativaB"
+        },
+           {
+            pergunta: "Descreva as vestimentas do Sumo-Sacerdote:",
+            alternativaA: "A) Vestes simples ",
+            alternativaB: "B) Vestes de linho ",
+            alternativaC: "C) Vestes ornamentadas ",
+            alternativaD: "D) Vestes de lã",
+            alternativaCorreta: "alternativaC"
+             
+        },
+        {
+            pergunta: "Quais animais eram trazidos diariamente ao pátio?",
+            alternativaA: "A) Cordeiro, Cabra, Pomba  ",
+            alternativaB: "B) Cordeiro Macho, Novilho, Ovelha, Pombinha, Cabrito, Boi, Cabra, Bode, Aves, Novilha Ruiva",
+            alternativaC: "C) Cordeiro, Galo, Pato",
+            alternativaD: "D) Cordeiro, Porco, Cabra",
+            alternativaCorreta: "alternativaB"
+         
+        },
+        {
+            pergunta: "Como Cristo era representado através do Santuário e seus serviços?",
+            alternativaA: "A) Através de sacrifícios de animais  ",
+            alternativaB: "B) Através de rituais de purificação",
+            alternativaC: "C) Através de orações ",
+            alternativaD: "D) Através de festas religiosas ",
+            alternativaCorreta: "alternativaA"
+        },
+        {
+            pergunta: "Qual era a função principal do Santuário no contexto do povo de Israel?",
+            alternativaA: "A)Servir como um local de adoração e sacrifício a Deus  ",
+            alternativaB: "B)Prover abrigo para os viajantes",
+            alternativaC: "C) Ser um centro de comércio e troca.",
+            alternativaD: "D)Funcionar como uma escola para ensinar a lei.",
+            alternativaCorreta: "alternativaC"
+             
         }
-
+        
     ]
 
     // variáveis globais    
@@ -129,7 +172,7 @@
     }
 
     function iniciarQuiz() {
-        document.getElementById('pontuacao').style.display = "flex"
+        document.getElementById('pontuacao').style.display = "none"
         document.getElementById('jogo').style.display = "flex"
         document.getElementById('btnIniciarQuiz').style.display = "none"
         document.getElementById('app').style.display = "flex"/*!!!!!!!!!*/
@@ -266,7 +309,7 @@
 
     function finalizarJogo() {/**/
         document.getElementById('pontuacao').style.display = "flex"
-        /* document.getElementById('app').style.display = "none"/*!!!!!!!!!*/
+         document.getElementById('app').style.display = "none"/*!!!!!!!!!*/
 
         let textoParaMensagemFinal = null
         let classComCoresParaMensagemFinal = null

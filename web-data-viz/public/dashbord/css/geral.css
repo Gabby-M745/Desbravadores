@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Electrolize&family=Italiana&family=Orbitron:wght@400..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Teko:wght@300..700&display=swap');
+
+:root {
+    --preto: #15191C;
+    --azul: #1D232A;
+    --cinza: #95999C;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    all: unset;
+    cursor: pointer;
+}
+
+body {
+    background-color: var(--azul);
+    color: white;
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.main {
+    width: 100%;
+}
+
+.side-bar {
+    width: 204px;
+    background-color: var(--preto);
+    min-height: 100vh;
+}
+
+#atual {
+    border-left: solid 8px white;
+}
+
+.nav-list {
+    font-size: 16px;
+}
+
+.side-bar p {
+    font-size: 1.5rem;
+    text-align: center;
+    padding-bottom: 2.5rem;
+}
+
+.nav-list a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--cinza);
+    font-size: 16px;
+    padding: 10px 15px;
+}
+
+.topo {
+    display: flex;
+    padding: 1rem 2rem;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    justify-content: space-between;
+}
+
+.topo .column-1 {
+    font-size: 26px;
+}
+
+.topo .column-2 {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.topo .column-2 div {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.sub {
+    display: flex;
+    padding: 1rem 0rem;
+    margin: 0rem 2rem;
+    border-bottom: solid 1px white;
+}
+
+.sub .column-1 {
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+}
+
+.sub .column-2 {
+    display: flex;
+}
+
+.sub input {
+    padding: 10px 25px;
+}
+
+    /*alerta-personalisado*/
+    .alerta_lofhel {
+        background-color: black;
+        color: white;
+        text-align: center;
+        position: absolute;
+        top: 30vh;
+        left: 40vw;
+        right: 40vw;
+        bottom: 30vh;
+        border-radius: 15px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+
+    }
+    .alerta_lofhel div{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    #icone_fechar_alerta{
+        height: 4vh;
+        position: relative;
+        bottom:3vh
+    }
+    #logotipo_alerta{
+        position: relative;
+        left: 1vw;
+    }
+    #alerta_titulo{
+        font-size: 2rem;
+        padding-bottom: 4.5vh ;
+    }
+    #alerta_sub{
+        font-size: 1.4rem;
+    }
+    .div_fechar_alerta{
+        min-height: 100vh;
+        min-width: 100vw;
+        z-index: 8;
+        background-color: rgba(0, 0, 0, 0.596);
+        position: absolute;
+
+    }
+    /*alerta-personalisado_fim*/

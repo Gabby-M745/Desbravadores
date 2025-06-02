@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOFHEL - Deshbord</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/geral.css">
+    <link rel="stylesheet" href="css/deshbord.css">
+    <script src="../js/sessao.js"></script>
+</head>
+
+<body style="overflow-y: hidden;">
+    <div class="side-bar">
+        <div class="nav">
+            <img src="../deshbord/imagens-deshbord/logotipo01.png" alt="" style="width: 200px;">
+
+            <p>Olá, <span class="b_usuario">Fernanda Caramico </span>, seja bem vindo(a)
+                <span id="b_cargo"></span>
+            </p>
+
+            <div class="nav-list">
+                <div id="atual">
+                    <a href="deshbord.html"><img src="../deshbord/imagens-deshbord/house.png" alt="icone">Inicio</a>
+                </div>
+                <div><a href="perfil.html"><img src="../deshbord/imagens-deshbord/person-circle.png"
+                            alt="icone">Perfil</a>
+                </div>
+                <div><a href="funcionarios.html"><img src="../deshbord/imagens-deshbord/people.png"
+                            alt="icone">Funcionarios</a>
+                </div>
+                <div><a href="armazens.html"><img src="../deshbord/imagens-deshbord/cube.png" alt="icone">Armazéns</a>
+                </div>
+                <div><a href="suporte-bob.html"><img src="../deshbord/imagens-deshbord/body.png"
+                            alt="icone">Suporte-BobIA</a>
+                </div>
+                <div><a href="../inicio.html"><img src="../deshbord/imagens-deshbord/chevron-back-circle.png"
+                            alt="icone">sair</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="header">
+            <div class="topo">
+                <div class="column-1">
+                    <p id="title">Análise de dados - <span id="b_nome_fantasia">Vinícola Dom
+                            Aurélio</span></p>
+                    <div class="sub">
+
+                        <div class="column-1">
+                            <select name="armazem" id="armazem_atual" onclick="trocar1()">
+                                <option value=" armazem2">Quiz 2</option>
+                                <option value="geral">Geral</option>
+                                <option value="armazem1">Quiz 1</option>
+
+
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="card-topo">
+            <div class="card pouco_texto">
+                <p class="titulo_card">Temperatura Atual</p>
+                <p class="texto_card" id="b_temperatura_atual">2°C</p>
+            </div>
+            <div class="card pouco_texto">
+                <p class="titulo_card">Umidade Atual</p>
+                <p class="texto_card" id="b_umidade_atual">50%</p>
+            </div>
+            <div class="card pouco_texto">
+                <p class="titulo_card">Alertas hoje</p>
+                <p class="texto_card">1</p>
+            </div>
+           
+        </div>
+
+    </div>
+</body>
+
+</html>
+<script>
+
+    let proximaAtualizacao
+    const fkArmazem = 1;
+    const b_temperatura_atual = document.getElementById('b_temperatura_atual')
+    const b_umidade_atual = document.getElementById('b_umidade_atual')
+
+    function trocar1() {
+        var select = armazem_atual.value
+        if (select == 'geral') {
+            window.location.href = "deshbord.html";
+
+        }
+
+        if (select == 'armazem1') {
+            window.location.href = "deshbord-armazem1.html";
+
+        }
+    }
+
+
+
+    var notificacao_aberta = false
+    // abrir as notificaoes
+    function abrir_notificacoes() {
+        if (notificacao_aberta == false) {
+            notificacao_caixa.style = "display: 1 "
+            notificacao_aberta = true
+        } else {
+            notificacao_caixa.style = "display: none "
+            notificacao_aberta = false
+
+        }
+
+
+    }
+    function fechar_notificacoes() {
+        notificacao_caixa.style = "display:none"
+    }
+    //graficos com chart js
+    // grafico do tipo barra
+
+    window.onload = obterDadosGrafico(fkArmazem);
+    function obterDadosGrafico(fkArmazem) {
+
+
+        if (proximaAtualizacao != undefined) {
+            clearTimeout(proximaAtualizacao);
+        }
+
+        fetch(`/medidas/ultimas/${fkArmazem}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    //      resposta.reverse();
+
+                    plotarGrafico(resposta, fkArmazem);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+            datasets: [{
+                label: 'Temperatura Média',
+                data: [22, 24, 27, 23, 20, 18],
+                backgroundColor: [
+                    'rgb(255, 140, 0)',
+                    'rgb(255, 140, 0)',
+                    'rgb(255, 140, 0)',
+                    'rgb(255, 140, 0)',
+                    'rgb(255, 140, 0)',
+                    'rgb(255, 140, 0)'
+                ],
+                borderWidth: 1
+            },
+            {
+                label: 'Umidade Média',
+                data: [90, 89, 93, 87, 88, 82],
+                backgroundColor: [
+                    'rgb(0, 102, 255)',
+                    'rgb(0, 102, 255)',
+                    'rgb(0, 102, 255)',
+                    'rgb(0, 102, 255)',
+                    'rgb(0, 102, 255)',
+                    'rgb(0, 102, 255)'
+                ],
+                borderWidth: 1
+            }
+            ],
+        },
+    });
+
+    const data_status_sensores = {
+        labels: [
+            'Ativo',
+            'Inativo',
+            'Em manutenção'
+        ],
+        datasets: [{
+            label: 'status',
+            data: [10, 0, 0],
+            backgroundColor: [
+                'rgb(158, 73, 99)', // Vermelho 
+                'rgb(189, 115, 137)',  // Amarelo 
+                '#4c1130', // Verde 
+            ],
+            radius: '95%',
+            hoverOffset: 10
+        }]
+    };
+    const donunts = {
+        type: 'doughnut',
+        data: data_status_sensores,
+        options: {
+            responsive: false,
+
+            plugins: {
+                legend: {
+                    position: 'right', // Coloca a legenda embaixo do gráfico
+                    labels: {
+                        color: 'black', // Cor da fonte da legenda
+                        font: {
+                            size: 14
+                        }
+                    }
+                },
+            }
+        }
+    };
+    const myChart_donuts = document.getElementById('status_sensores');
+    new Chart(myChart_donuts, donunts);
+
+    // grafico de ranking de alertas ativos por armazem -------------------------------------------------------------
+    // grafico do tipo linha-------------------------------------------------------------
+
+    function plotarGrafico(resposta, fkArmazem) {
+
+        const label_temperatura = []
+        const data_var_temp = {
+            labels: label_temperatura,
+            datasets: [{
+                label: 'Temperatura',
+                data: [],
+                fill: false,
+                borderColor: '#551c36',
+                backgroundColor: '#551c36',
+                tension: 0.1
+            },
+            ]
+        };
+
+        for (let i = resposta.length - 1; i >= 0; i--) {
+            var registro = resposta[i];
+            label_temperatura.push(registro.dataHora);
+            data_var_temp.datasets[0].data.push(registro.temperatura);
+            if (i == 0) {
+                b_temperatura_atual.innerHTML = `${registro.temperatura} ° C`
+            }
+        }
+        const config_var_temp = {
+            type: 'line',
+            data: data_var_temp,
+        };
+        const ctx_temp_atual = document.getElementById('variacao_temperatura_atual').getContext('2d');
+        let GraficoTemperatura = new Chart(ctx_temp_atual, config_var_temp);
+
+        const labels_umidade = []
+        const data_var_umidade = {
+            labels: labels_umidade,
+            datasets: [{
+                label: 'Umidade',
+                data: [],
+                fill: true,
+                borderColor: 'rgba(240, 248, 255, 0)',
+                backgroundColor: 'rgb(158, 73, 99',
+                tension: 0.1
+            },
+            ]
+        };
+        for (let i = resposta.length - 1; i >= 0; i--) {
+            var registro = resposta[i];
+            labels_umidade.push(registro.dataHora);
+            data_var_umidade.datasets[0].data.push(registro.umidade);
+            if (i == 0) {
+                b_umidade_atual.innerHTML = `${registro.umidade} %`
+            }
+        }
+        const config_var_umidade = {
+            type: 'line',
+            data: data_var_umidade,
+        };
+
+        const ctx_umidade_atual = document.getElementById('variacao_umidade_atual').getContext('2d');
+        let GraficoUmidade = new Chart(ctx_umidade_atual, config_var_umidade);
+
+
+
+
+        setTimeout(() => {
+            atualizar_grafico_temperatura(fkArmazem, data_var_temp, GraficoTemperatura, data_var_umidade, GraficoUmidade)
+        }, 2000);
+
+    }
+    function atualizar_grafico_temperatura(fkArmazem, data_var_temp, GraficoTemperatura, data_var_umidade, GraficoUmidade) {
+
+
+
+        fetch(`/medidas/tempo-real/${fkArmazem}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+
+                    //  obterdados(fkArmazem);
+                    // alertar(novoRegistro, fkArmazem);
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico:`);
+                    console.log(data_var_temp);
+
+
+                    if (novoRegistro[0].dataHora == data_var_temp.labels[data_var_temp.labels.length - 1]) {
+                        console.log("---------------------------------------------------------------")
+                        console.log("Como não há data_var_temp novos para captura, o gráfico não atualizará.")
+                        console.log("Horário do novo dado capturado:")
+                        console.log(novoRegistro[0].dataHora)
+                        console.log("Horário do último dado capturado:")
+                        console.log(data_var_temp.labels[data_var_temp.labels.length - 1])
+                        console.log("---------------------------------------------------------------")
+                    } else {
+                        // tirando e colocando valores no gráfico
+                        data_var_temp.labels.shift(); // apagar o primeiro
+                        data_var_temp.labels.push(novoRegistro[0].dataHora); // incluir um novo momento
+
+                        data_var_temp.datasets[0].data.shift();  // apagar o primeiro de temperatura
+                        data_var_temp.datasets[0].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
+                        b_temperatura_atual.innerHTML = `${novoRegistro[0].temperatura} °C`
+                        GraficoTemperatura.update();
+
+                        data_var_umidade.labels.shift(); // apagar o primeiro
+                        data_var_umidade.labels.push(novoRegistro[0].dataHora); // incluir um novo momento
+
+                        data_var_umidade.datasets[0].data.shift();  // apagar o primeiro de temperatura
+                        data_var_umidade.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de temperatura
+                        b_umidade_atual.innerHTML = `${novoRegistro[0].umidade} %`
+
+                        GraficoUmidade.update();
+
+
+                    }
+
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => atualizar_grafico_temperatura(fkArmazem, data_var_temp, GraficoTemperatura, data_var_umidade, GraficoUmidade), 2000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => atualizar_grafico_temperatura(fkArmazem, data_var_temp, GraficoTemperatura, data_var_umidade, GraficoUmidade), 2000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
+
+
+</script>

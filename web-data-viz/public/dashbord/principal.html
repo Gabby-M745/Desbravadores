@@ -1,0 +1,96 @@
+<!-- CALCULADORA DE PONTUAÇÃO
+ RANKING DE MEBROS POR UNIDADE(MUDAR)
+ CLASES (REQUISITOS) 
+ sobre ("eu", dados registrados e quem é seu conselheiro)
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principal</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/geral.css">
+    <link rel="stylesheet" href="css/deshbord.css">
+    <script src="../js/sessao.js"></script>
+</head>
+
+<body onload="validarSessao()">
+    <div class="side-bar">
+        <div class="nav">
+            <img src="../deshbord/imagens-deshbord/logotipo01.png" alt="" style="width: 200px;">
+
+            <p>Olá, <span class="b_usuario">Fernanda Caramico </span>, seja bem vindo(a)
+            <span id="b_cargo"></span></p>
+
+            <div class="nav-list">
+                <div id="atual">
+                    <a href="deshbord.html"><img src="../deshbord/imagens-deshbord/house.png" alt="icone">Inicio</a>
+                </div>
+                <div><a href="perfil.html"><img src="../deshbord/imagens-deshbord/person-circle.png"
+                            alt="icone">Perfil</a>
+                </div>
+                <div><a href="funcionarios.html"><img src="../deshbord/imagens-deshbord/people.png"
+                            alt="icone">Funcionarios</a>
+                </div>
+                <div><a href="armazens.html"><img src="../deshbord/imagens-deshbord/cube.png" alt="icone">Armazéns</a>
+                </div>
+                <div><a href="suporte-bob.html"><img src="../deshbord/imagens-deshbord/body.png"
+                            alt="icone">Suporte-BobIA</a>
+                </div>
+                <div><a href="../inicio.html"><img src="../deshbord/imagens-deshbord/chevron-back-circle.png"
+                            alt="icone">sair</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="header">
+            <div class="topo">
+                <div class="column-1">
+                    <p id="title">Análise de dados  - <span id="b_nome_fantasia">Vinícola Dom
+                            Aurélio</span></p>
+                    <div class="sub">
+
+                        <div class="column-1">
+                            <select name="armazem" id="armazem_atual" onclick="trocar1()">
+                                        <option value=" geral">Geral</option>
+                                <option value="armazem1" >Quiz 1</option>
+                                        <option value=" armazem2">Quiz 2</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="column-2">
+                    <div>
+                        <img src="../deshbord/imagens-deshbord/person-circle.png" alt="picture"
+                            style="padding-right: 10px;">
+                        <p class="b_usuario"> Fulano</p>
+                        
+                    </div>
+                </div>
+            </div>
+
+ </body>
+ </html>
+ <style>
+   * {
+  margin: 0 auto;
+  padding: 0%;
+  font-family: Poppins, sans-serif;
+}
+   header {
+  background-color: #f1d598;
+  padding: 12px 0;
+  
+}
+
+.container {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+ </style>
