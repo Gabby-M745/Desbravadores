@@ -85,8 +85,33 @@ function cadastrar(req, res) {
     }
 
 
+    function conectaQuiz(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+   var correta = req.body.corretaServer;
+    var errado = req.body.erradoServer;
+    
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.conectaQuiz(correta, errado)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
 
-module.exports = {
+
+
+module.exports = {/*"validar funcao" */
     autenticar,
-    cadastrar
+    cadastrar,
+    conectaQuiz
 }

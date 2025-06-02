@@ -35,6 +35,31 @@
     /* Tamanho da imagem, ajuste se quiser */
 }
 
+#pontuacao {
+ /*BLOCO ONDE FICA AS PERGUNTAS*/
+    --glow-color: rgb(255, 244, 144);
+    /*cor da variável*/
+    --glow-spread-color: rgba(255, 255, 255, 0.781);
+
+    background-color: rgba(255, 255, 255, 0.734);
+    width: 90%;
+    max-width: 600px;
+    margin: 100px auto 0;
+    padding: 25px;
+    border-radius: 30px;
+    border: 0.25em solid gold;
+    /* Borda dourada */
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    /* Sombra dourada */
+    border: .25em solid var(--glow-color);
+    box-shadow: 0 0 1em .25em var(--glow-color),
+        /*sombreamento da borda*/
+        0 0 4em 1em var(--glow-spread-color),
+        /*também*/
+        inset 0 0 .75em .25em var(--glow-color);
+    /*tambéma  msm coisa*/
+
+}
 #app {
     /*BLOCO ONDE FICA AS PERGUNTAS*/
     --glow-color: rgb(255, 244, 144);
@@ -100,11 +125,12 @@ body {
     color: var(--new-black);
     background-color: var(--new-white);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-color: #000000;
-    /*  background-image: url("sant-removebg-preview.png");*/
+    background-color: #d1cccc;
+    background-image: url("quiz1.png");
     background-repeat: no-repeat;
     background-size: 100%;
     background-attachment: fixed;
+    
 }
 
 button {
@@ -248,13 +274,14 @@ transform: perspective(1.5em) rotateX(35deg) scale(1, .6);/*efeito de luz*/
 #infoQuestao{
 
 }*/
-@media (max-width: 1500px) {
-    /* #imagem{
+/*@media (max-width: 1500px) {
+    #imagem{
         visibility: hidden;
-    }*/
-}
+    }
+}*/
 
 #btnSubmeter {
+    
     border-radius: 1em;
     cursor: pointer;
 padding: 0.5em 1.5em;/*espaçamento interno do botão*/
@@ -299,4 +326,4 @@ padding: 0.5em 1.5em;/*espaçamento interno do botão*/
         0 0 4em 2em var(--glow-spread-color),
         inset 0 0 .75em .25em var(--glow-color);
 
-}
+} 

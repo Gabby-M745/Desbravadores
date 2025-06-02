@@ -22,7 +22,21 @@ function cadastrar(nome, clube, unidade, associaM, pessoA, senha ) {
     return database.executar(instrucaoSql);
 }
 
+function conectaQuiz(correta, errado) {
+    console.log("ACESSEI O USUARIO MODEL \n\n function conectaQuiz():", correta, errado);
+
+    var instrucaoSql = `
+        INSERT INTO resultadosQuiz (totalAcertosQuiz, totalErrosQuiz)
+        VALUES (${correta}, ${errado});
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    conectaQuiz
 };

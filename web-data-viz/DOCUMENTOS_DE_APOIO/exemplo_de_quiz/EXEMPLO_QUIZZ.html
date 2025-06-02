@@ -71,10 +71,10 @@
             </div>
         </div>
     </div>
-    <div id="imagem"> 
+    <!--<div id="imagem"> 
         <img src="sant-removebg-preview.png" alt="Imagem">
       </div>
-      
+    -->
 </body>
 
 </html>
@@ -156,6 +156,7 @@
     }
 
     function submeter() {
+        
         const options = document.getElementsByName("option"); // recupera alternativas no html
 
         let hasChecked = false
@@ -262,6 +263,9 @@
     }
 
     function finalizarJogo() {
+                document.getElementById('pontuacao').style.display = "flex"
+       /* document.getElementById('app').style.display = "none"/*!!!!!!!!!*/
+
         let textoParaMensagemFinal = null
         let classComCoresParaMensagemFinal = null
         const porcentagemFinalDeAcertos = pontuacaoFinal / quantidadeDeQuestoes
