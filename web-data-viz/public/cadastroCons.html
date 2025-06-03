@@ -11,7 +11,7 @@
   <title>ClubeD7- Cadastro Cons</title>
 </head>
 
-<body class="sign-in-js">
+<body class="sign-in-js" on>
   <div class="container">
     <div class="content first-content">
       <div class="first-column">
@@ -25,7 +25,12 @@
         <form class="form">
           <label class="label-input" for="">
             <i class="far fa-user icon-modify"></i>
-            <input type="text" id="nome" placeholder="Nome**">
+            <input type="text" id="nome" placeholder="Nome">
+          </label>
+
+           <label class="label-input" for="">
+            <i class="far fa-user icon-modify"></i>
+            <input type="text" id="email" placeholder="Gabby@gmail.com">
           </label>
 
           <label class="label-input" for="">
@@ -62,7 +67,7 @@
           </label>
 
 
-          <button class="btn btn-second" onclick="cadastrar()">Entrar</button>
+          <button class="btn btn-second" onclick="validarcadastro(event)">Cadastrar</button>
         </form>
       </div><!-- second column -->
     </div><!-- first content -->
@@ -75,12 +80,12 @@
       </div>
       <div class="second-column">
         <h2 class="title title-second">Entre na página!</h2>
-      <!-- <p class="description description-second">ou use sua conta de e-mail:</p> --> 
+        <!-- <p class="description description-second">ou use sua conta de e-mail:</p> -->
         <form class="form">
 
           <label class="label-input" for="">
-            <i class="far fa-envelope icon-modify"></i>
-            <input type="text" id="nomeLogin" placeholder="Nome">
+            <i class="far fa-user icon-modify"></i>
+            <input type="text" id="email" placeholder="E-mail">
           </label>
 
           <label class="label-input" for="">
@@ -88,9 +93,9 @@
             <input type="password" id="senhaLogin" placeholder="Password">
           </label>
 
-        <!-- <a class="password" href="#">Esqueceu sua senha?</a>-->  
-          <button class="btn btn-second" onclick="autenticar()">Entrar!</button>
-          
+          <!-- <a class="password" href="#">Esqueceu sua senha?</a>-->
+          <button class="btn btn-second" onclick="autenticar(event)">Entrar!</button>
+
         </form>
       </div><!-- second column -->
     </div><!-- second-content -->
@@ -99,108 +104,258 @@
 
 </html>
 <script>
- function LogarURL() {
-const params = new URLSearchParams(window.location.search);
-const mode = params.get('mode');
-if (mode === 'login') {
-document.body.className = 'sign-in-js';
-} else if (mode === 'cadastro') {
-document.body.className = 'sign-up-js';
-}
-}
 
-LogarURL();
+  function LogarURL() {
+    const params = new URLSearchParams(window.location.search);
+    const mode = params.get('mode');
+    if (mode === 'login') {
+      document.body.className = 'sign-in-js';
+    } else if (mode === 'cadastro') {
+      document.body.className = 'sign-up-js';
+    }
+  }
 
-var btnSignin = document.querySelector("#signin");
-var btnSignup = document.querySelector("#signup");
+  LogarURL();
 
-var body = document.querySelector("body");
+  var btnSignin = document.querySelector("#signin");
+  var btnSignup = document.querySelector("#signup");
 
-
-btnSignin.addEventListener("click", function () {
-body.className = "sign-in-js";
-
-setTimeout(function () {
-}, 300);
-});
-
-btnSignup.addEventListener("click", function () {
-body.className = "sign-up-js";
-
-setTimeout(function () {
-}, 300);
-})
+  var body = document.querySelector("body");
 
 
-document.querySelectorAll('.acesso a').forEach(link => {
-link.addEventListener('click', function (e) {
-if (window.location.pathname.endsWith('cadastroCons.html')) {
-e.preventDefault();
-const mode = this.href.includes('mode=cadastro') ? 'sign-in-js' : 'sign-up-js';
-document.body.className = mode;
-window.history.replaceState({}, '', `cadastroCons.html?mode=${mode === 'sign-up-js' ? 'cadastro' : 'login'}`);
-}
-});
-});
+  btnSignin.addEventListener("click", function () {
+    body.className = "sign-in-js";
+
+    setTimeout(function () {
+    }, 300);
+  });
+
+  btnSignup.addEventListener("click", function () {
+    body.className = "sign-up-js";
+
+    setTimeout(function () {
+    }, 300);
+  })
+
+
+  document.querySelectorAll('.acesso a').forEach(link => {
+    link.addEventListener('click', function (e) {
+      if (window.location.pathname.endsWith('cadastroCons.html')) {
+        e.preventDefault();
+        const mode = this.href.includes('mode=cadastro') ? 'sign-in-js' : 'sign-up-js';
+        document.body.className = mode;
+        window.history.replaceState({}, '', `cadastroCons.html?mode=${mode === 'sign-up-js' ? 'cadastro' : 'login'}`);
+      }
+    });
+  });
 
 
 
-  var user = [];
+  var club = '';
+  var unidad = '';
+  var regiao = '';
 
-  function cadastrar() {
+  function validarcadastro(event) {
+    if (event) event.preventDefault();
 
     var usuario = nome.value;
+    var emailD7 = email.value;
     var clubeD7 = clube.value;
     var unidadeD7 = unidade.value;
     var assocaiaoM = missao.value;
     var senhaD7 = senha.value;
     var confirmar = confirmaS.value;
     var pessoa = resultado.value; /*do select option*/
-/*
-    if (resultado != 'nada') { 
-      user.push(resultado.value);
-      alert("Preencha todos os campos");
-      return
-    }*/
+    var msg_erro = 'Não foi possível fazer o cadastro pois:\n';
+    var ax_erro = false
 
-if (!usuario || !clubeD7||!unidadeD7|| !assocaiaoM||!senhaD7 || !confirmar || !pessoa) {
-        alert("Por favor, preencha todos os campos obrigatórios!");
-        // Interrompe a execução da função
-       }
-    if (senhaD7 != confirmar) {
-        alert("Senhas não coincidem!!");
-        
-        return
-    } else {
-        fetch("/usuarios/cadastrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                nomeServer: usuario,
-                clubeServer: clubeD7,
-                unidadeServer: unidadeD7,
-                assocServer: assocaiaoM,
-                senhaServer: senhaD7,
-                pessoaServer: pessoa
-            }),
-        })
-
-        .then(function (resposta) {
-            console.log("resposta: ", resposta);
-            alert("Cadastro realizado com sucesso!");
-        })
-        .catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-            return;
-        });
-      /*QUANDO EXECUTADO, NÃO APARECE O ALERT DE CADASTO COM SUCESSO, APENAS DPS DE UMA SEGUNDA VEZ CLICADA NO BOTÃO, E APARECE AINDA PRIMEIRO  O CAMPO NÃO PREENCHIDO*/
+    if (usuario == '') {
+      msg_erro += `O seu campo nome está vazio\n`
+      ax_erro = true;
     }
-}
+    if(!email.includes("@")){
+      msg+= `seu email precisa conter @\n`
+      ax_erro =true; /*VOLTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR*/
+    }
 
-function autenticar() {
+    if (clubeD7 == '') {
+      club = 'Não tenho';
+    }
+    else {
+      club = clubeD7;
+    }
+    if (unidadeD7 == '') {
+      unidad = 'Não participo';
+    }
+    else {
+      unidad = unidadeD7;
+    } if (assocaiaoM == '') {
+      regiao = 'Não participo';
+    }
+    else {
+      regiao = assocaiaoM;
+    }
+    if (pessoa == 'nada') {
+      msg_erro += `Você precisa seu tipo de conta\n`
+      ax_erro = true
+    }
+    var verificar_letra_maiuscula = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+      'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+    var verificar_letra_minuscula = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+      'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+    var verificar_numero = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    var verificar_caractere_especial = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+',
+      '[', ']', '{', '}', '|', ';', ':', "'", ',', '.', '<', '>', '?', '/',
+      '`', '~', '"'];
+    var ax_erro_letra_maiscula = false;
+    var ax_erro_letra_minuscula = false;
+    var ax_erro_numero = false;
+    var ax_erro_caractere_especial = false
+    for (let i = 0; i < senhaD7.length; i++) {
+      for (let p = 0; p < verificar_letra_maiuscula.length; p++) {
+        ax_erro_letra_maiscula = true;
+        if (senhaD7[i] == verificar_letra_maiuscula[p]) {
+          ax_erro_letra_maiscula = false;
+          break;
+        }
+      }
+      if (!ax_erro_letra_maiscula) {
+        break;
+      }
+    }
+    for (let i = 0; i < senhaD7.length; i++) {
+      for (let p = 0; p < verificar_letra_minuscula.length; p++) {
+        ax_erro_letra_minuscula = true;
+        if (senhaD7[i] == verificar_letra_minuscula[p]) {
+          ax_erro_letra_minuscula = false
+          break;
+        }
+      }
+      if (!ax_erro_letra_minuscula) {
+        break;
+      }
+    }
+    for (let i = 0; i < senhaD7.length; i++) {
+      for (let p = 0; p < verificar_numero.length; p++) {
+        ax_erro_numero = true;
+        if (senhaD7[i] == verificar_numero[p]) {
+          ax_erro_numero = false;
+          break;
+        }
+      }
+      if (!ax_erro_numero) {
+        break;
+      }
+    }
+    for (let i = 0; i < senhaD7.length; i++) {
+      for (let p = 0; p < verificar_caractere_especial.length; p++) {
+        ax_erro_caractere_especial = true;
+        if (senhaD7[i] == verificar_caractere_especial[p]) {
+          ax_erro_caractere_especial = false;
+          break;
+        }
+      }
+      if (!ax_erro_caractere_especial) {
+        break;
+      }
+    }
+    if (ax_erro_caractere_especial || ax_erro_letra_maiscula || ax_erro_letra_minuscula || ax_erro_numero) {
+      ax_erro = true;
+    }
+    if (ax_erro_caractere_especial) {
+      msg_erro += `Sua senha precisa ter um caractere especial. EX: #,$\n`
+    }
+    if (ax_erro_letra_maiscula) {
+      msg_erro += `Sua senha precisa ter uma letra maiúscula . EX: A,B\n`
+    }
+
+    if (ax_erro_letra_minuscula) {
+      msg_erro += `Sua senha precisa ter uma letra minuscula. EX: a,b\n`
+    }
+
+    if (ax_erro_numero) {
+      msg_erro += `Sua senha precisa ter um número. EX: 1,2\n`
+    }
+    if (confirmar != senhaD7) {
+      msg_erro += `Sua senha é diferente dá informada, Favor rever\n`
+      ax_erro = true
+    }
+    if (ax_erro) {
+      alert(msg_erro)
+    } else {
+      cadastrar();
+    }
+
+
+
+  }
+
+  function cadastrar() {
+
+    var usuario = nome.value;
+    var senhaD7 = senha.value;
+    var pessoa = resultado.value; /*do select option*/
+    /*
+        if (resultado != 'nada') { 
+          user.push(resultado.value);
+          alert("Preencha todos os campos");
+          return
+        }*/
+
+    console.log("Entrou no Fetch");
+    console.log(usuario);
+    console.log(senhaD7);
+    console.log(pessoa);
+    console.log(club);
+    console.log(unidad);
+    console.log(regiao);
+    alert("Dados na console");
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        //Primeiro nome: usuario,
+        usuarioServer: usuario,
+        clubServer: club,
+        unidadServer: unidad,
+        regiaoServer: regiao,
+        senhaD7Server: senhaD7,
+        pessoaServer: pessoa
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+
+          alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
+
+          setTimeout(() => {
+            window.location = "cadastroCons.html";
+          });
+
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+    /*QUANDO EXECUTADO, NÃO APARECE O ALERT DE CADASTO COM SUCESSO, APENAS DPS DE UMA SEGUNDA VEZ CLICADA NO BOTÃO, E APARECE AINDA PRIMEIRO  O CAMPO NÃO PREENCHIDO*/
+
+  }
+
+
+  function autenticar(event) {
     // window.location = "Diretoria.html";
+    if (event) event.preventDefault();
+    console.log("entrou mo autenticar")
+  
 
     var nomeVar = nomeLogin.value;
     var senhaVar = senhaLogin.value;
@@ -212,6 +367,7 @@ function autenticar() {
     console.log("FORM LOGIN: ", nomeVar);
     console.log("FORM SENHA: ", senhaVar);
 
+    reload = true
     fetch("/usuarios/autenticar", {
       method: "POST",
       headers: {

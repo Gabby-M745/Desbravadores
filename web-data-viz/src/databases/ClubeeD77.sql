@@ -1,6 +1,6 @@
 /*COPIA ALTERARA*/
-CREATE DATABASE ClubeD7;
-USE ClubeD7;
+CREATE DATABASE clubeD7;
+USE clubeD7;
 -- desc Usuario;
 
 -- alter table  Usuario drop constraint chkUser;
@@ -35,13 +35,18 @@ CREATE TABLE Usuario (
 create table Resultado (idResultado int auto_increment,
 fkUsuario int,
 constraint fkUser foreign key (fkUsuario) references Usuario (idUsuario),
+fkPerguntas int,
+constraint fkPerg foreign key (fkPerguntas) references Perguntas (idPerguntas),
 fkQuiz int,
 constraint fkQuin foreign key (fkQuiz) references Quiz (idQuiz),
 /*tentativas varchar(45), -- quantidades realizadas          -- PENSAR SOBRE */
-totalAcertosQuiz INT, -- total de acertos na tentativa/*simplifica a "alternativaEscolhida" pq aí vamos saber diretamente apenas a soma de tudo e não uma verificação de cada questão*/
-totalErrosQuiz INT, -- total de erros na tentativa
+alternativaEscolhida char(1), -- da alternativa escolhida pelo usuário
+-- acrescentando
+dataTentativa datetime default current_timestamp, -- data e hora da tentativa, tipo um acompanhamento, hitórico, no decorrer
+totalAcertos INT, -- total de acertos na tentativa/*simplifica a "alternativaEscolhida" pq aí vamos saber diretamente apenas a soma de tudo e não uma verificação de cada questão*/
+totalErros INT, -- total de erros na tentativa
 pontuacao INT, -- pontuação total
-primary key (idResultado, fkUsuario, fkQuiz)
+primary key (idResultado, fkUsuario, fkPerguntas, fkQuiz)
 );
 
 /*acertos varchar(45), -- exibir na dashboard
