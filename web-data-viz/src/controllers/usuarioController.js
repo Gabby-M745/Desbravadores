@@ -22,8 +22,7 @@ function autenticar(req, res) {
                         console.log("Autenticação realizada com sucesso!");
                         res.json({
                             idUsuario: resultadoAutenticar[0].idUsuario,
-                            Nome: resultadoAutenticar[0].Nome,
-                            Senha: resultadoAutenticar[0].Senha
+                            Nome: resultadoAutenticar[0].Nome
                         });
 
                     } else if (resultadoAutenticar.length == 0) {
@@ -45,11 +44,11 @@ function autenticar(req, res) {
 
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var nome = req.body.nomeServer;
-    var clube = req.body.clubeServer;
-    var unidade = req.body.unidadeServer;
-    var associaM = req.body.assocServer;
-    var senha = req.body.senhaServer;
+    var nome = req.body.usuarioServer;
+    var clube = req.body.clubServer;
+    var unidade = req.body.unidadServer;
+    var associaM = req.body.regiaoServer;
+    var senha = req.body.senhaD7Server;
     var pessoA = req.body.pessoaServer;
 
     // Faça as validações dos valores
@@ -57,17 +56,17 @@ function cadastrar(req, res) {
         res.status(400).send("Seu nome está undefined!");
     } else if (clube == undefined) {
         res.status(400).send("Seu clube está undefined!");
-    } else if (senha == undefined) {
-        res.status(400).send("Sua senha está undefined!");
     } else if (unidade == undefined) {
         res.status(400).send("Sua unidade está undefined!");
-    } else if(associaM== undefined){
+    } else if (associaM == undefined) {
         res.status(400).send("Sua associação/Missão está undefined!")
-    }   else if (pessoA== undefined){
-                res.status(400).send("Seu campo 'pessoa' está undefined!")
+    } else if (senha == undefined) {
+        res.status(400).send("Sua senha está undefined!");
+    } else if (pessoA == undefined) {
+        res.status(400).send("Seu campo 'pessoa' está undefined!")
     }
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, clube, unidade, associaM, pessoA, senha) 
+    // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+    usuarioModel.cadastrar(nome,clube,unidade,associaM,senha,pessoA)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -82,31 +81,31 @@ function cadastrar(req, res) {
                 res.status(500).json(erro.sqlMessage);
             }
         );
-    }
+}
 
 
-    function conectaQuiz(req, res) {
+function conectaQuiz(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-   var correta = req.body.corretaServer;
+    var correta = req.body.corretaServer;
     var errado = req.body.erradoServer;
-    
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.conectaQuiz(correta, errado)
-            .then(
-                function (resultado) {
-                    res.json(resultado);
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-    }
+
+    // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+    usuarioModel.conectaQuiz(correta, errado)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
 
 
 
