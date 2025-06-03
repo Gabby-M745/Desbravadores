@@ -74,7 +74,7 @@ top:25%;
     /*cor da variável*/
     --glow-spread-color: rgba(231, 132, 26, 0.781);
     
-    top: 10%; /*25*/
+    top: 10%; /*    top: 25%;*/
     background-color: rgba(255, 255, 255, 0.734);
     width: 90%;
     max-width: 600px;
@@ -304,6 +304,7 @@ padding: 0.5em 1.5em;/*espaçamento interno do botão*/
     box-shadow: 0 0 1em .25em var(--glow-color),
         0 0 4em 2em var(--glow-spread-color),
         inset 0 0 .75em .25em var(--glow-color);
+
 }
 
 #btnProx {
