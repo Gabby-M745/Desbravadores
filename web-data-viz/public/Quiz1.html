@@ -364,6 +364,7 @@
     }
 
     function Resultado() {
+    const idUsuario = sessionStorage.ID_USUARIO;
     var pontuacao = pontuacaoFinal;
     var corretaVar = certas;
     var erradaVar = erradas;
@@ -374,9 +375,11 @@
             "Content-Type": "application/json",
         },
         body: JSON.stringify({/*esá guardando as variaveis,*/
-            pontuacaoServer: pontuacao,
+            idUsuarioServer: idUsuario,
             corretaServer: corretaVar,
             erradoServer: erradaVar,
+            fkQuiz:1,
+            pontuacaoServer: pontuacao,
         }),
     })
     .then(function (resposta) {

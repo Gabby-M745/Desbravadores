@@ -51,14 +51,21 @@ SELECT * FROM Usuario;
 select*from Quiz;
 select *from Perguntas;
 select *from Resultado;
-select*from resultadosQuiz;
 
-insert into Quiz( nomeQ) values
-('Quiz1'),
-('Quiz2');
+
 alter table Usuario add column Email varchar(45); 
 update Usuario set Email = 'kaka@gmail.com' where idUsuario = 64;
 /*create table resultadosQuiz (idResultadoQ int primary key auto_increment,
 totalAcertosQuiz INT, -- total de acertos na tentativa/*simplifica a "alternativaEscolhida" pq aí vamos saber diretamente apenas a soma de tudo e não uma verificação de cada questão*/
 /*totalErrosQuiz INT); */-- total de erros na tentativa
 desc Resultado;
+alter table Resultado modify column pontuacao decimal(10,2);
+alter table Quiz rename column nome to nomeQ;/*ALTERAÇÃO DE NOME,---ATUALIZAÇÃO*/
+
+insert into Quiz (idQuiz, nomeQ) values/*se declarado o id, acrescentar o default*/
+(default, 'Quiz1' ),
+(default,'Quiz2');
+
+ INSERT INTO Resultado (fkUsuario,fkQuiz,totalAcertosQuiz, totalErrosQuiz, pontuacao)
+        VALUES (1,1,3, 5,7.25);
+    
