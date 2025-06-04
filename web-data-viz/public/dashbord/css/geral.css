@@ -60,7 +60,7 @@ body {
 .topo {
     display: flex;
     padding: 1rem 2rem;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 4px 10px rgba(185, 23, 23, 0.2);
     justify-content: space-between;
 }
 
@@ -100,7 +100,7 @@ body {
     padding: 10px 25px;
 }
 
-    /*alerta-personalisado*/
+    /*alerta-personalisado 
     .alerta_lofhel {
         background-color: black;
         color: white;
@@ -143,5 +143,5 @@ body {
         background-color: rgba(0, 0, 0, 0.596);
         position: absolute;
 
-    }
+    /*}*/
     /*alerta-personalisado_fim*/
