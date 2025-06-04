@@ -22,7 +22,7 @@ function cadastrar(nome,clube,unidade,associaM,senha,pessoA) {
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
-
+/*
 function conectaQuiz(correta, errado) {
     console.log("ACESSEI O USUARIO MODEL \n\n function conectaQuiz():", correta, errado);
 
@@ -33,11 +33,11 @@ function conectaQuiz(correta, errado) {
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
-}
+}*/
 
 
 module.exports = {
     autenticar,
     cadastrar,
-    conectaQuiz
+/*    conectaQuiz*/
 };

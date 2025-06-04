@@ -83,7 +83,7 @@ function cadastrar(req, res) {
         );
 }
 
-
+/*
 function conectaQuiz(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var correta = req.body.corretaServer;
@@ -105,12 +105,12 @@ function conectaQuiz(req, res) {
                 res.status(500).json(erro.sqlMessage);
             }
         );
-}
+}*/
 
 
 
 module.exports = {/*"validar funcao" */
     autenticar,
     cadastrar,
-    conectaQuiz
+    /*conectaQuiz*/
 }

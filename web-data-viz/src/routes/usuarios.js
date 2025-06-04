@@ -12,11 +12,11 @@ router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });
 
-router.post("/conectaQuiz", function (req, res) {/*caminhho da inserção de dados para controll*/ 
-    usuarioController.conectaQuiz(req, res);
-});
+/*router.post("/conectaQuiz", function (req, res) {/*caminhho da inserção de dados para controll*/ 
+  /*  usuarioController.conectaQuiz(req, res);
+});*/
 
-router.post("/conectaQuiz2", function (req, res) {
+/*router.post("/conectaQuiz2", function (req, res) {
     usuarioController.conectaQuiz2(req, res);
-});
+});*/
 module.exports = router;

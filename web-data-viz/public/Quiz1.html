@@ -317,7 +317,7 @@
 
     function finalizarJogo() {/**/
         document.getElementById('pontuacao').style.display = "flex"
-         document.getElementById('app').style.display = "none"/*!!!!!!!!!*/
+        document.getElementById('app').style.display = "none"/*!!!!!!!!!*/
 
         let textoParaMensagemFinal = null
         let classComCoresParaMensagemFinal = null
@@ -356,10 +356,10 @@
 
    document.getElementById('voltarpInicio').style.display = "block"; 
 
-        conectaQuiz();/*coector para a API*/
+        Resultado();/*coector para a API*/
     }
 
-    function conectaQuiz() {
+    function Resultado() {
 
     var corretaVar = pontuacaoFinal;
     var erradaVar = erradas;

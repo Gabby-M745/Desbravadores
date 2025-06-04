@@ -52,7 +52,7 @@ select *from Perguntas;
 select *from Resultado;
 select*from resultadosQuiz;
 
-insert into Quiz( nome) values
+insert into Quiz( nome) values 
 ('Quiz1'),
 ('Quiz2');
 
