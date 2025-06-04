@@ -273,17 +273,21 @@
         let alternativaCorreta = null // variável para armazenar a alternativa correta
 
         options.forEach((option) => {
-            if (option.value === respostaQuestaoAtual) {
-                console.log("alternativaCorreta está no componente: " + alternativaCorreta)
-                alternativaCorreta = option.labels[0].id
-            }
-        })
+    if (option.value === respostaQuestaoAtual) {
+        if(option.labels.length > 0) {
+            alternativaCorreta = option.labels[0].id;
+            console.log("alternativaCorreta está no componente: " + alternativaCorreta);
+        } else {
+            console.warn("input não possui label associado:", option);
+        }
+    }
 
+        })
         // verifica se resposta assinalada é correta
         options.forEach((option) => {
             if (option.checked === true && option.value === respostaQuestaoAtual) {
                 document.getElementById(alternativaCorreta).classList.add("text-success-with-bg")
-                pontuacaoFinal++
+                pontuacaoFinal=Number(pontuacaoFinal)+1.25;
                 certas++
                 document.getElementById("spanCertas").innerHTML = certas
                 numeroDaQuestaoAtual++
@@ -360,16 +364,17 @@
     }
 
     function Resultado() {
-
-    var corretaVar = pontuacaoFinal;
+    var pontuacao = pontuacaoFinal;
+    var corretaVar = certas;
     var erradaVar = erradas;
 
-    fetch("/usuarios/conectaQuiz", {  /*ACESSE O USUARIO*/
+    fetch("/quiz/iniciar", {  /*ACESSE O USUARIO*/
         method: "POST",/*INSERÇÃO DO  BANCO DE DADOS*/
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({/*esá guardando as variaveis,*/
+            pontuacaoServer: pontuacao,
             corretaServer: corretaVar,
             erradoServer: erradaVar,
         }),

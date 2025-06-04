@@ -22,13 +22,13 @@ CREATE TABLE Usuario (
   );
   -- ALTER TABLE Usuario drop constraint chkUser ;
 
-  create table Perguntas (idPerguntas int auto_increment,
+ /* create table Perguntas (idPerguntas int auto_increment,
   perguntas text, 
   alternativas char(1),
   fkQuiz int,
   primary key (idPerguntas, fkQuiz),
   constraint fkquizN foreign key (fkQuiz) references Quiz(idQuiz)
-  );
+  );*/
 
 /*Associativa */
 
@@ -43,7 +43,6 @@ totalErrosQuiz INT, -- total de erros na tentativa
 pontuacao INT, -- pontuação total
 primary key (idResultado, fkUsuario, fkQuiz)
 );
-
 /*acertos varchar(45), -- exibir na dashboard
 erradas varchar(45), -- exibir na dashbard*/
 SELECT * FROM Usuario;
@@ -52,10 +51,11 @@ select *from Perguntas;
 select *from Resultado;
 select*from resultadosQuiz;
 
-insert into Quiz( nome) values 
+insert into Quiz( nomeQ) values
 ('Quiz1'),
 ('Quiz2');
-
-create table resultadosQuiz (idResultadoQ int primary key auto_increment,
+alter table Usuario add column Email varchar(45); 
+update Usuario set Email = 'kaka@gmail.com' where idUsuario = 64;
+/*create table resultadosQuiz (idResultadoQ int primary key auto_increment,
 totalAcertosQuiz INT, -- total de acertos na tentativa/*simplifica a "alternativaEscolhida" pq aí vamos saber diretamente apenas a soma de tudo e não uma verificação de cada questão*/
-totalErrosQuiz INT); -- total de erros na tentativa
+/*totalErrosQuiz INT); */-- total de erros na tentativa

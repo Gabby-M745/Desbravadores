@@ -2,12 +2,12 @@ var quizModel = require("../models/quizModel");/* estava no model*/
 
 function iniciar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-
+    var pontuacao = req.body.pontuacaoServer;
     var correta = req.body.corretaServer;
-    var errado = req.body.erradoServer;
+    var errado = req.body.erradoServer;/*front */
 
     // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-    quizModel.iniciar(correta, errado)
+    quizModel.iniciar(pontuacao, correta, errado)/*back */
         .then(
             function (resultado) {
                 res.json(resultado);

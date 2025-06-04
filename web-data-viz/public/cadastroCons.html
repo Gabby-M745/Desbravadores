@@ -85,14 +85,13 @@
 
           <label class="label-input" for="">
             <i class="far fa-user icon-modify"></i>
-            <input type="text" id="email" placeholder="E-mail">
+            <input type="text" id="email2" placeholder="E-mail">
           </label>
 
           <label class="label-input" for="">
             <i class="fas fa-lock icon-modify"></i>
             <input type="password" id="senhaLogin" placeholder="Password">
           </label>
-
           <!-- <a class="password" href="#">Esqueceu sua senha?</a>-->
           <button class="btn btn-second" onclick="autenticar(event)">Entrar!</button>
 
@@ -162,11 +161,39 @@
     var emailD7 = email.value;
     var clubeD7 = clube.value;
     var unidadeD7 = unidade.value;
-    var assocaiaoM = missao.value;
+    var associaM = missao.value;
     var senhaD7 = senha.value;
     var confirmar = confirmaS.value;
     var pessoa = resultado.value; /*do select option*/
+
     var msg_erro = 'Não foi possível fazer o cadastro pois:\n';
+    if (usuario == "" || emailD7 == "" || clubeD7|| unidadeD7 || associaM || senhaD7 == "" || confirmar == "" ||
+      pessoa == "" ) {
+     alert("Atenção!! Preencha todos os campos!")
+
+       if (clubeD7 == '') {
+      club = 'Não tenho';
+    }
+    else {
+      club = clubeD7;
+    }
+    if (unidadeD7 == '') {
+      unidad = 'Não participo';
+    }
+    else {
+      unidad = unidadeD7;
+    } if (associaM == '') {
+      regiao = 'Não participo';
+    }
+    else {
+      regiao = associaM;
+    }
+   if (pessoa == 'nada') {
+      msg_erro += `Você precisa escolher seu tipo de conta\n`
+    }
+  }
+}
+   /* var msg_erro = 'Não foi possível fazer o cadastro pois:\n';
     var ax_erro = false
 
     if (usuario == '') {
@@ -176,7 +203,7 @@
     if(!email.includes("@")){
       msg+= `seu email precisa conter @\n`
       ax_erro =true; /*VOLTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR*/
-    }
+    /*}
 
     if (clubeD7 == '') {
       club = 'Não tenho';
@@ -285,10 +312,7 @@
     } else {
       cadastrar();
     }
-
-
-
-  }
+*/
 
   function cadastrar() {
 
@@ -357,14 +381,14 @@
     console.log("entrou mo autenticar")
   
 
-    var nomeVar = nomeLogin.value;
+    var emailVar = email2.value;
     var senhaVar = senhaLogin.value;
 
 
-    if (nomeVar == "" || senhaVar == "") {
+    if (emailVar == "" || senhaVar == "") {
       alert("Mensagem de erro para todos os campos em branco");
     }
-    console.log("FORM LOGIN: ", nomeVar);
+    console.log("FORM LOGIN: ", emailVar);
     console.log("FORM SENHA: ", senhaVar);
 
     reload = true
@@ -374,7 +398,7 @@
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        nomeServer: nomeVar,
+        emailServer: emailVar,
         senhaServer: senhaVar
       })
     }).then(function (resposta) {

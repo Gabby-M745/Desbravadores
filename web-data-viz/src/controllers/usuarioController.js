@@ -1,16 +1,16 @@
 var usuarioModel = require("../models/usuarioModel");
 
 function autenticar(req, res) {
-    var Nome = req.body.nomeServer;
+    var Email = req.body.emailServer;
     var Senha = req.body.senhaServer;
 
-    if (Nome == undefined) {
+    if (Email == undefined) {
         res.status(400).send("Seu email está undefined!");
     } else if (Senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
 
-        usuarioModel.autenticar(Nome, Senha)
+        usuarioModel.autenticar(Email, Senha)
             .then(
                 function (resultadoAutenticar) {
                     console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
@@ -22,7 +22,7 @@ function autenticar(req, res) {
                         console.log("Autenticação realizada com sucesso!");
                         res.json({
                             idUsuario: resultadoAutenticar[0].idUsuario,
-                            Nome: resultadoAutenticar[0].Nome
+                            Email: resultadoAutenticar[0].Email
                         });
 
                     } else if (resultadoAutenticar.length == 0) {
