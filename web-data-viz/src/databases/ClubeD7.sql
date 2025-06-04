@@ -5,6 +5,8 @@ USE ClubeD7;
 
 -- alter table  Usuario drop constraint chkUser;
 -- drop table Usuario;
+drop table Resultado;
+
 -- drop database ClubeD7;
 CREATE TABLE Usuario (
   idUsuario INT PRIMARY KEY auto_increment,
@@ -59,3 +61,4 @@ update Usuario set Email = 'kaka@gmail.com' where idUsuario = 64;
 /*create table resultadosQuiz (idResultadoQ int primary key auto_increment,
 totalAcertosQuiz INT, -- total de acertos na tentativa/*simplifica a "alternativaEscolhida" pq aí vamos saber diretamente apenas a soma de tudo e não uma verificação de cada questão*/
 /*totalErrosQuiz INT); */-- total de erros na tentativa
+desc Resultado;
