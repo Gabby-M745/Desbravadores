@@ -10,6 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Principal</title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  <!-- script: importa códigos-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="css/geral.css">
     <link rel="stylesheet" href="css/deshbord.css"><!--AQUI-->
@@ -94,3 +95,26 @@
   justify-content: space-between;
 }
  </style>
+   <script>
+            const ctt = document.getElementById('myChart02');
+          /*a COR ATUAL É AZUL -- o charjs tem já definido uma paleta de cores, */
+            new Chart(ctt, {
+              type: 'line',
+              data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'], //TITULO DO QUE ESTÁ  ESPERAMOS QUE O GRÁFICO FAÇA AS METRICAS
+                datasets: [{
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                  label: '# of Votes', // TEXTO DE CIMA , CABECALHO
+                  data: [12+20, 19+30, 3+30, 5+20, 2+48, 3+47],
+                  borderWidth: 2 //define o modo paisagem do gráfico
+                }]
+              },
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+          </script>

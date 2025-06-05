@@ -22,33 +22,33 @@
       </div>
       <div class="second-column">
         <h2 class="title title-second">criar uma conta</h2>
-        <form class="form">
-          <label class="label-input" for="">
+        <div class="form">
+          <label class="label-input">
             <i class="far fa-user icon-modify"></i>
             <input type="text" id="nome" placeholder="Nome">
           </label>
 
-           <label class="label-input" for="">
+          <label class="label-input">
             <i class="far fa-user icon-modify"></i>
             <input type="text" id="email" placeholder="Gabby@gmail.com">
           </label>
 
-          <label class="label-input" for="">
+          <label class="label-input">
             <i class="far fa-envelope icon-modify"></i>
             <input type="text" id="clube" placeholder="Clube/Não tenho">
           </label>
 
-          <label class="label-input" for="">
+          <label class="label-input">
             <i class="fas fa-lock icon-modify"></i>
             <input type="text" id="unidade" placeholder="Unidade/Não participo">
           </label>
 
 
-          <label class="label-input" for="">
+          <label class="label-input">
             <input type="text" id="missao" placeholder="Associação/Missão/Não participo">
           </label>
 
-          <label class="label-input" for="">
+          <label class="label-input">
             <select id="resultado">
               <option value="nada" disabled selected>Selecione</option>
               <option value="Visita">Visita</option>
@@ -56,19 +56,19 @@
             </select>
           </label>
 
-          <label class="label-input" for="">
+          <label class="label-input">
             <i class="fas fa-lock icon-modify"></i>
             <input type="password" id="senha" placeholder="Senha**">
           </label>
 
-          <label class="label-input" for="">
+          <label class="label-input">
             <i class="fas fa-lock icon-modify"></i>
             <input type="password" id="confirmaS" placeholder="Confirma a sua senha**">
           </label>
 
 
-          <button class="btn btn-second" onclick="validarcadastro(event)">Cadastrar</button>
-        </form>
+          <button class="btn btn-second" onclick="cadastrar()">Cadastrar</button>
+        </div>
       </div><!-- second column -->
     </div><!-- first content -->
     <div class="content second-content">
@@ -81,21 +81,21 @@
       <div class="second-column">
         <h2 class="title title-second">Entre na página!</h2>
         <!-- <p class="description description-second">ou use sua conta de e-mail:</p> -->
-        <form class="form">
+        <div class="form">
 
-          <label class="label-input" for="">
+          <label class="label-input">
             <i class="far fa-user icon-modify"></i>
             <input type="text" id="email2" placeholder="E-mail">
           </label>
 
-          <label class="label-input" for="">
+          <label class="label-input">
             <i class="fas fa-lock icon-modify"></i>
             <input type="password" id="senhaLogin" placeholder="Password">
           </label>
           <!-- <a class="password" href="#">Esqueceu sua senha?</a>-->
           <button class="btn btn-second" onclick="autenticar(event)">Entrar!</button>
 
-        </form>
+        </div>
       </div><!-- second column -->
     </div><!-- second-content -->
   </div>
@@ -148,191 +148,155 @@
     });
   });
 
+  /* function validarcadastro(event) {
+     if (event) event.preventDefault();*/
 
 
-  var club = '';
-  var unidad = '';
-  var regiao = '';
+  /* var msg_erro = 'Não foi possível fazer o cadastro pois:\n';
+   var ax_erro = false
 
-  function validarcadastro(event) {
-    if (event) event.preventDefault();
+   if (usuario == '') {
+     msg_erro += `O seu campo nome está vazio\n`
+     ax_erro = true;
+   }
+   if(!email.includes("@")){
+     msg+= `seu email precisa conter @\n`
+     ax_erro =true; /*VOLTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR*/
+  /*}
+
+  if (clubeD7 == '') {
+    club = 'Não tenho';
+  }
+  else {
+    club = clubeD7;
+  }
+  if (unidadeD7 == '') {
+    unidad = 'Não participo';
+  }
+  else {
+    unidad = unidadeD7;
+  } if (assocaiaoM == '') {
+    regiao = 'Não participo';
+  }
+  else {
+    regiao = assocaiaoM;
+  }
+  if (pessoa == 'nada') {
+    msg_erro += `Você precisa seu tipo de conta\n`
+    ax_erro = true
+  }
+  var verificar_letra_maiuscula = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+    'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+  var verificar_letra_minuscula = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+    'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+  var verificar_numero = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+  var verificar_caractere_especial = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+',
+    '[', ']', '{', '}', '|', ';', ':', "'", ',', '.', '<', '>', '?', '/',
+    '`', '~', '"'];
+  var ax_erro_letra_maiscula = false;
+  var ax_erro_letra_minuscula = false;
+  var ax_erro_numero = false;
+  var ax_erro_caractere_especial = false
+  for (let i = 0; i < senhaD7.length; i++) {
+    for (let p = 0; p < verificar_letra_maiuscula.length; p++) {
+      ax_erro_letra_maiscula = true;
+      if (senhaD7[i] == verificar_letra_maiuscula[p]) {
+        ax_erro_letra_maiscula = false;
+        break;
+      }
+    }
+    if (!ax_erro_letra_maiscula) {
+      break;
+    }
+  }
+  for (let i = 0; i < senhaD7.length; i++) {
+    for (let p = 0; p < verificar_letra_minuscula.length; p++) {
+      ax_erro_letra_minuscula = true;
+      if (senhaD7[i] == verificar_letra_minuscula[p]) {
+        ax_erro_letra_minuscula = false
+        break;
+      }
+    }
+    if (!ax_erro_letra_minuscula) {
+      break;
+    }
+  }
+  for (let i = 0; i < senhaD7.length; i++) {
+    for (let p = 0; p < verificar_numero.length; p++) {
+      ax_erro_numero = true;
+      if (senhaD7[i] == verificar_numero[p]) {
+        ax_erro_numero = false;
+        break;
+      }
+    }
+    if (!ax_erro_numero) {
+      break;
+    }
+  }
+  for (let i = 0; i < senhaD7.length; i++) {
+    for (let p = 0; p < verificar_caractere_especial.length; p++) {
+      ax_erro_caractere_especial = true;
+      if (senhaD7[i] == verificar_caractere_especial[p]) {
+        ax_erro_caractere_especial = false;
+        break;
+      }
+    }
+    if (!ax_erro_caractere_especial) {
+      break;
+    }
+  }
+  if (ax_erro_caractere_especial || ax_erro_letra_maiscula || ax_erro_letra_minuscula || ax_erro_numero) {
+    ax_erro = true;
+  }
+  if (ax_erro_caractere_especial) {
+    msg_erro += `Sua senha precisa ter um caractere especial. EX: #,$\n`
+  }
+  if (ax_erro_letra_maiscula) {
+    msg_erro += `Sua senha precisa ter uma letra maiúscula . EX: A,B\n`
+  }
+
+  if (ax_erro_letra_minuscula) {
+    msg_erro += `Sua senha precisa ter uma letra minuscula. EX: a,b\n`
+  }
+
+  if (ax_erro_numero) {
+    msg_erro += `Sua senha precisa ter um número. EX: 1,2\n`
+  }
+  if (confirmar != senhaD7) {
+    msg_erro += `Sua senha é diferente dá informada, Favor rever\n`
+    ax_erro = true
+  }
+  if (ax_erro) {
+    alert(msg_erro)
+  } else {
+    cadastrar();
+  }
+*/
+
+  function cadastrar() {
 
     var usuario = nome.value;
     var emailD7 = email.value;
-    var clubeD7 = clube.value;
-    var unidadeD7 = unidade.value;
+    var club = clube.value;
+    var unidad = unidade.value;
     var associaM = missao.value;
     var senhaD7 = senha.value;
     var confirmar = confirmaS.value;
     var pessoa = resultado.value; /*do select option*/
 
     var msg_erro = 'Não foi possível fazer o cadastro pois:\n';
-    if (usuario == "" || emailD7 == "" || clubeD7|| unidadeD7 || associaM || senhaD7 == "" || confirmar == "" ||
-      pessoa == "" ) {
-     alert("Atenção!! Preencha todos os campos!")
-
-       if (clubeD7 == '') {
-      club = 'Não tenho';
+    if (usuario == "" || emailD7 == "" || senhaD7 == "" || confirmar == "" ||
+      pessoa == "") {
+      alert("Atenção!! Preencha todos os campos!")
     }
-    else {
-      club = clubeD7;
-    }
-    if (unidadeD7 == '') {
-      unidad = 'Não participo';
-    }
-    else {
-      unidad = unidadeD7;
-    } if (associaM == '') {
-      regiao = 'Não participo';
-    }
-    else {
-      regiao = associaM;
-    }
-   if (pessoa == 'nada') {
-      msg_erro += `Você precisa escolher seu tipo de conta\n`
-    }
-  }
-}
-   /* var msg_erro = 'Não foi possível fazer o cadastro pois:\n';
-    var ax_erro = false
-
-    if (usuario == '') {
-      msg_erro += `O seu campo nome está vazio\n`
-      ax_erro = true;
-    }
-    if(!email.includes("@")){
-      msg+= `seu email precisa conter @\n`
-      ax_erro =true; /*VOLTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR*/
-    /*}
-
-    if (clubeD7 == '') {
-      club = 'Não tenho';
-    }
-    else {
-      club = clubeD7;
-    }
-    if (unidadeD7 == '') {
-      unidad = 'Não participo';
-    }
-    else {
-      unidad = unidadeD7;
-    } if (assocaiaoM == '') {
-      regiao = 'Não participo';
-    }
-    else {
-      regiao = assocaiaoM;
-    }
-    if (pessoa == 'nada') {
-      msg_erro += `Você precisa seu tipo de conta\n`
-      ax_erro = true
-    }
-    var verificar_letra_maiuscula = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
-      'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-    var verificar_letra_minuscula = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
-      'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-    var verificar_numero = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-    var verificar_caractere_especial = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+',
-      '[', ']', '{', '}', '|', ';', ':', "'", ',', '.', '<', '>', '?', '/',
-      '`', '~', '"'];
-    var ax_erro_letra_maiscula = false;
-    var ax_erro_letra_minuscula = false;
-    var ax_erro_numero = false;
-    var ax_erro_caractere_especial = false
-    for (let i = 0; i < senhaD7.length; i++) {
-      for (let p = 0; p < verificar_letra_maiuscula.length; p++) {
-        ax_erro_letra_maiscula = true;
-        if (senhaD7[i] == verificar_letra_maiuscula[p]) {
-          ax_erro_letra_maiscula = false;
-          break;
-        }
-      }
-      if (!ax_erro_letra_maiscula) {
-        break;
-      }
-    }
-    for (let i = 0; i < senhaD7.length; i++) {
-      for (let p = 0; p < verificar_letra_minuscula.length; p++) {
-        ax_erro_letra_minuscula = true;
-        if (senhaD7[i] == verificar_letra_minuscula[p]) {
-          ax_erro_letra_minuscula = false
-          break;
-        }
-      }
-      if (!ax_erro_letra_minuscula) {
-        break;
-      }
-    }
-    for (let i = 0; i < senhaD7.length; i++) {
-      for (let p = 0; p < verificar_numero.length; p++) {
-        ax_erro_numero = true;
-        if (senhaD7[i] == verificar_numero[p]) {
-          ax_erro_numero = false;
-          break;
-        }
-      }
-      if (!ax_erro_numero) {
-        break;
-      }
-    }
-    for (let i = 0; i < senhaD7.length; i++) {
-      for (let p = 0; p < verificar_caractere_especial.length; p++) {
-        ax_erro_caractere_especial = true;
-        if (senhaD7[i] == verificar_caractere_especial[p]) {
-          ax_erro_caractere_especial = false;
-          break;
-        }
-      }
-      if (!ax_erro_caractere_especial) {
-        break;
-      }
-    }
-    if (ax_erro_caractere_especial || ax_erro_letra_maiscula || ax_erro_letra_minuscula || ax_erro_numero) {
-      ax_erro = true;
-    }
-    if (ax_erro_caractere_especial) {
-      msg_erro += `Sua senha precisa ter um caractere especial. EX: #,$\n`
-    }
-    if (ax_erro_letra_maiscula) {
-      msg_erro += `Sua senha precisa ter uma letra maiúscula . EX: A,B\n`
-    }
-
-    if (ax_erro_letra_minuscula) {
-      msg_erro += `Sua senha precisa ter uma letra minuscula. EX: a,b\n`
-    }
-
-    if (ax_erro_numero) {
-      msg_erro += `Sua senha precisa ter um número. EX: 1,2\n`
-    }
-    if (confirmar != senhaD7) {
-      msg_erro += `Sua senha é diferente dá informada, Favor rever\n`
-      ax_erro = true
-    }
-    if (ax_erro) {
-      alert(msg_erro)
-    } else {
-      cadastrar();
-    }
-*/
-
-  function cadastrar() {
-
-    var usuario = nome.value;
-    var senhaD7 = senha.value;
-    var pessoa = resultado.value; /*do select option*/
-    /*
-        if (resultado != 'nada') { 
-          user.push(resultado.value);
-          alert("Preencha todos os campos");
-          return
-        }*/
-
     console.log("Entrou no Fetch");
     console.log(usuario);
+    console.log(emailD7);
     console.log(senhaD7);
     console.log(pessoa);
     console.log(club);
     console.log(unidad);
-    console.log(regiao);
+    console.log(associaM);
     alert("Dados na console");
     fetch("/usuarios/cadastrar", {
       method: "POST",
@@ -346,9 +310,10 @@
         usuarioServer: usuario,
         clubServer: club,
         unidadServer: unidad,
-        regiaoServer: regiao,
-        senhaD7Server: senhaD7,
-        pessoaServer: pessoa
+        regiaoServer: associaM,
+        pessoaServer: pessoa,
+       senhaD7Server: senhaD7,
+        emailServer:emailD7
       }),
     })
       .then(function (resposta) {
@@ -375,11 +340,12 @@
   }
 
 
+
   function autenticar(event) {
     // window.location = "Diretoria.html";
     if (event) event.preventDefault();
     console.log("entrou mo autenticar")
-  
+
 
     var emailVar = email2.value;
     var senhaVar = senhaLogin.value;

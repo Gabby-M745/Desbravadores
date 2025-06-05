@@ -167,7 +167,7 @@
     let quantidadeDeQuestoes = listaDeQuestoes.length
     // let isUltima = numeroDaQuestaoAtual == quantidadeDeQuestoes-1 ? true : false
 
-      
+  
     function onloadEsconder() {
         document.getElementById('pontuacao').style.display = "none"
         document.getElementById('jogo').style.display = "none"
@@ -273,17 +273,21 @@
         let alternativaCorreta = null // variável para armazenar a alternativa correta
 
         options.forEach((option) => {
-            if (option.value === respostaQuestaoAtual) {
-                console.log("alternativaCorreta está no componente: " + alternativaCorreta)
-                alternativaCorreta = option.labels[0].id
-            }
-        })
+    if (option.value === respostaQuestaoAtual) {
+        if(option.labels.length > 0) {
+            alternativaCorreta = option.labels[0].id;
+            console.log("alternativaCorreta está no componente: " + alternativaCorreta);
+        } else {
+            console.warn("input não possui label associado:", option);
+        }
+    }
 
+        })
         // verifica se resposta assinalada é correta
         options.forEach((option) => {
             if (option.checked === true && option.value === respostaQuestaoAtual) {
                 document.getElementById(alternativaCorreta).classList.add("text-success-with-bg")
-                pontuacaoFinal++
+                pontuacaoFinal=Number(pontuacaoFinal)+3;/*MUDANÇA!!!*/
                 certas++
                 document.getElementById("spanCertas").innerHTML = certas
                 numeroDaQuestaoAtual++
@@ -317,7 +321,7 @@
 
     function finalizarJogo() {/**/
         document.getElementById('pontuacao').style.display = "flex"
-         document.getElementById('app').style.display = "none"/*!!!!!!!!!*/
+        document.getElementById('app').style.display = "none"/*!!!!!!!!!*/
 
         let textoParaMensagemFinal = null
         let classComCoresParaMensagemFinal = null
@@ -356,22 +360,26 @@
 
    document.getElementById('voltarpInicio').style.display = "block"; 
 
-        conectaQuiz2();/*coector para a API*/
+        Resultado();/*coector para a API*/
     }
 
-    function conectaQuiz2() {
-
-    var corretaVar = pontuacaoFinal;
+    function Resultado() {
+    const idUsuario = sessionStorage.ID_USUARIO;
+    var pontuacao = pontuacaoFinal;
+    var corretaVar = certas;
     var erradaVar = erradas;
 
-    fetch("/usuarios/conectaQuiz", {  /*ACESSE O USUARIO*/
+    fetch("/quiz/iniciar", {  /*ACESSE O USUARIO*/
         method: "POST",/*INSERÇÃO DO  BANCO DE DADOS*/
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({/*esá guardando as variaveis,*/
+            idUsuarioServer: idUsuario,
             corretaServer: corretaVar,
             erradoServer: erradaVar,
+            fkQuiz:2,
+            pontuacaoServer: pontuacao,
         }),
     })
     .then(function (resposta) {
