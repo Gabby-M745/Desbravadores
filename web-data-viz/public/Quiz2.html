@@ -26,7 +26,7 @@
                 </span>
                 <span id="msgFinal" class="width-fit-content">***</span>
             </div>
-            <button onclick="voltarInicio()" id="voltarpInicio" style="display:none;">Voltar</button>
+            <button onclick="voltarInicio()" id="voltarpInicio" style="display:none;">Visualizar</button>
         </div>
 
         <div id="app"> <!--QUADRADO # no CSS-->
@@ -319,7 +319,13 @@
         }
     }
 
+function  voltarInicio(){
+             window.location.href='dashbord/principal.html';
+
+}
     function finalizarJogo() {/**/
+    //     window.location.href='dashbord/principal.html';
+
         document.getElementById('pontuacao').style.display = "flex"
         document.getElementById('app').style.display = "none"/*!!!!!!!!!*/
 
@@ -387,7 +393,7 @@
     })
     .catch(function (error) {
         console.log("Erro ao enviar os dados: ", error);
-        alert("Erro ao enviar os dados.");
+        alert("Em instantes...");
     });
 
 
