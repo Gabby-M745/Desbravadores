@@ -5,7 +5,7 @@ function iniciar (idUsuario, correta, errado,pontuacao,fkQuiz) {
 
     var instrucaoSql = `
        INSERT INTO Resultado (fkUsuario,fkQuiz,totalAcertosQuiz, totalErrosQuiz, pontuacao)
-        VALUES (${idUsuario},${fkQuiz},${correta}, ${errado},${pontuacao});
+        VALUES (${idUsuario},${fkQuiz},${pontuacao}, ${errado},${correta});
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);

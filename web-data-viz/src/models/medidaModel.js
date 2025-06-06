@@ -1,9 +1,13 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(id_usuario) {
+function buscarUltimasMedidas(id_usuario, fkQuiz) {
 
-    var instrucaoSql = ``; // colocar aqui o select que tenha where fkUsuario = ${id_usuario}
-
+    var instrucaoSql = `SELECT totalAcertosQuiz AS acertas,
+    totalErrosQuiz AS erradas,
+    pontuacao,
+    fkQuiz
+    from Resultado 
+    where fkUsuario=${id_usuario} AND fkQuiz=${fkQuiz} order by idResultado desc;`; 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }

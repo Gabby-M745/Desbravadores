@@ -17,7 +17,7 @@
   <script src="../js/sessao.js"></script>
 </head>
 
-<body onload="validarSessao()">
+<body onload="">
   <div class="side-bar">
     <div class="nav">
       <img src="../deshbord/imagens-deshbord/logotipo01.png" alt="" style="width: 200px;">
@@ -69,7 +69,11 @@
           </div>
         </div>
       </div>
+      <p id="certasTexto"></p>
+       <p id="erradasTexto"></p> 
+       <p id="pontuacaoTexto"></p>
       <canvas id="gradico_barras"> </canvas>
+            <canvas id="gradico_barras2"> </canvas>
 </body>
 
 </html>
@@ -96,15 +100,19 @@
 </style>
 <script>
   var id_usuario = sessionStorage.ID_USUARIO
-  window.onload = obterDadosGrafico(id_usuario);
-  function obterDadosGrafico(id_usuario) {
+  window.onload = obterDadosGrafico(id_usuario,1);
+    window.onload = obterDadosGrafico(id_usuario,2);
+  function obterDadosGrafico(id_usuario,fkQuiz) {
 
-    fetch(`/medidas/ultimas/${id_usuario}`, { cache: 'no-store' }).then(function (response) {
+    fetch(`/medidas/ultimas/${id_usuario}/${fkQuiz}`, { cache: 'no-store' }).then(function (response) {
       if (response.ok) {
         response.json().then(function (resposta) {
           console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
           plotarGrafico(resposta);
+certasTexto.innerHTML=resposta[0].acertas;
+erradasTexto.innerHTML=resposta[0].erradas;
+pontuacaoTexto.innerHTML=resposta[0].pontuacao;
 
         });
       } else {
@@ -120,16 +128,8 @@
     const data_quiz = {
       labels: ['acertos', 'erros'],
       datasets: [{
-        label: 'acertos',
-        data: [],
-        fill: false,
-        borderColor: '#551c36',
-        backgroundColor: '#551c36',
-        tension: 0.1
-      },
-      {
-        label: 'errados',
-        data: [],
+        label: "resultado",
+        data: [resposta[0].acertas, resposta[0].erradas],
         fill: false,
         borderColor: '#551c36',
         backgroundColor: '#551c36',
@@ -137,18 +137,22 @@
       },
       ]
     };
-
-    for (let i = resposta.length - 1; i >= 0; i--) {
-      var registro = resposta[i];
-      data_quiz.datasets[0].data.push(registro.acertos);
-      data_quiz.datasets[1].data.push(registro.errados);
-    }
     const config = {
       type: 'bar',
       data: data_quiz,
     };
+    if(resposta[0].fkQuiz==1){
+
     const ctx = document.getElementById('gradico_barras').getContext('2d');
-    let GraficoTemperatura = new Chart(ctx, config);
+    let Grafico1 = new Chart(ctx, config);
+
+    }
+    if(resposta[0].fkQuiz==2){
+      const ctx = document.getElementById('gradico_barras2').getContext('2d');
+    let Grafico2 = new Chart(ctx, config);
+
+    }
+
   }
 
 </script>
